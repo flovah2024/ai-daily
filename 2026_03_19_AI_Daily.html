@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Daily — 2026년 3월 19일 | Open Design Lab</title>
+  <script>
+    (function(){
+      var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root, [data-theme="light"] {
+      --bg: #fafafa; --surface: #ffffff; --text-primary: #1a1a1a; --text-secondary: #555555;
+      --text-tertiary: #888888; --accent: #3b82f6; --accent-light: #eff6ff; --border: #e5e7eb;
+      --tag-bg: #f3f4f6; --radius: 12px; --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.06); --img-brightness: 1;
+    }
+    [data-theme="dark"] {
+      --bg: #111113; --surface: #1c1c1f; --text-primary: #e4e4e7; --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a; --accent: #60a5fa; --accent-light: rgba(96,165,250,0.1);
+      --border: #27272a; --tag-bg: #27272a; --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.3); --img-brightness: 0.85;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans KR','Inter',-apple-system,BlinkMacSystemFont,sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.8; -webkit-font-smoothing: antialiased; transition: background 0.3s, color 0.3s; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Language Toggle */
+    .lang-toggle { display: flex; background: var(--tag-bg); border-radius: 8px; padding: 3px; gap: 2px; transition: background 0.3s; }
+    .lang-btn { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 600; padding: 5px 14px; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-tertiary); transition: all 0.2s; letter-spacing: 0.02em; }
+    .lang-btn.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+    .lang-btn:hover:not(.active) { color: var(--text-primary); }
+
+    /* Theme Toggle */
+    .theme-btn { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .theme-btn svg { width: 16px; height: 16px; }
+    .theme-icon-moon, .theme-icon-sun { display: none; }
+    [data-theme="light"] .theme-icon-moon { display: block; }
+    [data-theme="dark"] .theme-icon-sun { display: block; }
+
+    /* Font Size Toggle */
+    .font-toggle { display: flex; background: var(--tag-bg); border-radius: 8px; padding: 3px; gap: 2px; transition: background 0.3s; }
+    .font-btn { font-family: 'Inter',sans-serif; font-weight: 600; padding: 4px 8px; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-tertiary); transition: all 0.2s; line-height: 1; }
+    .font-btn.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+    .font-btn:hover:not(.active) { color: var(--text-primary); }
+    .font-btn-s { font-size: 11px; } .font-btn-m { font-size: 13px; } .font-btn-l { font-size: 16px; }
+    html { font-size: 16px; } html.fs-small { font-size: 14px; } html.fs-medium { font-size: 16px; } html.fs-large { font-size: 18px; }
+
+    .header-controls { display: flex; align-items: center; gap: 8px; }
+
+    /* Sticky Top Bar */
+    .topbar { position: sticky; top: 0; z-index: 1000; background: var(--bg); border-bottom: 1px solid transparent; transition: background 0.3s, border-color 0.25s, box-shadow 0.25s; }
+    .topbar.scrolled { border-bottom-color: var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+    [data-theme="dark"] .topbar.scrolled { box-shadow: 0 1px 8px rgba(0,0,0,0.25); }
+    .topbar-inner { max-width: 720px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+    /* Language visibility */
+    .en { display: none; } .ko { display: inline; }
+    p.en, div.en, h1.en, h2.en, h3.en, li.en, span.en { display: none; }
+    p.ko, div.ko, h1.ko, h2.ko, h3.ko, li.ko, span.ko { display: block; }
+    span.ko { display: inline; } h1.ko, h2.ko, h3.ko { display: block; }
+    body.lang-en .en { display: inline; } body.lang-en .ko { display: none !important; }
+    body.lang-en p.en, body.lang-en div.en, body.lang-en h1.en, body.lang-en h2.en, body.lang-en h3.en { display: block; }
+    body.lang-en li.en { display: flex; } body.lang-en span.en { display: inline; }
+    body.lang-en p.ko, body.lang-en div.ko, body.lang-en h1.ko, body.lang-en h2.ko, body.lang-en h3.ko, body.lang-en li.ko, body.lang-en span.ko { display: none !important; }
+
+    /* Header */
+    header { border-bottom: 1px solid var(--border); padding: 32px 0 24px; }
+    .header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 22px; width: auto; transition: filter 0.3s; }
+    [data-theme="light"] .logo img { filter: brightness(0) saturate(100%); }
+    [data-theme="dark"] .logo img { filter: none; }
+    .edition-badge { font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 4px 12px; border-radius: 20px; }
+    .header-title { font-size: 2rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .header-meta { font-size: 14px; color: var(--text-tertiary); display: flex; align-items: center; gap: 12px; }
+    .header-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-tertiary); }
+
+    /* Lead */
+    .lead { padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .lead p { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.9; }
+
+    /* TOC */
+    .toc { padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .toc-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin-bottom: 16px; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .toc-list li { display: flex; align-items: baseline; gap: 12px; }
+    .toc-num { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 600; color: var(--accent); min-width: 20px; }
+    .toc-list a { font-size: 0.9375rem; color: var(--text-primary); text-decoration: none; transition: color 0.15s; }
+    .toc-list a:hover { color: var(--accent); }
+
+    /* Section */
+    .section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    .section-num { font-family: 'Inter',sans-serif; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+    .section h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; line-height: 1.4; }
+    .section p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.85; }
+    .section p:last-child { margin-bottom: 0; }
+    .highlight-box { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0; margin: 20px 0; transition: background 0.3s; }
+    .highlight-box p { color: var(--text-primary); font-size: 0.9375rem; margin-bottom: 0; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tag { font-size: 12px; font-weight: 500; color: var(--text-secondary); background: var(--tag-bg); padding: 4px 10px; border-radius: 6px; }
+
+    /* Takeaway */
+    .takeaway { padding: 48px 0 40px; }
+    .takeaway h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .takeaway-grid { display: grid; gap: 16px; }
+    .takeaway-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; }
+    .takeaway-card .card-num { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .takeaway-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .takeaway-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.75; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-tertiary); line-height: 1.7; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* Nav links */
+    .nav-issues { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-top: 1px solid var(--border); margin-top: 0; }
+    .nav-link { font-size: 14px; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+    .nav-link:hover { opacity: 0.7; }
+    .nav-link.disabled { color: var(--text-tertiary); pointer-events: none; opacity: 0.4; }
+
+    /* Section Image */
+    .section-img { width: 100%; height: 280px; object-fit: cover; border-radius: var(--radius); margin-bottom: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
+    .hero-img { width: 100%; height: 360px; object-fit: cover; border-radius: var(--radius); margin-top: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .header-title { font-size: 1.5rem; }
+      .section h2 { font-size: 1.1875rem; }
+      .header-meta { flex-wrap: wrap; gap: 8px; }
+      .header-meta .dot { display: none; }
+      .section-img { height: 200px; }
+      .hero-img { height: 240px; }
+      .header-left { gap: 8px; }
+      .topbar-inner { padding: 10px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sticky Top Bar -->
+<div class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="header-left">
+      <a href="AI_Daily_Archive.html" class="logo"><img src="https://opendesignlab.com/images/logo-gnb-white.svg" alt="Open Design Lab"></a>
+      <span class="edition-badge">AI Daily</span>
+    </div>
+    <div class="header-controls">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <div class="font-toggle">
+        <button class="font-btn font-btn-s" id="fs-s" onclick="setFontSize('small')">A</button>
+        <button class="font-btn font-btn-m active" id="fs-m" onclick="setFontSize('medium')">A</button>
+        <button class="font-btn font-btn-l" id="fs-l" onclick="setFontSize('large')">A</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1 class="header-title ko">자기진화 AI 모델, Micron 메모리 슈퍼사이클, 그리고 Grok 딥페이크 소송 — 오늘의 AI</h1>
+    <h1 class="header-title en">Self-Evolving AI Models, Micron's Memory Supercycle, and Grok Deepfake Lawsuit — Today in AI</h1>
+    <div class="header-meta">
+      <span class="ko">2026년 3월 19일</span>
+      <span class="en">March 19, 2026</span>
+      <span class="dot"></span>
+      <span class="ko">읽는 시간 약 7분</span>
+      <span class="en">7 min read</span>
+      <span class="dot"></span>
+      <span>Open Design Lab AI</span>
+    </div>
+    <img class="hero-img" src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=600" alt="AI technology — Self-evolving models">
+  </header>
+
+  <!-- Lead -->
+  <div class="lead">
+    <p class="ko">MiniMax가 3월 18일 자기진화 능력을 가진 M2.7 모델을 공개하며 AI 자체 개발의 새로운 시대를 열었습니다. Micron의 분기 매출이 196% 증가하며 AI 메모리 슈퍼사이클의 진입을 알렸고, 삼성-AMD 동맹이 AI 반도체 시장의 판도 변화를 예고했습니다. 한편 Grok 딥페이크 소송은 AI 모델의 안전장치 부재가 실질적 피해로 이어지는 첫 대규모 법적 사건이 될 전망입니다. Anthropic의 기업 시장 점유율이 73%에 달하며 시장의 지각변동을 보여줍니다.</p>
+    <p class="en">MiniMax unveiled its M2.7 model on March 18 with self-evolution capabilities, marking a new era in AI's self-improvement. Micron's quarterly revenue jumped 196%, signaling an AI memory supercycle. The Samsung-AMD alliance hints at shifting semiconductor market dynamics. Meanwhile, the Grok deepfake lawsuit could become the first major legal case revealing real-world harm from AI safety failures. Anthropic's 73% enterprise adoption shows market realignment.</p>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title ko">오늘의 주요 뉴스</div>
+    <div class="toc-title en">TODAY'S TOP STORIES</div>
+    <ol class="toc-list">
+      <li class="ko"><span class="toc-num">01</span><a href="#s1">MiniMax M2.7 — 스스로 진화하는 AI 모델 등장</a></li>
+      <li class="en"><span class="toc-num">01</span><a href="#s1">MiniMax M2.7 — Self-Evolving AI Model Emerges</a></li>
+      <li class="ko"><span class="toc-num">02</span><a href="#s2">Micron 분기 매출 239억 달러, AI 메모리 슈퍼사이클 돌입</a></li>
+      <li class="en"><span class="toc-num">02</span><a href="#s2">Micron's $23.8B Quarter Signals AI Memory Supercycle</a></li>
+      <li class="ko"><span class="toc-num">03</span><a href="#s3">Grok 딥페이크 소송 — 미성년자 보호의 AI 과제</a></li>
+      <li class="en"><span class="toc-num">03</span><a href="#s3">Grok Deepfake Lawsuit — AI's Child Safety Challenge</a></li>
+      <li class="ko"><span class="toc-num">04</span><a href="#s4">Anthropic, 신규 AI 도구 구매 기업의 73% 장악</a></li>
+      <li class="en"><span class="toc-num">04</span><a href="#s4">Anthropic Captures 73% of New Enterprise AI Spending</a></li>
+      <li class="ko"><span class="toc-num">05</span><a href="#s5">삼성-AMD, 차세대 HBM4 공급 계약 체결</a></li>
+      <li class="en"><span class="toc-num">05</span><a href="#s5">Samsung-AMD Partner on Next-Gen HBM4</a></li>
+      <li class="ko"><span class="toc-num">06</span><a href="#s6">오늘의 핵심 시사점</a></li>
+      <li class="en"><span class="toc-num">06</span><a href="#s6">Today's Key Takeaways</a></li>
+    </ol>
+  </nav>
+
+  <!-- Section 1 -->
+  <div class="section" id="s1">
+    <img class="section-img" src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&fit=crop&h=750" alt="AI model — Self-evolution">
+    <div class="section-num">01</div>
+    <h2 class="ko">MiniMax M2.7 — 스스로 진화하는 AI 모델 등장</h2>
+    <h2 class="en">MiniMax M2.7 — Self-Evolving AI Model Emerges</h2>
+    <div class="tag-row">
+      <span class="tag">MiniMax</span>
+      <span class="tag">M2.7</span>
+      <span class="tag ko">자기진화</span>
+      <span class="tag en">Self-Evolution</span>
+      <span class="tag ko">AI 모델</span>
+      <span class="tag en">AI Model</span>
+    </div>
+    <p class="ko">중국 AI 스타트업 MiniMax가 3월 18일 차세대 AI 모델 M2.7을 공개했습니다. 이 모델의 핵심 특징은 '자기진화(Self-Evolution)' 능력으로, 개발 워크플로우의 30~50%를 모델 스스로 수행합니다. SWE-Pro 벤치마크에서 56.22%를 기록해 최정상급 모델에 근접했으며, 오픈소스 모델 중 최고 ELO 점수(1495)를 달성했습니다.</p>
+    <p class="en">Chinese AI startup MiniMax unveiled its next-generation M2.7 model on March 18. The key feature is "Self-Evolution" capability — the model handles 30-50% of its own development workflow. It scored 56.22% on SWE-Pro benchmark, approaching top-tier models, and achieved the highest ELO score (1495) among open-source models.</p>
+    <p class="ko">입력 100만 토큰당 0.30달러의 파격적 가격도 주목됩니다. 이는 OpenAI의 GPT-4o mini보다 92% 저렴한 수치입니다. 자기진화 능력은 개발자가 명시적으로 지시하지 않아도 모델이 자동으로 프롬프트를 개선하고, 코드를 최적화하며, 성능을 향상시키는 메커니즘을 의미합니다. 이러한 기능이 보편화되면 AI 개발의 비용과 속도, 접근성 모두에 혁명을 가져올 수 있습니다.</p>
+    <p class="en">The aggressive pricing of $0.30 per 1M input tokens is noteworthy — 92% cheaper than GPT-4o mini. Self-evolution means the model automatically improves prompts, optimizes code, and enhances performance without explicit developer instruction. If this capability becomes mainstream, it could revolutionize the cost, speed, and accessibility of AI development.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> MiniMax M2.7은 AI가 스스로 진화하는 시대의 서막입니다. '자기진화' 모델이 보편화되면 AI 개발 비용과 속도가 근본적으로 바뀔 수 있습니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> MiniMax M2.7 marks the dawn of self-evolving AI. If self-evolution models become mainstream, the cost and speed of AI development could fundamentally change.</p>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section" id="s2">
+    <img class="section-img" src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&fit=crop&h=750" alt="Semiconductor — AI memory">
+    <div class="section-num">02</div>
+    <h2 class="ko">Micron 분기 매출 239억 달러, AI 메모리 슈퍼사이클 돌입</h2>
+    <h2 class="en">Micron's $23.8B Quarter Signals AI Memory Supercycle</h2>
+    <div class="tag-row">
+      <span class="tag">Micron</span>
+      <span class="tag">HBM4</span>
+      <span class="tag ko">AI 메모리</span>
+      <span class="tag en">AI Memory</span>
+      <span class="tag">NVIDIA</span>
+    </div>
+    <p class="ko">Micron이 2026 회계연도 2분기 실적을 발표했습니다. 매출 238.6억 달러로 전년 대비 196% 증가하며 시장 전망(191.9억 달러)을 21% 상회했습니다. 비GAAP 주당순이익은 12.20달러로 컨센서스를 38% 초과했습니다. 핵심 동력은 AI 고대역폭 메모리(HBM)입니다.</p>
+    <p class="en">Micron reported Q2 FY2026 results with revenue of $23.86B, up 196% YoY and 21% above estimates. Non-GAAP EPS of $12.20 beat consensus by 38%. The key driver is AI High Bandwidth Memory.</p>
+    <p class="ko">Micron은 HBM4 36GB 12단 적층 메모리의 대량 출하를 시작했으며, NVIDIA Vera Rubin 플랫폼의 핵심 부품으로 채택됐습니다. 올해 남은 기간의 HBM 생산 물량은 이미 전량 계약 완료 상태입니다. AI 메모리 수요가 단순한 '부족' 상태를 넘어 '구조적 공급 부족'에 진입했음을 시사합니다.</p>
+    <p class="en">Micron began volume shipments of HBM4 36GB 12-high memory, adopted as a core component of NVIDIA's Vera Rubin platform. HBM production capacity is already fully committed for the rest of the year. This signals AI memory demand has moved beyond simple shortage into structural undersupply.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> AI 메모리 수요가 '부족'을 넘어 '구조적 공급 부족'으로 진입했습니다. Micron의 실적은 AI 인프라 투자가 아직 초기 단계임을 보여줍니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> AI memory demand has moved beyond shortage into structural undersupply. Micron's results show that AI infrastructure investment is still in its early stages.</p>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section" id="s3">
+    <img class="section-img" src="https://images.pexels.com/photos/5699456/pexels-photo-5699456.jpeg?auto=compress&cs=tinysrgb&w=1260&fit=crop&h=750" alt="Digital safety — Deepfake">
+    <div class="section-num">03</div>
+    <h2 class="ko">Grok 딥페이크 소송 — 미성년자 보호의 AI 과제</h2>
+    <h2 class="en">Grok Deepfake Lawsuit — AI's Child Safety Challenge</h2>
+    <div class="tag-row">
+      <span class="tag">xAI</span>
+      <span class="tag">Grok</span>
+      <span class="tag ko">딥페이크</span>
+      <span class="tag en">Deepfake</span>
+      <span class="tag ko">AI 윤리</span>
+      <span class="tag en">AI Ethics</span>
+    </div>
+    <p class="ko">테네시주 10대 청소년 3명이 일론 머스크의 xAI와 Grok AI를 상대로 캘리포니아 연방법원에 소송을 제기했습니다. xAI의 Grok 모델을 기반으로 한 서드파티 앱이 졸업앨범 사진과 소셜미디어 이미지를 이용해 성적 딥페이크를 생성했다는 혐의입니다.</p>
+    <p class="en">Three Tennessee teenagers filed a lawsuit against Elon Musk's xAI and Grok AI in California federal court. A third-party app powered by xAI's Grok model allegedly used yearbook photos and social media images to generate sexual deepfakes.</p>
+    <p class="ko">최소 18명 이상의 피해자가 확인됐으며, 일부는 아직 미성년자입니다. 소장에는 아동 포르노 유포 의도부터 정서적 고통의 고의적 가해까지 13개 혐의가 포함됐습니다. 이 사건은 AI 모델의 안전장치 부재가 실질적 피해로 직결되는 첫 대규모 법적 선례가 될 수 있으며, 딥페이크 규제와 AI 기업의 책임 범위에 대한 중요한 판례를 만들 수 있습니다.</p>
+    <p class="en">At least 18 victims were identified, some still minors. The complaint includes 13 counts ranging from intent to distribute child pornography to intentional infliction of emotional distress. This case could set legal precedents for deepfake regulation and AI companies' liability.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> AI 모델의 안전장치 부재가 실질적 피해로 이어지고 있습니다. 딥페이크 규제와 AI 기업의 책임 범위에 대한 법적 선례가 만들어질 수 있습니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> The lack of AI model safeguards is leading to real-world harm. This case could set legal precedents for deepfake regulation and AI companies' liability.</p>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section" id="s4">
+    <img class="section-img" src="https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1260&fit=crop&h=750" alt="Enterprise AI — Claude adoption">
+    <div class="section-num">04</div>
+    <h2 class="ko">Anthropic, 신규 AI 도구 구매 기업의 73% 장악</h2>
+    <h2 class="en">Anthropic Captures 73% of New Enterprise AI Spending</h2>
+    <div class="tag-row">
+      <span class="tag">Anthropic</span>
+      <span class="tag">Claude</span>
+      <span class="tag">OpenAI</span>
+      <span class="tag ko">AI 시장</span>
+      <span class="tag en">AI Market</span>
+    </div>
+    <p class="ko">핀테크 기업 Ramp의 데이터에 따르면, 처음으로 AI 도구를 구매하는 기업들의 지출 중 Anthropic이 73%를 차지하고 있습니다. 이는 1월의 OpenAI와 50:50 비율에서 크게 변화한 수치입니다. Anthropic의 Claude가 기업 시장에서 빠르게 점유율을 확대하고 있음을 보여줍니다.</p>
+    <p class="en">According to fintech firm Ramp's data, Anthropic now captures 73% of spending among companies purchasing AI tools for the first time, a dramatic shift from January's 50:50 split with OpenAI. This demonstrates Claude's rapid market share expansion in enterprise.</p>
+    <p class="ko">특히 소프트웨어 개발, 문서 작성, 리서치 분야에서 Claude의 실무 활용도가 높은 것으로 분석됩니다. 이는 기업들이 단순히 '가장 큰 모델'보다 '가장 유용한 모델'을 선택하는 추세를 보여줍니다. AI 시장의 판도가 브랜드와 규모에서 실제 성능과 사용성으로 빠르게 전환되고 있음을 의미합니다.</p>
+    <p class="en">Claude's practical utility is particularly high in software development, document creation, and research. This shows that enterprises are choosing the "most useful model" rather than the "largest." The AI market is rapidly shifting from brand and scale to actual performance and usability.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> AI 시장의 판도가 빠르게 변하고 있습니다. Anthropic의 급부상은 '가장 큰 모델'이 아닌 '가장 유용한 모델'이 기업 시장을 지배할 수 있음을 보여줍니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> The AI market landscape is shifting rapidly. Anthropic's surge shows that the 'most useful model' — not the largest — can dominate enterprise adoption.</p>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section" id="s5">
+    <img class="section-img" src="https://images.pexels.com/photos/2582928/pexels-photo-2582928.jpeg?auto=compress&cs=tinysrgb&w=1260&fit=crop&h=750" alt="Semiconductor — HBM chip">
+    <div class="section-num">05</div>
+    <h2 class="ko">삼성-AMD, 차세대 HBM4 공급 계약 체결</h2>
+    <h2 class="en">Samsung-AMD Partner on Next-Gen HBM4</h2>
+    <div class="tag-row">
+      <span class="tag ko">삼성전자</span>
+      <span class="tag en">Samsung</span>
+      <span class="tag">AMD</span>
+      <span class="tag">HBM4</span>
+      <span class="tag ko">AI 반도체</span>
+      <span class="tag en">AI Semiconductors</span>
+    </div>
+    <p class="ko">삼성전자가 AMD와 차세대 HBM4 메모리 공급을 위한 예비 계약을 체결했습니다. 이 메모리는 AMD의 MI455X 가속기와 헬리오스(Helios) 프로세서에 사용될 예정입니다. 그동안 SK하이닉스-NVIDIA 동맹에 비해 열세였던 삼성이 AMD와의 파트너십을 통해 AI 메모리 시장에서 새로운 돌파구를 마련한 것입니다.</p>
+    <p class="en">Samsung Electronics signed a preliminary agreement with AMD for next-generation HBM4 memory supply. The memory will be used in AMD's MI455X accelerators and Helios processors. Samsung, which has been at a disadvantage compared to the SK Hynix-NVIDIA alliance, has found a new breakthrough in the AI memory market through its AMD partnership.</p>
+    <p class="ko">이는 AI 반도체 공급망의 다변화를 의미합니다. 기존에는 NVIDIA와 SK하이닉스의 강한 협력이 시장을 주도했으나, 삼성-AMD 동맹의 형성으로 AI 반도체 시장이 '양강 구도'로 재편될 가능성이 열렸습니다. AMD는 NVIDIA의 독점적 지위에 도전할 수 있는 강력한 GPU 경쟁자이며, 이 파트너십은 AI 인프라 시장의 경쟁 구도를 근본적으로 변화시킬 수 있습니다.</p>
+    <p class="en">This signals diversification of AI semiconductor supply chains. Previously dominated by the strong NVIDIA-SK Hynix partnership, the market may now reshape into a two-power structure. AMD is a strong GPU competitor to NVIDIA, and this partnership could fundamentally alter AI infrastructure market dynamics.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> 삼성-AMD 동맹은 SK하이닉스-NVIDIA 축에 대한 전략적 대항마입니다. AI 반도체 시장이 '양강 구도'로 재편될 가능성이 열렸습니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> The Samsung-AMD alliance is a strategic counterweight to the SK Hynix-NVIDIA axis. The AI semiconductor market may be reshaping into a two-power structure.</p>
+    </div>
+  </div>
+
+  <!-- Takeaway -->
+  <div class="takeaway" id="s6">
+    <div class="section-num">06</div>
+    <h2 class="ko">오늘의 핵심 시사점</h2>
+    <h2 class="en">Today's Key Takeaways</h2>
+    <div class="takeaway-grid">
+      <div class="takeaway-card">
+        <div class="card-num">01</div>
+        <h3 class="ko">AI의 자기진화, 새로운 패러다임</h3>
+        <h3 class="en">Self-Evolving AI: A New Paradigm</h3>
+        <p class="ko">MiniMax M2.7이 자기 개발의 30~50%를 스스로 수행한다는 것은 AI 개발 방식의 근본적 전환을 예고합니다. 인간 개발자의 역할이 '설계자'에서 '감독자'로 변화할 수 있습니다.</p>
+        <p class="en">MiniMax M2.7 handling 30-50% of its own development signals a fundamental shift in AI development. The role of human developers may evolve from 'builders' to 'supervisors.'</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="card-num">02</div>
+        <h3 class="ko">AI 메모리 슈퍼사이클의 시작</h3>
+        <h3 class="en">The AI Memory Supercycle Begins</h3>
+        <p class="ko">Micron의 196% 매출 성장과 HBM 전량 계약은 AI 메모리 수요가 구조적 공급 부족 상태에 진입했음을 보여줍니다. 삼성-AMD 동맹은 이 시장의 경쟁을 한층 격화시킬 것입니다.</p>
+        <p class="en">Micron's 196% revenue growth and fully committed HBM capacity show AI memory demand has entered structural undersupply. The Samsung-AMD alliance will further intensify competition.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="card-num">03</div>
+        <h3 class="ko">AI 안전의 현실적 대가</h3>
+        <h3 class="en">The Real Cost of AI Safety Failures</h3>
+        <p class="ko">Grok 딥페이크 소송은 AI 모델의 안전장치 부재가 실질적 피해로 이어지는 첫 번째 대규모 법적 사례가 될 수 있습니다. AI 기업의 책임 범위에 대한 사회적 논의가 본격화됩니다.</p>
+        <p class="en">The Grok deepfake lawsuit could become the first major legal case where lack of AI safeguards led to real harm. The societal debate on AI companies' liability is now in full force.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="card-num">04</div>
+        <h3 class="ko">AI 기업 시장의 지각변동</h3>
+        <h3 class="en">Tectonic Shift in Enterprise AI</h3>
+        <p class="ko">Anthropic이 신규 기업 고객의 73%를 차지하며 OpenAI를 추월하고 있습니다. '가장 큰 모델'이 아닌 '가장 유용한 모델'이 시장을 지배하는 시대가 오고 있습니다.</p>
+        <p class="en">Anthropic capturing 73% of new enterprise AI spend is overtaking OpenAI. The era where the 'most useful model' — not the largest — dominates the market is arriving.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Issue Navigation -->
+  <div class="nav-issues">
+    <a href="#" class="nav-link disabled"><span>&larr;</span> <span class="ko">이전호</span><span class="en">Previous</span></a>
+    <a href="AI_Daily_Archive.html" class="nav-link"><span class="ko">전체 목록</span><span class="en">All Issues</span></a>
+    <a href="2026_03_20_AI_Daily.html" class="nav-link"><span class="ko">다음호</span><span class="en">Next</span> <span>&rarr;</span></a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <span class="ko">이 아티클은 <a href="https://opendesignlab.com">Open Design Lab</a>의 AI Daily 시리즈입니다.<br>
+      매일 최신 AI 뉴스를 빠르게 정리합니다.</span>
+      <span class="en">This article is part of <a href="https://opendesignlab.com">Open Design Lab</a>'s AI Daily series.<br>
+      Your daily roundup of the most important AI developments.</span><br>
+      <span style="margin-top: 8px; display: inline-block; color: #aaa;">Images: <a href="https://www.pexels.com" style="color: #aaa;">Pexels</a> (Free License)</span><br>
+      <span style="display: inline-block; color: #aaa;">&copy; 2026 Open Design Lab. All rights reserved.</span>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+// Language Toggle
+function setLang(lang) {
+  var body = document.body;
+  var btnKo = document.getElementById('btn-ko');
+  var btnEn = document.getElementById('btn-en');
+  if (lang === 'en') {
+    body.classList.add('lang-en');
+    document.documentElement.lang = 'en';
+    btnEn.classList.add('active');
+    btnKo.classList.remove('active');
+  } else {
+    body.classList.remove('lang-en');
+    document.documentElement.lang = 'ko';
+    btnKo.classList.add('active');
+    btnEn.classList.remove('active');
+  }
+}
+
+// Topbar scroll shadow
+(function() {
+  var topbar = document.getElementById('topbar');
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        topbar.classList.toggle('scrolled', window.scrollY > 10);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// Font Size Toggle
+function setFontSize(size) {
+  var html = document.documentElement;
+  html.classList.remove('fs-small', 'fs-medium', 'fs-large');
+  html.classList.add('fs-' + size);
+  var btns = { small: 'fs-s', medium: 'fs-m', large: 'fs-l' };
+  Object.keys(btns).forEach(function(k) {
+    var el = document.getElementById(btns[k]);
+    if (el) el.classList.toggle('active', k === size);
+  });
+  localStorage.setItem('odl-fontsize', size);
+}
+(function() {
+  var saved = localStorage.getItem('odl-fontsize');
+  if (saved && saved !== 'medium') setFontSize(saved);
+})();
+
+// Theme Toggle
+function getPreferredTheme() {
+  var saved = localStorage.getItem('odl-theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('odl-theme', theme);
+}
+function toggleTheme() {
+  setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+setTheme(getPreferredTheme());
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+  if (!localStorage.getItem('odl-theme')) setTheme(e.matches ? 'dark' : 'light');
+});
+</script>
+
+</body>
+</html>
