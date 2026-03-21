@@ -1,1 +1,469 @@
-<html><body>placeholder</body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Daily — 2026년 3월 20일 | Open Design Lab</title>
+  <script>
+    (function(){
+      var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root, [data-theme="light"] {
+      --bg: #fafafa; --surface: #ffffff; --text-primary: #1a1a1a; --text-secondary: #555555;
+      --text-tertiary: #888888; --accent: #3b82f6; --accent-light: #eff6ff; --border: #e5e7eb;
+      --tag-bg: #f3f4f6; --radius: 12px; --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.06); --img-brightness: 1;
+    }
+    [data-theme="dark"] {
+      --bg: #111113; --surface: #1c1c1f; --text-primary: #e4e4e7; --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a; --accent: #60a5fa; --accent-light: rgba(96,165,250,0.1);
+      --border: #27272a; --tag-bg: #27272a; --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.3); --img-brightness: 0.85;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans KR','Inter',-apple-system,BlinkMacSystemFont,sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.8; -webkit-font-smoothing: antialiased; transition: background 0.3s, color 0.3s; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    /* Language Toggle */
+    .lang-toggle { display: flex; background: var(--tag-bg); border-radius: 8px; padding: 3px; gap: 2px; transition: background 0.3s; }
+    .lang-btn { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 600; padding: 5px 14px; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-tertiary); transition: all 0.2s; letter-spacing: 0.02em; }
+    .lang-btn.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+    .lang-btn:hover:not(.active) { color: var(--text-primary); }
+
+    /* Theme Toggle */
+    .theme-btn { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .theme-btn svg { width: 16px; height: 16px; }
+    .theme-icon-moon, .theme-icon-sun { display: none; }
+    [data-theme="light"] .theme-icon-moon { display: block; }
+    [data-theme="dark"] .theme-icon-sun { display: block; }
+
+    /* Font Size Toggle */
+    .font-toggle { display: flex; background: var(--tag-bg); border-radius: 8px; padding: 3px; gap: 2px; transition: background 0.3s; }
+    .font-btn { font-family: 'Inter',sans-serif; font-weight: 600; padding: 4px 8px; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-tertiary); transition: all 0.2s; line-height: 1; }
+    .font-btn.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+    .font-btn:hover:not(.active) { color: var(--text-primary); }
+    .font-btn-s { font-size: 11px; } .font-btn-m { font-size: 13px; } .font-btn-l { font-size: 16px; }
+    html { font-size: 16px; } html.fs-small { font-size: 14px; } html.fs-medium { font-size: 16px; } html.fs-large { font-size: 18px; }
+
+    .header-controls { display: flex; align-items: center; gap: 8px; }
+
+    /* Sticky Top Bar */
+    .topbar { position: sticky; top: 0; z-index: 1000; background: var(--bg); border-bottom: 1px solid transparent; transition: background 0.3s, border-color 0.25s, box-shadow 0.25s; }
+    .topbar.scrolled { border-bottom-color: var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+    [data-theme="dark"] .topbar.scrolled { box-shadow: 0 1px 8px rgba(0,0,0,0.25); }
+    .topbar-inner { max-width: 720px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+    /* Language visibility */
+    .en { display: none; } .ko { display: inline; }
+    p.en, div.en, h1.en, h2.en, h3.en, li.en, span.en { display: none; }
+    p.ko, div.ko, h1.ko, h2.ko, h3.ko, li.ko, span.ko { display: block; }
+    span.ko { display: inline; } h1.ko, h2.ko, h3.ko { display: block; }
+    body.lang-en .en { display: inline; } body.lang-en .ko { display: none !important; }
+    body.lang-en p.en, body.lang-en div.en, body.lang-en h1.en, body.lang-en h2.en, body.lang-en h3.en { display: block; }
+    body.lang-en li.en { display: flex; } body.lang-en span.en { display: inline; }
+    body.lang-en p.ko, body.lang-en div.ko, body.lang-en h1.ko, body.lang-en h2.ko, body.lang-en h3.ko, body.lang-en li.ko, body.lang-en span.ko { display: none !important; }
+
+    /* Header */
+    header { border-bottom: 1px solid var(--border); padding: 32px 0 24px; }
+    .header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 22px; width: auto; transition: filter 0.3s; }
+    [data-theme="light"] .logo img { filter: brightness(0) saturate(100%); }
+    [data-theme="dark"] .logo img { filter: none; }
+    .edition-badge { font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 4px 12px; border-radius: 20px; }
+    .header-title { font-size: 2rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .header-meta { font-size: 14px; color: var(--text-tertiary); display: flex; align-items: center; gap: 12px; }
+    .header-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-tertiary); }
+
+    /* Lead */
+    .lead { padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .lead p { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.9; }
+
+    /* TOC */
+    .toc { padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .toc-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin-bottom: 16px; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .toc-list li { display: flex; align-items: baseline; gap: 12px; }
+    .toc-num { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 600; color: var(--accent); min-width: 20px; }
+    .toc-list a { font-size: 0.9375rem; color: var(--text-primary); text-decoration: none; transition: color 0.15s; }
+    .toc-list a:hover { color: var(--accent); }
+
+    /* Section */
+    .section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    .section-num { font-family: 'Inter',sans-serif; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+    .section h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; line-height: 1.4; }
+    .section p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.85; }
+    .section p:last-child { margin-bottom: 0; }
+    .highlight-box { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0; margin: 20px 0; transition: background 0.3s; }
+    .highlight-box p { color: var(--text-primary); font-size: 0.9375rem; margin-bottom: 0; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tag { font-size: 12px; font-weight: 500; color: var(--text-secondary); background: var(--tag-bg); padding: 4px 10px; border-radius: 6px; }
+
+    /* Takeaway */
+    .takeaway { padding: 48px 0 40px; }
+    .takeaway h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .takeaway-grid { display: grid; gap: 16px; }
+    .takeaway-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; }
+    .takeaway-card .card-num { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .takeaway-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .takeaway-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.75; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-tertiary); line-height: 1.7; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* Nav links */
+    .nav-issues { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-top: 1px solid var(--border); margin-top: 0; }
+    .nav-link { font-size: 14px; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+    .nav-link:hover { opacity: 0.7; }
+    .nav-link.disabled { color: var(--text-tertiary); pointer-events: none; opacity: 0.4; }
+
+    /* Section Image */
+    .section-img { width: 100%; height: 280px; object-fit: cover; border-radius: var(--radius); margin-bottom: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
+    .hero-img { width: 100%; height: 360px; object-fit: cover; border-radius: var(--radius); margin-top: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .header-title { font-size: 1.5rem; }
+      .section h2 { font-size: 1.1875rem; }
+      .header-meta { flex-wrap: wrap; gap: 8px; }
+      .header-meta .dot { display: none; }
+      .section-img { height: 200px; }
+      .hero-img { height: 240px; }
+      .header-left { gap: 8px; }
+      .topbar-inner { padding: 10px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sticky Top Bar -->
+<div class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="header-left">
+      <a href="AI_Daily_Archive.html" class="logo"><img src="https://opendesignlab.com/images/logo-gnb-white.svg" alt="Open Design Lab"></a>
+      <span class="edition-badge">AI Daily</span>
+    </div>
+    <div class="header-controls">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <div class="font-toggle">
+        <button class="font-btn font-btn-s" id="fs-s" onclick="setFontSize('small')">A</button>
+        <button class="font-btn font-btn-m active" id="fs-m" onclick="setFontSize('medium')">A</button>
+        <button class="font-btn font-btn-l" id="fs-l" onclick="setFontSize('large')">A</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1 class="header-title ko">NVIDIA GTC 에이전트 혁명, 삼성 73조 AI 칩 투자, 그리고 구글 개인지능 무료화 — 오늘의 AI</h1>
+    <h1 class="header-title en">NVIDIA GTC Agent Revolution, Samsung's $73B AI Chip Bet, and Google's Free Personal Intelligence — Today in AI</h1>
+    <div class="header-meta">
+      <span class="ko">2026년 3월 20일</span>
+      <span class="en">March 20, 2026</span>
+      <span class="dot"></span>
+      <span class="ko">읽는 시간 약 7분</span>
+      <span class="en">7 min read</span>
+      <span class="dot"></span>
+      <span>Open Design Lab AI</span>
+    </div>
+    <img class="hero-img" src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=600" alt="NVIDIA GTC — AI technology">
+  </header>
+
+  <!-- Lead -->
+  <div class="lead">
+    <p class="ko">NVIDIA가 GTC 2026에서 에이전트 툴킷을 공개하며 AI 에이전트 시대의 인프라를 선점하겠다고 선언했습니다. 삼성전자는 110조 원(약 730억 달러)의 역대 최대 투자를 발표하며 AI 반도체 주도권 경쟁에 본격 뛰어들었습니다. 구글은 Gemini 개인지능 기능을 미국 전체 무료 사용자에게 확대했으며, AI 광고 시장은 63% 성장해 570억 달러에 달할 전망입니다. Shopify는 AI 에이전트 쇼핑 시대를 열겠다고 밝혔습니다.</p>
+    <p class="en">NVIDIA unveiled its Agent Toolkit at GTC 2026, staking its claim on AI agent infrastructure. Samsung announced a record 110 trillion won (~$73B) investment to compete in AI semiconductors. Google expanded Gemini Personal Intelligence to all free US users. AI-powered advertising is projected to surge 63% to $57 billion, and Shopify declared the era of AI agent-driven commerce.</p>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title ko">오늘의 주요 뉴스</div>
+    <div class="toc-title en">TODAY'S TOP STORIES</div>
+    <ol class="toc-list">
+      <li class="ko"><span class="toc-num">01</span><a href="#s1">NVIDIA GTC 2026 — 에이전트 툴킷과 Vera Rubin 공개</a></li>
+      <li class="en"><span class="toc-num">01</span><a href="#s1">NVIDIA GTC 2026 — Agent Toolkit and Vera Rubin Unveiled</a></li>
+      <li class="ko"><span class="toc-num">02</span><a href="#s2">삼성전자, 역대 최대 110조 원 AI 반도체 투자</a></li>
+      <li class="en"><span class="toc-num">02</span><a href="#s2">Samsung's Record $73B Investment in AI Chips</a></li>
+      <li class="ko"><span class="toc-num">03</span><a href="#s3">구글 Gemini 개인지능, 미국 무료 사용자에게 확대</a></li>
+      <li class="en"><span class="toc-num">03</span><a href="#s3">Google Gemini Personal Intelligence Goes Free for US Users</a></li>
+      <li class="ko"><span class="toc-num">04</span><a href="#s4">AI 광고 시장 63% 폭증, 570억 달러 돌파 전망</a></li>
+      <li class="en"><span class="toc-num">04</span><a href="#s4">AI Advertising Surges 63% to $57 Billion</a></li>
+      <li class="ko"><span class="toc-num">05</span><a href="#s5">Shopify, AI 에이전트 커머스 시대 선언</a></li>
+      <li class="en"><span class="toc-num">05</span><a href="#s5">Shopify Declares the Era of AI Agent Commerce</a></li>
+      <li class="ko"><span class="toc-num">06</span><a href="#s6">오늘의 핵심 시사점</a></li>
+      <li class="en"><span class="toc-num">06</span><a href="#s6">Today's Key Takeaways</a></li>
+    </ol>
+  </nav>
+
+  <!-- Section 1 -->
+  <div class="section" id="s1">
+    <img class="section-img" src="https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="GPU server — NVIDIA AI">
+    <div class="section-num">01</div>
+    <h2 class="ko">NVIDIA GTC 2026 — 에이전트 툴킷과 Vera Rubin 공개</h2>
+    <h2 class="en">NVIDIA GTC 2026 — Agent Toolkit and Vera Rubin Unveiled</h2>
+    <div class="tag-row">
+      <span class="tag">NVIDIA</span>
+      <span class="tag">GTC 2026</span>
+      <span class="tag ko">에이전트 AI</span>
+      <span class="tag en">Agentic AI</span>
+      <span class="tag">Vera Rubin</span>
+    </div>
+    <p class="ko">NVIDIA가 산호세 GTC 2026(3월 16~19일)에서 에이전트 툴킷(Agent Toolkit)을 공개했습니다. NemoClaw 보안 런타임, AI-Q 에이전트 블루프린트, Nemotron 오픈 모델을 묶은 오픈소스 플랫폼으로, 기업들이 자율 AI 에이전트를 안전하게 배포할 수 있도록 설계됐습니다. Adobe, Salesforce, SAP 등 16개 글로벌 기업이 이미 채택을 선언했습니다.</p>
+    <p class="en">NVIDIA unveiled its Agent Toolkit at GTC 2026 in San Jose (March 16–19). The open-source platform bundles NemoClaw secure runtime, AI-Q agent blueprints, and Nemotron open models, enabling enterprises to safely deploy autonomous AI agents. 16 global companies including Adobe, Salesforce, and SAP have already announced adoption.</p>
+    <p class="ko">젠슨 황 CEO는 기조연설에서 Blackwell과 차세대 Vera Rubin 아키텍처를 통해 2027년까지 1조 달러 규모의 주문을 전망했습니다. 특히 NemoClaw의 '샌드박싱'과 '최소 권한 접근' 기능은 AI 에이전트의 보안 우려를 해소하기 위한 핵심 설계입니다. NVIDIA가 하드웨어를 넘어 소프트웨어·런타임 레이어까지 영역을 확장하고 있음을 보여줍니다.</p>
+    <p class="en">CEO Jensen Huang projected $1 trillion in orders through 2027 via Blackwell and next-gen Vera Rubin architecture. NemoClaw's sandboxing and least-privilege access controls are designed to address AI agent security concerns. This signals NVIDIA's expansion beyond hardware into software and runtime layers.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> NVIDIA는 GPU 칩메이커에서 'AI 에이전트 인프라 기업'으로 변신 중입니다. Agent Toolkit은 에이전트 AI 시대의 '안드로이드'가 될 수 있습니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> NVIDIA is transforming from a GPU chipmaker to an "AI agent infrastructure company." The Agent Toolkit could become the "Android" of the agentic AI era.</p>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section" id="s2">
+    <img class="section-img" src="https://images.pexels.com/photos/2582928/pexels-photo-2582928.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Semiconductor chip — Samsung AI">
+    <div class="section-num">02</div>
+    <h2 class="ko">삼성전자, 역대 최대 110조 원 AI 반도체 투자</h2>
+    <h2 class="en">Samsung's Record $73B Investment in AI Chips</h2>
+    <div class="tag-row">
+      <span class="tag ko">삼성전자</span>
+      <span class="tag en">Samsung</span>
+      <span class="tag">HBM4</span>
+      <span class="tag ko">AI 반도체</span>
+      <span class="tag en">AI Chips</span>
+      <span class="tag">SK Hynix</span>
+    </div>
+    <p class="ko">삼성전자가 2026년 설비투자(Capex)와 R&D에 110조 원(약 730억 달러) 이상을 투자한다고 발표했습니다. 이는 역대 최대 규모로 전년 대비 22% 증가한 수치이며, TSMC의 올해 설비투자(약 500억 달러)를 크게 상회합니다.</p>
+    <p class="en">Samsung Electronics announced it will invest over 110 trillion won (~$73 billion) in capex and R&D for 2026. This is a record high, up 22% year-over-year, significantly exceeding TSMC's ~$50 billion capex budget for this year.</p>
+    <p class="ko">핵심 목표는 AI 고대역폭 메모리(HBM) 시장에서 SK하이닉스를 추격하는 것입니다. 삼성은 올해 초 업계 최초로 HBM4를 상용 출하했으며, 텍사스 공장 확장과 AI 반도체·로봇 사업으로 포트폴리오를 재편하고 있습니다. 다만 노조는 대규모 투자에도 불구하고 파업 가능성을 경고하고 있습니다.</p>
+    <p class="en">The primary goal is catching SK Hynix in the AI high-bandwidth memory (HBM) market. Samsung became the first to commercially ship HBM4 earlier this year and is restructuring its portfolio around AI semiconductors, robotics, and Texas factory expansion. However, unions are warning of possible strikes despite the massive investment.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> AI 반도체 경쟁이 국가 산업 전략 수준으로 격상되고 있습니다. 삼성의 역대 최대 베팅은 SK하이닉스-NVIDIA 동맹에 대한 정면 도전입니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> AI chip competition has escalated to national industrial strategy. Samsung's record bet is a direct challenge to the SK Hynix–NVIDIA alliance.</p>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section" id="s3">
+    <img class="section-img" src="https://images.pexels.com/photos/218717/pexels-photo-218717.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Google search — Personal Intelligence">
+    <div class="section-num">03</div>
+    <h2 class="ko">구글 Gemini 개인지능, 미국 무료 사용자에게 확대</h2>
+    <h2 class="en">Google Gemini Personal Intelligence Goes Free for US Users</h2>
+    <div class="tag-row">
+      <span class="tag">Google</span>
+      <span class="tag">Gemini</span>
+      <span class="tag ko">개인지능</span>
+      <span class="tag en">Personal Intelligence</span>
+      <span class="tag ko">개인화</span>
+      <span class="tag en">Personalization</span>
+    </div>
+    <p class="ko">구글이 Gemini의 '개인지능(Personal Intelligence)' 기능을 미국 전체 무료 사용자에게 확대합니다. 기존에는 AI Pro·Ultra 유료 구독자만 사용할 수 있었던 이 기능이 이제 Google 검색의 AI Mode, Gemini 앱, Chrome용 Gemini에서 무료로 제공됩니다.</p>
+    <p class="en">Google is expanding Gemini's "Personal Intelligence" feature to all free US users. Previously limited to AI Pro and Ultra subscribers, it's now available in Google Search AI Mode, the Gemini app, and Gemini in Chrome — all for free.</p>
+    <p class="ko">개인지능은 Gmail, Google Photos, YouTube 등 연결된 구글 앱의 데이터를 기반으로 맞춤형 응답을 제공합니다. 예를 들어 과거 구매 내역 기반 쇼핑 추천이나 맞춤 여행 일정 작성이 가능합니다. 기본적으로 비활성화 상태이며, 업무용(Workspace) 계정에는 적용되지 않습니다.</p>
+    <p class="en">Personal Intelligence draws on data from connected Google apps — Gmail, Google Photos, YouTube — to deliver tailored responses. Think shopping recommendations from past purchases or personalized travel itineraries. It's disabled by default and not available for Workspace business accounts.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> 구글이 'AI 개인화'를 무료 사용자 전체에게 개방한 것은 AI 검색 시대의 새로운 경쟁 무기입니다. 그러나 개인 데이터 활용에 대한 프라이버시 논쟁이 불가피합니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> Google opening "AI personalization" to all free users is a new competitive weapon in the AI search era. But privacy debates over personal data usage are inevitable.</p>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section" id="s4">
+    <img class="section-img" src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Digital advertising — AI marketing">
+    <div class="section-num">04</div>
+    <h2 class="ko">AI 광고 시장 63% 폭증, 570억 달러 돌파 전망</h2>
+    <h2 class="en">AI Advertising Surges 63% to $57 Billion</h2>
+    <div class="tag-row">
+      <span class="tag ko">AI 광고</span>
+      <span class="tag en">AI Advertising</span>
+      <span class="tag">Performance Max</span>
+      <span class="tag">Advantage+</span>
+      <span class="tag ko">디지털 마케팅</span>
+      <span class="tag en">Digital Marketing</span>
+    </div>
+    <p class="ko">미국 광고주들의 AI 기반 광고 지출이 올해 570억 달러에 달할 전망이며, 이는 전년 대비 63% 증가한 수치입니다. Google의 Performance Max와 Meta의 Advantage+가 타겟팅, 입찰, 예산 배분을 자동화하면서 AI 광고 시장이 폭발적으로 성장하고 있습니다.</p>
+    <p class="en">US advertisers are projected to spend $57 billion through AI-powered platforms this year, a 63% leap year-over-year. Google's Performance Max and Meta's Advantage+ are driving explosive growth by automating targeting, bidding, and budget allocation.</p>
+    <p class="ko">반면, 인간이 관리하는 전통적 광고 비용은 5%의 저조한 성장에 그치고 있어 격차가 급격히 벌어지고 있습니다. 구글은 Gemini AI 어시스턴트에도 광고를 도입할 가능성을 열어두고 있으며, AI가 생성한 답변이 기존 검색 트래픽을 감소시키는 상황에서 새로운 수익 모델을 모색하고 있습니다.</p>
+    <p class="en">Meanwhile, traditional human-managed ad spend grows a sluggish 5%, widening the gap rapidly. Google has left open the possibility of introducing ads into its Gemini AI assistant, seeking new revenue models as AI-generated answers reduce traditional search traffic.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> AI가 디지털 광고의 '새 엔진'이 되고 있습니다. 마케터들은 AI 자동화 도구 없이는 경쟁이 어려워지며, 광고 산업의 구조적 전환이 가속되고 있습니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> AI is becoming the "new engine" of digital advertising. Marketers can't compete without AI automation tools, and the structural transformation of the ad industry is accelerating.</p>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section" id="s5">
+    <img class="section-img" src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Online shopping — AI commerce">
+    <div class="section-num">05</div>
+    <h2 class="ko">Shopify, AI 에이전트 커머스 시대 선언</h2>
+    <h2 class="en">Shopify Declares the Era of AI Agent Commerce</h2>
+    <div class="tag-row">
+      <span class="tag">Shopify</span>
+      <span class="tag ko">AI 에이전트</span>
+      <span class="tag en">AI Agents</span>
+      <span class="tag ko">커머스</span>
+      <span class="tag en">Commerce</span>
+      <span class="tag ko">개인 쇼퍼</span>
+      <span class="tag en">Personal Shopper</span>
+    </div>
+    <p class="ko">Shopify가 'AI 에이전트 주도 커머스(agent-driven commerce)' 전략에 대규모 투자를 단행합니다. AI 시스템이 개인 쇼퍼 역할을 하면서 상품 발견, 비교, 구매까지 사용자를 대신해 수행하는 미래를 그리고 있습니다.</p>
+    <p class="en">Shopify is making a major investment in "agent-driven commerce." The vision: AI systems act as personal shoppers that discover, compare, and purchase products on behalf of users.</p>
+    <p class="ko">이는 기존 검색 기반 쇼핑에서 '대화형·자율형 쇼핑'으로의 패러다임 전환을 의미합니다. AI 에이전트가 사용자의 취향, 구매 이력, 예산을 종합적으로 고려해 최적의 상품을 추천하고 직접 결제까지 완료하는 형태입니다. 이커머스의 '검색창'이 사라지고 'AI 대화창'이 그 자리를 대체할 수 있습니다.</p>
+    <p class="en">This represents a paradigm shift from search-based shopping to "conversational, autonomous shopping." AI agents consider user preferences, purchase history, and budgets to recommend optimal products and complete purchases. The e-commerce "search bar" may be replaced by an "AI conversation window."</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 요약:</strong> 이커머스의 인터페이스가 근본적으로 바뀌려 하고 있습니다. Shopify의 움직임은 Amazon, Google Shopping과의 AI 커머스 경쟁을 예고하며, 판매자들에게도 새로운 전략 수립을 요구합니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> E-commerce interfaces are about to fundamentally change. Shopify's move signals AI commerce competition with Amazon and Google Shopping, requiring sellers to develop new strategies.</p>
+    </div>
+  </div>
+
+  <!-- Takeaway -->
+  <div class="takeaway" id="s6">
+    <div class="section-num">06</div>
+    <h2 class="ko">오늘의 핵심 시사점</h2>
+    <h2 class="en">Today's Key Takeaways</h2>
+    <div class="takeaway-grid">
+      <div class="takeaway-card">
+        <div class="card-num">01</div>
+        <h3 class="ko">NVIDIA, 하드웨어 넘어 AI 에이전트 플랫폼으로</h3>
+        <h3 class="en">NVIDIA: Beyond Hardware to AI Agent Platform</h3>
+        <p class="ko">Agent Toolkit 출시는 NVIDIA가 칩 제조사에서 AI 에이전트 생태계의 운영 체제를 만드는 기업으로 진화하고 있음을 보여줍니다. 1조 달러 주문 전망은 AI 인프라 수요의 규모를 실감케 합니다.</p>
+        <p class="en">The Agent Toolkit launch shows NVIDIA evolving from a chipmaker into a company building the operating system for the AI agent ecosystem. The $1 trillion order forecast illustrates the sheer scale of AI infrastructure demand.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="card-num">02</div>
+        <h3 class="ko">반도체 전쟁: 삼성의 역대 최대 베팅</h3>
+        <h3 class="en">Chip War: Samsung's Biggest Bet Ever</h3>
+        <p class="ko">AI 시대의 메모리 반도체 주도권은 곧 국가 경쟁력입니다. 삼성의 110조 원 투자는 SK하이닉스-NVIDIA 동맹에 대한 전면전 선언입니다.</p>
+        <p class="en">Memory chip leadership in the AI era equals national competitiveness. Samsung's $73B investment is an all-out war declaration against the SK Hynix–NVIDIA alliance.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="card-num">03</div>
+        <h3 class="ko">AI 개인화의 대중화</h3>
+        <h3 class="en">AI Personalization Goes Mainstream</h3>
+        <p class="ko">구글이 AI 개인화를 무료로 풀면서 '맞춤형 AI'가 소수 유료 사용자의 특권에서 보편적 서비스로 전환됩니다. 개인 데이터와 AI의 결합은 편의와 프라이버시 사이의 새로운 긴장을 만들어냅니다.</p>
+        <p class="en">Google making AI personalization free shifts "customized AI" from a premium privilege to a universal service. The combination of personal data and AI creates new tension between convenience and privacy.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="card-num">04</div>
+        <h3 class="ko">AI가 바꾸는 돈의 흐름</h3>
+        <h3 class="en">AI Is Redirecting Money Flows</h3>
+        <p class="ko">광고 시장에서 AI 자동화(63% 성장)와 인간 관리(5% 성장)의 격차가 명확합니다. Shopify의 AI 커머스 선언과 함께, 돈이 어디로 흘러가는지가 AI 시대의 승패를 가릅니다.</p>
+        <p class="en">The gap between AI automation (63% growth) and human-managed advertising (5% growth) is stark. Combined with Shopify's AI commerce declaration, where money flows determines winners and losers in the AI era.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Issue Navigation -->
+  <div class="nav-issues">
+    <a href="#" class="nav-link disabled"><span>&larr;</span> <span class="ko">이전호</span><span class="en">Previous</span></a>
+    <a href="AI_Daily_Archive.html" class="nav-link"><span class="ko">전체 목록</span><span class="en">All Issues</span></a>
+    <a href="2026_03_21_AI_Daily.html" class="nav-link"><span class="ko">다음호</span><span class="en">Next</span> <span>&rarr;</span></a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <span class="ko">이 아티클은 <a href="https://opendesignlab.com">Open Design Lab</a>의 AI Daily 시리즈입니다.<br>
+      매일 최신 AI 뉴스를 빠르게 정리합니다.</span>
+      <span class="en">This article is part of <a href="https://opendesignlab.com">Open Design Lab</a>'s AI Daily series.<br>
+      Your daily roundup of the most important AI developments.</span><br>
+      <span style="margin-top: 8px; display: inline-block; color: #aaa;">Images: <a href="https://www.pexels.com" style="color: #aaa;">Pexels</a> (Free License)</span><br>
+      <span style="display: inline-block; color: #aaa;">&copy; 2026 Open Design Lab. All rights reserved.</span>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+// Language Toggle
+function setLang(lang) {
+  var body = document.body;
+  var btnKo = document.getElementById('btn-ko');
+  var btnEn = document.getElementById('btn-en');
+  if (lang === 'en') {
+    body.classList.add('lang-en');
+    document.documentElement.lang = 'en';
+    btnEn.classList.add('active');
+    btnKo.classList.remove('active');
+  } else {
+    body.classList.remove('lang-en');
+    document.documentElement.lang = 'ko';
+    btnKo.classList.add('active');
+    btnEn.classList.remove('active');
+  }
+}
+
+// Topbar scroll shadow
+(function() {
+  var topbar = document.getElementById('topbar');
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        topbar.classList.toggle('scrolled', window.scrollY > 10);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// Font Size Toggle
+function setFontSize(size) {
+  var html = document.documentElement;
+  html.classList.remove('fs-small', 'fs-medium', 'fs-large');
+  html.classList.add('fs-' + size);
+  var btns = { small: 'fs-s', medium: 'fs-m', large: 'fs-l' };
+  Object.keys(btns).forEach(function(k) {
+    var el = document.getElementById(btns[k]);
+    if (el) el.classList.toggle('active', k === size);
+  });
+  localStorage.setItem('odl-fontsize', size);
+}
+(function() {
+  var saved = localStorage.getItem('odl-fontsize');
+  if (saved && saved !== 'medium') setFontSize(saved);
+})();
+
+// Theme Toggle
+function getPreferredTheme() {
+  var saved = localStorage.getItem('odl-theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('odl-theme', theme);
+}
+function toggleTheme() {
+  setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+setTheme(getPreferredTheme());
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+  if (!localStorage.getItem('odl-theme')) setTheme(e.matches ? 'dark' : 'light');
+});
+</script>
+
+</body>
+</html>
