@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Daily Archive | Open Design Lab</title>
+  <script>
+    (function(){
+      var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root, [data-theme="light"] {
+      --bg: #fafafa; --surface: #ffffff; --text-primary: #1a1a1a; --text-secondary: #555555;
+      --text-tertiary: #888888; --accent: #3b82f6; --accent-light: #eff6ff; --border: #e5e7eb;
+      --tag-bg: #f3f4f6; --radius: 12px; --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.06); --img-brightness: 1;
+    }
+    [data-theme="dark"] {
+      --bg: #111113; --surface: #1c1c1f; --text-primary: #e4e4e7; --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a; --accent: #60a5fa; --accent-light: rgba(96,165,250,0.1);
+      --border: #27272a; --tag-bg: #27272a; --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.3); --img-brightness: 0.85;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans KR','Inter',-apple-system,BlinkMacSystemFont,sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.8; -webkit-font-smoothing: antialiased; transition: background 0.3s, color 0.3s; }
+
+    /* Language Toggle */
+    .lang-toggle { display: flex; background: var(--tag-bg); border-radius: 8px; padding: 3px; gap: 2px; transition: background 0.3s; }
+    .lang-btn { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 600; padding: 5px 14px; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-tertiary); transition: all 0.2s; letter-spacing: 0.02em; }
+    .lang-btn.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+    .lang-btn:hover:not(.active) { color: var(--text-primary); }
+
+    /* Theme Toggle */
+    .theme-btn { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .theme-btn svg { width: 16px; height: 16px; }
+    .theme-icon-moon, .theme-icon-sun { display: none; }
+    [data-theme="light"] .theme-icon-moon { display: block; }
+    [data-theme="dark"] .theme-icon-sun { display: block; }
+
+    .header-controls { display: flex; align-items: center; gap: 8px; }
+
+    /* Sticky Top Bar */
+    .topbar { position: sticky; top: 0; z-index: 1000; background: var(--bg); border-bottom: 1px solid transparent; transition: background 0.3s, border-color 0.25s, box-shadow 0.25s; }
+    .topbar.scrolled { border-bottom-color: var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+    [data-theme="dark"] .topbar.scrolled { box-shadow: 0 1px 8px rgba(0,0,0,0.25); }
+    .topbar-inner { max-width: 720px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 22px; width: auto; transition: filter 0.3s; }
+    [data-theme="light"] .logo img { filter: brightness(0) saturate(100%); }
+    [data-theme="dark"] .logo img { filter: none; }
+    .edition-badge { font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 4px 12px; border-radius: 20px; }
+
+    /* Language visibility */
+    .en { display: none; } .ko { display: inline; }
+    p.en, div.en, h1.en, h2.en, h3.en, li.en, span.en { display: none; }
+    p.ko, div.ko, h1.ko, h2.ko, h3.ko, li.ko, span.ko { display: block; }
+    span.ko { display: inline; } h1.ko, h2.ko, h3.ko { display: block; }
+    body.lang-en .en { display: inline; } body.lang-en .ko { display: none !important; }
+    body.lang-en p.en, body.lang-en div.en, body.lang-en h1.en, body.lang-en h2.en, body.lang-en h3.en { display: block; }
+    body.lang-en li.en { display: flex; } body.lang-en span.en { display: inline; }
+    body.lang-en p.ko, body.lang-en div.ko, body.lang-en h1.ko, body.lang-en h2.ko, body.lang-en h3.ko, body.lang-en li.ko, body.lang-en span.ko { display: none !important; }
+
+    /* Archive Layout */
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    .archive-header { padding: 48px 0 40px; border-bottom: 1px solid var(--border); }
+    .archive-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .archive-header p { font-size: 1rem; color: var(--text-secondary); }
+
+    .archive-list { padding: 16px 0; }
+
+    .archive-card { display: block; text-decoration: none; color: inherit; padding: 28px 0; border-bottom: 1px solid var(--border); transition: opacity 0.15s; }
+    .archive-card:hover { opacity: 0.75; }
+    .archive-card:last-child { border-bottom: none; }
+
+    .card-date { font-family: 'Inter',sans-serif; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .card-date .latest-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; background: var(--accent); color: #fff; padding: 2px 8px; border-radius: 4px; }
+
+    .card-body { display: flex; gap: 24px; align-items: flex-start; }
+    .card-text { flex: 1; min-width: 0; }
+    .card-text h2 { font-size: 1.25rem; font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .card-text p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+    .card-thumb { width: 160px; height: 100px; border-radius: 8px; object-fit: cover; flex-shrink: 0; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tag { font-size: 11px; font-weight: 500; color: var(--text-secondary); background: var(--tag-bg); padding: 3px 8px; border-radius: 5px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-tertiary); line-height: 1.7; }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .archive-header h1 { font-size: 1.5rem; }
+      .card-body { flex-direction: column-reverse; gap: 16px; }
+      .card-thumb { width: 100%; height: 180px; }
+      .header-left { gap: 8px; }
+      .topbar-inner { padding: 10px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sticky Top Bar -->
+<div class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="header-left">
+      <a href="AI_Daily_Archive.html" class="logo"><img src="https://opendesignlab.com/images/logo-gnb-white.svg" alt="Open Design Lab"></a>
+      <span class="edition-badge">AI Daily</span>
+    </div>
+    <div class="header-controls">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Archive Header -->
+  <div class="archive-header">
+    <h1 class="ko">AI Daily 아카이브</h1>
+    <h1 class="en">AI Daily Archive</h1>
+    <p class="ko">Open Design Lab이 매일 정리하는 AI 뉴스의 모든 호를 모아봤습니다.</p>
+    <p class="en">Every issue of Open Design Lab's daily AI news roundup, all in one place.</p>
+  </div>
+
+  <!-- Archive List -->
+  <div class="archive-list">
+
+    <!-- Issue: March 22, 2026 -->
+    <a href="2026_03_22_AI_Daily.html" class="archive-card">
+      <div class="card-date">
+        <span>2026.03.22</span>
+        <span class="latest-badge ko">최신호</span>
+        <span class="latest-badge en">LATEST</span>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <h2 class="ko">AI 칩 밀수, 휴머노이드 테니스 로봇, 그리고 AI가 삼키는 일자리</h2>
+          <h2 class="en">AI Chip Smuggling, Tennis-Playing Robots, and AI-Driven Layoffs</h2>
+          <p class="ko">Super Micro 공동창업자가 25억 달러 규모의 NVIDIA AI 칩 중국 밀수 혐의로 체포되었고, Galbot의 휴머노이드 로봇은 96% 정확도로 테니스를 쳤습니다. Atlassian은 1,600명을 해고하고, Perplexity는 AI 전용 컴퓨터를 공개했습니다.</p>
+          <p class="en">Super Micro's co-founder arrested for $2.5B AI chip smuggling. Galbot's humanoid plays tennis at 96% accuracy. Atlassian cuts 1,600 jobs, and Perplexity unveils an always-on AI computer.</p>
+          <div class="tag-row">
+            <span class="tag">Super Micro</span>
+            <span class="tag">Galbot</span>
+            <span class="tag">Atlassian</span>
+            <span class="tag">Perplexity</span>
+            <span class="tag ko">AI 책임법</span>
+            <span class="tag en">AI Act</span>
+          </div>
+        </div>
+        <img class="card-thumb" src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=400&fit=crop&h=250" alt="March 22 issue">
+      </div>
+    </a>
+
+    <!-- Issue: March 21, 2026 -->
+    <a href="2026_03_21_AI_Daily.html" class="archive-card">
+      <div class="card-date">
+        <span>2026.03.21</span>
+      </div>
+      <div class="card-body">
+        <div class="card-text">
+          <h2 class="ko">백악관 AI 입법 프레임워크, 워싱턴주 챗봇 안전법, 그리고 GPT-5.4</h2>
+          <h2 class="en">White House AI Framework, Washington Chatbot Safety Laws, and GPT-5.4</h2>
+          <p class="ko">트럼프 행정부가 연방 AI 입법 프레임워크를 공개하며 주 단위 규제를 선점하겠다고 선언했습니다. 워싱턴주는 AI 챗봇 안전법 등 3개 법안을 통과시켰고, OpenAI는 100만 토큰 컨텍스트의 GPT-5.4를 공개했습니다.</p>
+          <p class="en">The Trump administration unveiled a federal AI legislative framework. Washington state passed 3 AI bills including chatbot safety. OpenAI launched GPT-5.4 with 1M token context window.</p>
+          <div class="tag-row">
+            <span class="tag ko">백악관</span>
+            <span class="tag en">White House</span>
+            <span class="tag ko">워싱턴주</span>
+            <span class="tag en">Washington</span>
+            <span class="tag">Apple</span>
+            <span class="tag">GPT-5.4</span>
+            <span class="tag ko">중국</span>
+            <span class="tag en">China</span>
+          </div>
+        </div>
+        <img class="card-thumb" src="https://images.pexels.com/photos/7017147/pexels-photo-7017147.jpeg?auto=compress&cs=tinysrgb&w=400&fit=crop&h=250" alt="March 21 issue">
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <span class="ko"><a href="https://opendesignlab.com">Open Design Lab</a> AI Daily — 매일 최신 AI 뉴스를 빠르게 정리합니다.</span>
+      <span class="en"><a href="https://opendesignlab.com">Open Design Lab</a> AI Daily — Your daily roundup of the most important AI developments.</span><br>
+      <span style="display: inline-block; color: #aaa; margin-top: 4px;">&copy; 2026 Open Design Lab. All rights reserved.</span>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+// Language Toggle
+function setLang(lang) {
+  var body = document.body;
+  var btnKo = document.getElementById('btn-ko');
+  var btnEn = document.getElementById('btn-en');
+  if (lang === 'en') {
+    body.classList.add('lang-en');
+    document.documentElement.lang = 'en';
+    btnEn.classList.add('active');
+    btnKo.classList.remove('active');
+  } else {
+    body.classList.remove('lang-en');
+    document.documentElement.lang = 'ko';
+    btnKo.classList.add('active');
+    btnEn.classList.remove('active');
+  }
+}
+
+// Topbar scroll shadow
+(function() {
+  var topbar = document.getElementById('topbar');
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        topbar.classList.toggle('scrolled', window.scrollY > 10);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// Theme Toggle
+function getPreferredTheme() {
+  var saved = localStorage.getItem('odl-theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('odl-theme', theme);
+}
+function toggleTheme() {
+  setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+setTheme(getPreferredTheme());
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+  if (!localStorage.getItem('odl-theme')) setTheme(e.matches ? 'dark' : 'light');
+});
+</script>
+
+</body>
+</html>
