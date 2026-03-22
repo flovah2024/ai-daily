@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Daily — 2026년 3월 23일 | Open Design Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f4ef;
+  --text: #1a1917;
+  --sub: #6b6966;
+  --border: #dedad6;
+  --card-bg: #ffffff;
+  --topbar-bg: #18181a;
+  --topbar-text: #f0efea;
+  --accent: #2563eb;
+  --tag-bg: #eeecea;
+  --tag-text: #555250;
+  --num-color: #e8e5e0;
+  --highlight-bg: #f8f6f2;
+}
+.dark {
+  --bg: #101010;
+  --text: #e8e6e0;
+  --sub: #888580;
+  --border: #2a2826;
+  --card-bg: #1a1917;
+  --topbar-bg: #0a0a0a;
+  --topbar-text: #e8e6e0;
+  --tag-bg: #222220;
+  --tag-text: #aaa8a0;
+  --num-color: #282624;
+  --highlight-bg: #181715;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  transition: background 0.2s, color 0.2s;
+}
+body.font-s { font-size: 14px; }
+body.font-l { font-size: 18px; }
+body.en .ko { display: none !important; }
+body:not(.en) .en { display: none !important; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.topbar {
+  background: var(--topbar-bg);
+  color: var(--topbar-text);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #000;
+}
+.topbar-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-left { display: flex; align-items: center; gap: 12px; }
+.edition-badge {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--topbar-text);
+  opacity: 0.9;
+}
+.header-controls { display: flex; align-items: center; gap: 8px; }
+.lang-toggle, .font-toggle {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+.lang-btn, .font-btn {
+  background: none;
+  border: none;
+  color: var(--topbar-text);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.lang-btn.active, .font-btn.active {
+  background: rgba(255,255,255,0.2);
+  opacity: 1;
+}
+.lang-btn:hover, .font-btn:hover { opacity: 0.9; }
+.theme-btn {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 6px;
+  width: 32px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  color: var(--topbar-text);
+}
+.theme-btn:hover { background: rgba(255,255,255,0.2); }
+.theme-icon-moon, .theme-icon-sun { width: 16px; height: 16px; }
+.dark .theme-icon-moon { display: none; }
+body:not(.dark) .theme-icon-sun { display: none; }
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+.header-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 48px 0 12px;
+  letter-spacing: -0.02em;
+}
+.header-meta {
+  font-size: 13px;
+  color: var(--sub);
+  margin-bottom: 32px;
+  letter-spacing: 0.02em;
+}
+.hero-img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 32px;
+  display: block;
+  background: var(--num-color);
+}
+.lead {
+  font-size: 1.05em;
+  color: var(--sub);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.toc-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 12px;
+}
+.toc-list {
+  list-style: none;
+  margin-bottom: 48px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.toc-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  transition: background 0.1s;
+}
+.toc-list li:last-child { border-bottom: none; }
+.toc-list li:hover { background: var(--highlight-bg); }
+.toc-list a { color: var(--text); }
+.toc-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sub);
+  min-width: 20px;
+  opacity: 0.6;
+}
+.section {
+  margin-bottom: 64px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-of-type { border-bottom: none; }
+.section-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: block;
+  background: var(--num-color);
+}
+.section-num {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--sub);
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+.section h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+.section p {
+  font-size: 1em;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.section p:last-child { margin-bottom: 0; }
+.highlight-box {
+  background: var(--highlight-bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 24px 0 0;
+  font-size: 0.92em;
+  color: var(--sub);
+  line-height: 1.7;
+}
+.takeaway { margin-top: 28px; }
+.takeaway h3 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 14px;
+}
+.takeaway-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+.takeaway-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--sub);
+}
+.card-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.nav-issues {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 0;
+}
+.nav-link {
+  font-size: 14px;
+  color: var(--text);
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.15s;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.nav-link:hover { background: var(--highlight-bg); text-decoration: none; }
+.nav-link.disabled { opacity: 0.35; pointer-events: none; cursor: default; }
+footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--sub);
+  padding: 32px 0 0;
+  border-top: 1px solid var(--border);
+  margin-top: 24px;
+  line-height: 2;
+}
+@media (max-width: 600px) {
+  .topbar-inner { padding: 0 16px; }
+  .container { padding: 0 16px 60px; }
+  .header-title { margin-top: 32px; font-size: 1.8rem; }
+  .hero-img { height: 220px; }
+  .section-img { height: 200px; }
+  .edition-badge { display: none; }
+  .takeaway-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <div class="header-left">
+      <span class="edition-badge">AI Daily · 2026.03.23</span>
+    </div>
+    <div class="header-controls">
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('ko')">KO</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
+      <div class="font-toggle">
+        <button class="font-btn font-btn-s" onclick="setFont('s')">S</button>
+        <button class="font-btn font-btn-m active" onclick="setFont('m')">M</button>
+        <button class="font-btn font-btn-l" onclick="setFont('l')">L</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" title="다크/라이트 모드">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <h1 class="header-title ko">2026년 3월 23일, AI 주요 뉴스</h1>
+  <h1 class="header-title en">AI Daily — March 23, 2026</h1>
+  <p class="header-meta">Open Design Lab · AI Daily · 2026.03.23</p>
+
+  <img class="hero-img" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg" alt="AI Daily Hero">
+
+  <p class="lead ko">오늘의 AI Daily에서는 미국 법무부의 25억 달러 규모 엔비디아 AI칩 밀수 기소 사건, 구글 Gemini 개인화 AI의 미국 전 무료 사용자 확대, 오픈클로(OpenClaw)의 급성장에 따른 AI 모델 상품화 논쟁, OpenAI GPT-5.4 출시 및 인력 8,000명 확대 계획, 그리고 미국 AI 책임법 통과까지 오늘의 핵심 5가지 AI 소식을 전해드립니다.</p>
+  <p class="lead en">In today's AI Daily: the DOJ charges Super Micro executives in a $2.5B Nvidia chip smuggling scheme, Google opens Gemini Personal Intelligence to all free US users, OpenClaw's viral rise fuels the AI commoditization debate, OpenAI launches GPT-5.4 with a 1M-token context window and plans to double its headcount, and the US AI Accountability Act is signed into law.</p>
+
+  <p class="toc-title ko">오늘의 목차</p>
+  <p class="toc-title en">Today's Topics</p>
+  <ol class="toc-list">
+    <li>
+      <span class="toc-num">01</span>
+      <a href="#s1"><span class="ko">슈퍼마이크로 공동창업자 체포 — 25억 달러 AI칩 밀수 혐의</span><span class="en">Super Micro Co-Founder Arrested in $2.5B Nvidia Chip Smuggling Case</span></a>
+    </li>
+    <li>
+      <span class="toc-num">02</span>
+      <a href="#s2"><span class="ko">구글 Gemini, 미국 전$ 사용자에게 개인 맞춤 AI 무료 제공</span><span class="en">Google Expands Gemini Personal Intelligence to All Free US Users</span></a>
+    </li>
+    <li>
+      <span class="toc-num">03</span>
+      <a href="#s3"><span class="ko">오픈클로(OpenClaw)의 급부상, AI 모델 상품화 논쟁 가속</span><span class="en">OpenClaw's Rise Sparks AI Model Commoditization Debate</span></a>
+    </li>
+    <li>
+      <span class="toc-num">04</span>
+      <a href="#s4"><span class="ko">OpenAI GPT-5.4 출시 — 100만 토큰 컨텍스트 윈도우 탑재</span><span class="en">OpenAI Launches GPT-5.4 with 1M-Token Context Window</span></a>
+    </li>
+    <li>
+      <span class="toc-num">05</span>
+      <a href="#s5"><span class="ko">미국 AI 책임법 통과 — 기업 AI 편향 감사 의무화</span><span class="en">US AI Accountability Act Signed Into Law</span></a>
+    </li>
+  </ol>
+
+  <!-- STORY 1 -->
+  <div class="section" id="s1">
+    <img class="section-img" src="https://images.pexels.com/photos/10556474/pexels-photo-10556474.jpeg" alt="AI chip smuggling">
+    <div class="section-num">01</div>
+    <h2 class="ko">슈퍼마이크로 공동창업자 체포 — 25억 달러 AI칩 밀수 혐의</h2>
+    <h2 class="en">Super Micro Co-Founder Arrested in $2.5B Nvidia Chip Smuggling Case</h2>
+    <div class="tag-row">
+      <span class="tag ko">슈퍼마이크로</span><span class="tag en">SuperMicro</span>
+      <span class="tag ko">엔비디아</span><span class="tag en">Nvidia</span>
+      <span class="tag ko">수출통제</span><span class="tag en">Export Control</span>
+      <span class="tag ko">AI칩</span><span class="tag en">AI Chip</span>
+    </div>
+    <p class="ko">미국 법무부는 슈퍼마이크로 컴퓨터(Super Micro Computer) 공동창업자 리야오(Yih-Shyan Liaw) 등 3명을 엔비디아 AI 서버 25억 달러(약 3조 3,000억 원) 상당을 중국에 불법 반출한 혐의로 기소했습니다. 피의자들은 대만을 경유한 뒤 동남아시아 국가로 서버를 발송하고, 무표시 박스로 교체해 중국으로 최종 배송하는 복잡한 우회 경로를 사용한 것으로 알려졌습니다.</p>
+    <p class="ko">이번 사건은 미국 정부가 AI 반도체 수출 통제를 강화하는 가운데 발생한 역대 최대 규모의 고위직 연루 사건으로 기록됩니다. 엔비디아 GPU를 탑재한 서버가 EAR(수출 관리 규정) 위반 방식으로 중국에 전달되었다는 점에서 AI 기술 지정학 분쟁의 핵심 현안이 됐습니다. 슈퍼마이크로 주가는 기소 발표 직후 33% 이상 급락했습니다.</p>
+    <p class="ko">공동창업자 리야오와 팅웨이 선(Ting-Wei Sun)은 체포되어 캘리포니아 연방법원에 출석했으며, 세 번째 피의자 루에이창(Ruei-Tsang "Steven" Chang)은 현재 도주 중입니다. 법조계는 이번 기소가 미국의 AI 칩 수출 통제 집행 역사상 강력한 신호탄이라고 평가합니다.</p>
+    <p class="en">The US Department of Justice has indicted Yih-Shyan Liaw, co-founder of Super Micro Computer, along with two others, for allegedly diverting $2.5 billion worth of Nvidia-powered AI servers to China in violation of US export control laws. Prosecutors allege the group used shell transactions, falsified paperwork, and staged shipments routed through Taiwan and Southeast Asia to conceal the hardware's true destination.</p>
+    <p class="en">This is the highest-profile crackdown on alleged smuggling of restricted AI technology to China, coming as the US government intensifies enforcement of the Export Administration Regulations. The case underscores the intensifying geopolitical battle over access to advanced AI silicon. Super Micro's stock plunged more than 33% immediately following the announcement.</p>
+    <p class="en">Co-founder Liaw and Ting-Wei Sun were arrested and appeared in federal court in California, while a third defendant, Ruei-Tsang "Steven" Chang, remains at large. Legal observers say the indictment sends the strongest enforcement signal yet in US AI chip export control history.</p>
+    <div class="highlight-box ko">💡 이번 기소는 미국 AI 칩 수출 통제 집행 역사상 최대 규모로, AI 지정학 전쟁이 법정으로 확전되고 있음을 보여줍니다.</div>
+    <div class="highlight-box en">💡 This is the largest AI chip export control enforcement action in US history, signaling that the geopolitical AI race is now being fought in the courtroom.</div>
+  </div>
+
+  <!-- STORY 2 -->
+  <div class="section" id="s2">
+    <img class="section-img" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg" alt="Google Gemini Personal Intelligence">
+    <div class="section-num">02</div>
+    <h2 class="ko">구글 Gemini, 미국 전 사용자에게 개인 맞춤 AI 무료 제공</h2>
+    <h2 class="en">Google Expands Gemini Personal Intelligence to All Free US Users</h2>
+    <div class="tag-row">
+      <span class="tag ko">구글</span><span class="tag en">Google</span>
+      <span class="tag ko">Gemini</span><span class="tag en">Gemini</span>
+      <span class="tag ko">개인화 AI</span><span class="tag en">Personalization</span>
+      <span class="tag ko">무료 확대</span><span class="tag en">Free Tier</span>
+    </div>
+    <p class="ko">구글이 올해 1월 발표한 Gemini의 '개인 맞춤 AI(Personal Intelligence)' 기능을 대기자 명단 제한 없이 미국 전역의 무료 사용자에게 전면 개방했습니다. Gmail, 구글 드라이브, 캘린더 등 개인 데이터를 분석해 더욱 문맥에 맞는 답변을 제공하는 이 기능이 이제 무료 Gemini 앱, 크롬 브라우저, AI 모드에서 모두 사용 가능해졌습니다.</p>
+    <p class="ko">Personal Intelligence는 기존에 Google AI Pro·Ultra 유료 플랜 이용자에게만 제공되었으나, 이번 전체 확대 배포는 역대 가장 큰 규모의 소비자 AI 기능 개방으로 평가받습니다. 예를 들어, 이메일 초안 요청 시 Gemini가 수신자와의 과거 대화 이력을 참조해 맥락에 맞는 내용을 자동 반영합니다. 이번 움직임은 OpenAI, Anthropic과의 무료 사용자 경쟁에서 우위를 점하려는 전략적 포석으로 풀이됩니다.</p>
+    <p class="ko">개인 데이터 활용 범위가 넓어짐에 따라 프라이버시 우려도 함께 높아지고 있으며, 구글의 투명한 데이터 정책과 옵트아웃 기능에 대한 요구가 커지고 있습니다. 개인화 AI가 무료 계층까지 확산되는 흐름은 앞으로 AI 서비스 시장의 경쟁 구도를 크게 재편할 전망입니다.</p>
+    <p class="en">Google has fully opened its Gemini "Personal Intelligence" feature — first announced in January — to all US users, removing waitlist restrictions. The feature, which allows Gemini to analyze data from Gmail, Google Drive, and Calendar to deliver context-aware responses, is now available in the free Gemini app, Chrome browser, and AI Mode without any subscription required.</p>
+    <p class="en">Previously limited to Google AI Pro and Ultra paid subscribers, this rollout marks one of the largest consumer AI feature expansions to date. For example, when drafting an email, Gemini can now reference prior conversation history with the recipient to automatically incorporate relevant context. The move is seen as a strategic play to broaden Google's free user base against rivals like OpenAI and Anthropic.</p>
+    <p class="en">As the scope of personal data access grows, privacy concerns are mounting alongside demands for clearer opt-out controls and data transparency from Google. The spread of personalized AI to free tiers is set to significantly reshape the competitive dynamics of the AI services market.</p>
+    <div class="highlight-box ko">💡 개인화 AI 경쟁이 무료 사용자층으로 확대되면서, 개인정보 보호와 편리성 사이의 균형이 AI 서비스의 핵심 차별화 요소로 부상하고 있습니다.</div>
+    <div class="highlight-box en">💡 As personalized AI expands to free tiers, balancing privacy and convenience is becoming the defining differentiator for AI services.</div>
+  </div>
+
+  <!-- STORY 3 -->
+  <div class="section" id="s3">
+    <img class="section-img" src="https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg" alt="OpenClaw AI commoditization">
+    <div class="section-num">03</div>
+    <h2 class="ko">오픈클로(OpenClaw)의 급부상, AI 모델 상품화 논쟁 가속</h2>
+    <h2 class="en">OpenClaw's Rise Sparks AI Model Commoditization Debate</h2>
+    <div class="tag-row">
+      <span class="tag ko">오픈클로</span><span class="tag en">OpenClaw</span>
+      <span class="tag ko">AI 에이전트</span><span class="tag en">AI Agent</span>
+      <span class="tag ko">상품화</span><span class="tag en">Commoditization</span>
+      <span class="tag ko">오픈소스</span><span class="tag en">Open Source</span>
+    </div>
+    <p class="ko">오픈클로(OpenClaw)는 2025년 11월 'Clawd'로 처음 등장해 Moltbot을 거쳐 2026년 1월 현재 이름으로 정착한 AI 에이전트 플랫폼입니다. 사용자 컴퓨터에서 다양한 AI 모델 기반 에이전트를 직접 실행할 수 있는 점이 강점이며, 이번 달 이른바 'ChatGPT 모멘트'를 경험하며 폭발적인 성장세를 기록하고 있습니다.</p>
+    <p class="ko">이 성장세는 AI 업계에 중요한 경고 신호를 보냅니다. 다양한 모델을 손쉽게 교체·조합할 수 있는 플랫폼이 확산되면서, AI 모델 자체가 교체 가능한 '상품(commodity)'으로 전락할 수 있다는 우려가 커지고 있습니다. CNBC 등 주요 매체들은 이 현상이 OpenAI, Anthropic, 구글 등 프론티어 AI 기업의 경쟁 우위를 약화시킬 수 있다고 분석합니다.</p>
+    <p class="ko">반면 일부 전문가들은 모델 상품화가 진행될수록 데이터, UX, 사용자 신뢰 같은 비모델 경쟁력이 더욱 중요해진다고 주장합니다. AI 에이전트 런타임 플랫폼의 주도권을 쥐는 기업이 차세대 AI 경쟁에서 결정적인 우위를 갖게 될 것이라는 전망도 나옵니다.</p>
+    <p class="en">OpenClaw — which debuted as "Clawd" in November 2025, was briefly renamed Moltbot, and settled on OpenClaw in January 2026 — is an AI agent platform that runs agents powered by multiple AI models directly on users' machines. This month it experienced what observers are calling its "ChatGPT moment," with explosive user growth driven by its flexibility and model-agnostic approach.</p>
+    <p class="en">The growth sends a significant warning to the AI industry. As platforms emerge that let users seamlessly swap and combine AI models, there are growing concerns that the models themselves may be becoming interchangeable commodities. CNBC and other outlets suggest this trend could erode the competitive moats of frontier AI companies like OpenAI, Anthropic, and Google.</p>
+    <p class="en">Some experts counter that as model commoditization accelerates, non-model factors — proprietary data, user experience, and trust — will become more decisive. Analysts see the race to own the AI agent runtime layer as the next major battleground in the AI industry.</p>
+    <div class="highlight-box ko">💡 AI 모델이 상품화될수록, 차별화의 핵심은 모델 자체가 아닌 에코시스템과 사용자 경험으로 이동할 것입니다.</div>
+    <div class="highlight-box en">💡 As AI models commoditize, differentiation will shift from model quality to ecosystem depth and user experience.</div>
+  </div>
+
+  <!-- STORY 4 -->
+  <div class="section" id="s4">
+    <img class="section-img" src="https://images.pexels.com/photos/6019019/pexels-photo-6019019.jpeg" alt="OpenAI GPT-5.4">
+    <div class="section-num">04</div>
+    <h2 class="ko">OpenAI GPT-5.4 출시 — 100만 토큰 컨텍스트 윈도우 탑재</h2>
+    <h2 class="en">OpenAI Launches GPT-5.4 with 1M-Token Context Window</h2>
+    <div class="tag-row">
+      <span class="tag ko">OpenAI</span><span class="tag en">OpenAI</span>
+      <span class="tag ko">GPT-5.4</span><span class="tag en">GPT-5.4</span>
+      <span class="tag ko">컨텍스트 윈도우</span><span class="tag en">Context Window</span>
+      <span class="tag ko">AI 에이전트</span><span class="tag en">Agentic AI</span>
+    </div>
+    <p class="ko">OpenAI는 지난 3월 5일 GPT-5.4를 공식 출시했습니다. "전문 업무를 위한 가장 유능하고 효율적인 프론티어 모델"을 표방하는 이 모델은 최대 100만 토큰의 컨텍스트 윈도우를 지원하며, 멀티스텝 워크플로우를 자율적으로 실행하는 에이전트 기능을 탑재했습니다. 실제 데스크탑 생산성 작업을 시뮬레이션하는 OSWorld-V 벤치마크에서 75%를 기록해 높은 실용 성능을 입증했습니다.</p>
+    <p class="ko">GPT-5.4는 고급 코딩과 추론, 대용량 문서·코드베이스·데이터셋 처리 능력에서 전작 대비 눈에 띄는 향상을 보입니다. 기업용 API 활용에 최적화되어 있으며, ChatGPT Plus 및 Pro 사용자에게는 우선 접근 권한이 부여됩니다. 별도로 OpenAI는 연말까지 직원 수를 현재 약 4,500명에서 8,000명으로 확대할 계획도 발표했습니다.</p>
+    <p class="ko">AI 에이전트, 엔터프라이즈 제품, 안전성 팀을 중심으로 대규모 채용이 이루어질 예정입니다. 이는 OpenAI가 단순한 AI 모델 회사에서 대형 AI 인프라 및 플랫폼 기업으로 전환하고 있음을 보여주는 신호입니다.</p>
+    <p class="en">OpenAI officially launched GPT-5.4 on March 5th, describing it as "our most capable and efficient frontier model for professional work." The model features a 1-million-token context window and built-in agentic capabilities for autonomously executing multi-step workflows. It scored 75% on the OSWorld-V benchmark, which simulates real-world desktop productivity tasks.</p>
+    <p class="en">GPT-5.4 shows notable improvements in advanced coding, reasoning, and the ability to process large documents, codebases, and datasets in a single session. It is optimized for enterprise API use, with priority access for ChatGPT Plus and Pro subscribers. Separately, OpenAI announced plans to nearly double its workforce from roughly 4,500 to 8,000 employees by year-end.</p>
+    <p class="en">Major hiring will focus on AI agents, enterprise products, and safety teams. The announcement signals OpenAI's continued evolution from a pure AI model company into a large-scale AI infrastructure and platform business.</p>
+    <div class="takeaway ko">
+      <h3>주요 수치</h3>
+      <div class="takeaway-grid">
+        <div class="takeaway-card"><div class="card-num">1M</div>토큰 컨텍스트 윈도우</div>
+        <div class="takeaway-card"><div class="card-num">75%</div>OSWorld-V 벤치마크 점수</div>
+        <div class="takeaway-card"><div class="card-num">8,000</div>연말 목표 직원 수</div>
+      </div>
+    </div>
+    <div class="takeaway en">
+      <h3>Key Numbers</h3>
+      <div class="takeaway-grid">
+        <div class="takeaway-card"><div class="card-num">1M</div>Token context window</div>
+        <div class="takeaway-card"><div class="card-num">75%</div>OSWorld-V benchmark score</div>
+        <div class="takeaway-card"><div class="card-num">8,000</div>Target headcount by year-end</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORY 5 -->
+  <div class="section" id="s5">
+    <img class="section-img" src="https://images.pexels.com/photos/6477212/pexels-photo-6477212.jpeg" alt="AI Policy">
+    <div class="section-num">05</div>
+    <h2 class="ko">미국 AI 책임법 통과 — 기업 AI 편향 감사 의무화</h2>
+    <h2 class="en">US AI Accountability Act Signed Into Law</h2>
+    <div class="tag-row">
+      <span class="tag ko">AI 규제</span><span class="tag en">AI Regulation</span>
+      <span class="tag ko">AI 책임법</span><span class="tag en">Accountability Act</span>
+      <span class="tag ko">편향 감사</span><span class="tag en">Bias Audit</span>
+      <span class="tag ko">AI 정책</span><span class="tag en">Policy</span>
+    </div>
+    <p class="ko">미국이 이번 달 AI 책임법(AI Accountability Act)을 통과시켰습니다. 이 법은 채용, 대출 심사, 의료 등 중요한 의사결정에 AI를 활용하는 기업에 대해 정기적인 편향 감사 실시와 그 결과 공개를 의무화하는 내용을 담고 있습니다. 미국 최초의 포괄적 AI 책임 법안으로 평가받으며, 향후 AI 규제 환경을 크게 바꿀 것으로 예상됩니다.</p>
+    <p class="ko">이 법은 AI 편향이 취약 집단에 미치는 불평등한 영향을 줄이기 위한 조치입니다. 기업들은 AI 시스템 배포 시 독립적인 제3자 감사를 받아야 하며, 감사 보고서를 규제 당국과 대중에게 공개해야 합니다. 편향이 발견될 경우 즉각적인 시정 조치가 요구됩니다.</p>
+    <p class="ko">법조계와 AI 업계는 규정 준수 비용 증가와 혁신 속도 저하를 우려하는 한편, 소비자 보호 단체들은 더 강력한 규제를 요구하고 있습니다. 유럽 AI법(EU AI Act)과 더불어 글로벌 AI 규제 물결이 본격화됨에 따라, 기업들의 AI 거버넌스 체계 구축이 시급한 과제가 됐습니다.</p>
+    <p class="en">The United States passed the AI Accountability Act this month, requiring companies that deploy AI in consequential decisions — including hiring, loan approvals, and healthcare — to conduct regular bias audits and publicly disclose the results. Hailed as the first comprehensive AI accountability legislation in the US, it is expected to significantly reshape the AI regulatory landscape.</p>
+    <p class="en">The law is designed to reduce the disproportionate impact of algorithmic bias on vulnerable populations. Companies must undergo independent third-party audits when deploying AI systems, and publish audit reports to both regulators and the public. Immediate corrective action is required when bias is identified.</p>
+    <p class="en">Legal and tech industry observers have raised concerns about rising compliance costs and potential slowdowns in AI deployment, while consumer advocacy groups are pushing for even stronger provisions. Together with the EU AI Act, the legislation signals that the global AI regulatory wave is firmly underway, making AI governance infrastructure an urgent business priority.</p>
+    <div class="highlight-box ko">💡 AI 책임법 통과로 미국은 유럽과 함께 AI 규제 선도국 반열에 올랐습니다. AI를 고위험 의사결정에 활용하는 모든 기업에 실질적인 컴플라이언스 의무가 생겼습니다.</div>
+    <div class="highlight-box en">💡 With the AI Accountability Act, the US joins Europe at the forefront of AI regulation, creating real compliance obligations for every company deploying AI in high-stakes decisions.</div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div class="nav-issues">
+    <a class="nav-link" href="2026_03_22_AI_Daily.html"><span class="ko">이전호</span><span class="en">Previous</span></a>
+    <a class="nav-link" href="AI_Daily_Archive.html"><span class="ko">전체 목록</span><span class="en">All Issues</span></a>
+    <a class="nav-link disabled" href="#"><span class="ko">다음호</span><span class="en">Next</span></a>
+  </div>
+
+  <footer>
+    <p>
+      <span class="ko">이 아티클은 <a href="https://opendesignlab.com">Open Design Lab</a>의 AI Daily 시리즈입니다.<br>
+      매일 최신 AI 뉴스를 빠르게 정리합니다.</span>
+      <span class="en">This article is part of <a href="https://opendesignlab.com">Open Design Lab</a>'s AI Daily series.<br>
+      Curating the most important AI news, every day.</span>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+function setLang(lang) {
+  if (lang === 'en') {
+    document.body.classList.add('en');
+  } else {
+    document.body.classList.remove('en');
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  var btns = document.querySelectorAll('.lang-btn');
+  if (lang === 'ko' && btns[0]) btns[0].classList.add('active');
+  if (lang === 'en' && btns[1]) btns[1].classList.add('active');
+  try { localStorage.setItem('ai-daily-lang', lang); } catch(e) {}
+}
+function setFont(size) {
+  document.body.classList.remove('font-s', 'font-l');
+  if (size !== 'm') document.body.classList.add('font-' + size);
+  document.querySelectorAll('.font-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  var target = document.querySelector('.font-btn-' + size);
+  if (target) target.classList.add('active');
+  try { localStorage.setItem('ai-daily-font', size); } catch(e) {}
+}
+function toggleTheme() {
+  document.documentElement.classList.toggle('dark');
+  document.body.classList.toggle('dark');
+  var isDark = document.body.classList.contains('dark');
+  try { localStorage.setItem('ai-daily-theme', isDark ? 'dark' : 'light'); } catch(e) {}
+}
+(function() {
+  try {
+    var savedTheme = localStorage.getItem('ai-daily-theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+    }
+    var savedFont = localStorage.getItem('ai-daily-font');
+    if (savedFont) setFont(savedFont);
+    var savedLang = localStorage.getItem('ai-daily-lang');
+    if (savedLang) setLang(savedLang);
+  } catch(e) {}
+})();
+</script>
+
+</body>
+</html>
