@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Daily — 2026년 3월 22일 | Open Design Lab</title>
-  <script>
-    (function(){
-      var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Daily — 2026년 3월 22일 | Open Design Lab</title>
+<link rel="icon" href="odl_logo.png" type="image/png">
+<style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
     :root, [data-theme="light"] {
@@ -122,6 +117,12 @@
     footer p { font-size: 13px; color: var(--text-tertiary); line-height: 1.7; }
     footer a { color: var(--accent); text-decoration: none; }
 
+    /* Nav links */
+    .nav-issues { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-top: 1px solid var(--border); margin-top: 0; }
+    .nav-link { font-size: 14px; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+    .nav-link:hover { opacity: 0.7; }
+    .nav-link.disabled { color: var(--text-tertiary); pointer-events: none; opacity: 0.4; }
+
     /* Section Image */
     .section-img { width: 100%; height: 280px; object-fit: cover; border-radius: var(--radius); margin-bottom: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
     .hero-img { width: 100%; height: 360px; object-fit: cover; border-radius: var(--radius); margin-top: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
@@ -141,6 +142,7 @@
   </style>
 </head>
 <body>
+
 
 <!-- Sticky Top Bar -->
 <div class="topbar" id="topbar">
@@ -168,208 +170,172 @@
 </div>
 
 <div class="container">
-
-  <!-- Header -->
   <header>
-    <h1 class="header-title ko">AI 칩 밀수, 휴머노이드 테니스 로봇, 그리고 AI가 삼키는 일자리 — 오늘의 AI</h1>
-    <h1 class="header-title en">AI Chip Smuggling, Tennis-Playing Robots, and AI-Driven Layoffs — Today in AI</h1>
+    <h1 class="header-title ko">OpenAI 8,000명 확대, AI 칩 밀수 기소, Google 개인 지능 확대 — 오늘의 AI</h1>
+    <h1 class="header-title en">OpenAI Expands to 8,000, AI Chip Smuggling Charges, Google Personal Intelligence — Today in AI</h1>
     <div class="header-meta">
       <span class="ko">2026년 3월 22일</span>
       <span class="en">March 22, 2026</span>
-      <span class="dot"></span>
+      <span class="dot">·</span>
       <span class="ko">읽는 시간 약 7분</span>
       <span class="en">7 min read</span>
-      <span class="dot"></span>
+      <span class="dot">·</span>
       <span>Open Design Lab AI</span>
     </div>
-    <img class="hero-img" src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=600" alt="AI technology visualization">
+    <img class="hero-img" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="AI technology">
   </header>
-
-  <!-- Lead -->
-  <div class="lead">
-    <p class="ko">Super Micro 공동창업자가 25억 달러 규모의 NVIDIA AI 칩 중국 밀수 혐의로 체포되었고, 중국 Galbot의 휴머노이드 로봇은 96% 정확도로 사람과 테니스를 쳤습니다. Atlassian은 AI 투자를 이유로 1,600명을 해고했고, Perplexity는 24시간 돌아가는 AI 비서 전용 컴퓨터를 공개했습니다. 미국은 AI 책임법(AI Accountability Act)을 통과시키며 규제의 고삐를 죄고 있습니다. 오늘의 AI Daily에서 지난 24시간의 핵심 뉴스를 정리합니다.</p>
-    <p class="en">Super Micro's co-founder was arrested for allegedly smuggling $2.5B worth of NVIDIA AI chips to China. Galbot's humanoid robot played tennis with humans at 96% accuracy. Atlassian laid off 1,600 citing AI investment, and Perplexity unveiled an always-on AI assistant computer. The US passed the AI Accountability Act, tightening regulatory oversight. Here's your daily roundup of the most important AI developments.</p>
-  </div>
-
-  <!-- TOC -->
+  <p class="lead ko">OpenAI가 연말까지 직원 8,000명으로 확대하고 기업가치 $840B에 달하며, 미 법무부는 AI 칩 중국 밀수 혁의로 3명을 기소했습니다. Google은 개인 지능 기능을 미국 전체 사용자에게 확대하고, AI 모델 상품화 우려가 커지고 있으며, McKinsey는 AI가 일자리의 12%를 자동화했다고 발표했습니다.</p>
+  <p class="lead en">OpenAI plans to double its workforce to 8,000 with an $840B valuation, while the US DOJ charges three for smuggling AI chips to China. Google expands Personal Intelligence to all US users, concerns grow over AI model commoditization, and McKinsey reports AI has automated 12% of job tasks.</p>
   <nav class="toc">
     <div class="toc-title ko">오늘의 주요 뉴스</div>
     <div class="toc-title en">TODAY'S TOP STORIES</div>
     <ol class="toc-list">
-      <li class="ko"><span class="toc-num">01</span><a href="#s1">Super Micro 창업자, 25억 달러 AI 칩 밀수로 체포</a></li>
-      <li class="en"><span class="toc-num">01</span><a href="#s1">Super Micro Co-Founder Arrested for $2.5B AI Chip Smuggling</a></li>
-      <li class="ko"><span class="toc-num">02</span><a href="#s2">휴머노이드 로봇이 사람과 테니스를 친다 — 96% 정확도</a></li>
-      <li class="en"><span class="toc-num">02</span><a href="#s2">Humanoid Robot Plays Tennis with Humans — 96% Accuracy</a></li>
-      <li class="ko"><span class="toc-num">03</span><a href="#s3">AI가 삼키는 일자리 — Atlassian 1,600명 해고</a></li>
-      <li class="en"><span class="toc-num">03</span><a href="#s3">AI Is Eating Jobs — Atlassian Cuts 1,600</a></li>
-      <li class="ko"><span class="toc-num">04</span><a href="#s4">Perplexity, 24시간 AI 비서 전용 컴퓨터 공개</a></li>
-      <li class="en"><span class="toc-num">04</span><a href="#s4">Perplexity Unveils Always-On AI Personal Computer</a></li>
-      <li class="ko"><span class="toc-num">05</span><a href="#s5">미국 AI 책임법 통과 — 편향 감사 의무화</a></li>
-      <li class="en"><span class="toc-num">05</span><a href="#s5">US Passes AI Accountability Act — Mandatory Bias Audits</a></li>
-      <li class="ko"><span class="toc-num">06</span><a href="#s6">오늘의 핵심 시사점</a></li>
-      <li class="en"><span class="toc-num">06</span><a href="#s6">Today's Key Takeaways</a></li>
+      <li><span class="toc-num">1</span><a class="ko" href="#s1">OpenAI, 연말까지 직원 8,000명으로 확대</a><a class="en" href="#s1">OpenAI to Double Headcount to 8,000 by Year-End</a></li>
+      <li><span class="toc-num">2</span><a class="ko" href="#s2">AI 칩 중국 밀수 혁의로 3명 기소</a><a class="en" href="#s2">Three Charged with Smuggling AI Chips to China</a></li>
+      <li><span class="toc-num">3</span><a class="ko" href="#s3">Google 개인 지능, 미국 전체 사용자에게 확대</a><a class="en" href="#s3">Google Personal Intelligence Expands to All US Users</a></li>
+      <li><span class="toc-num">4</span><a class="ko" href="#s4">OpenClaw의 ChatGPT 모먼트 — AI 모델 상품화 우려</a><a class="en" href="#s4">OpenClaw's ChatGPT Moment — AI Model Commoditization Fears</a></li>
+      <li><span class="toc-num">5</span><a class="ko" href="#s5">McKinsey: AI가 일자리 12% 자동화, 고용 영향은 혼재</a><a class="en" href="#s5">McKinsey: AI Automated 12% of Job Tasks, Employment Impact Mixed</a></li>
+      <li><span class="toc-num">6</span><a class="ko" href="#s6">오늘의 핵심 시사점</a><a class="en" href="#s6">Today's Key Takeaways</a></li>
     </ol>
   </nav>
-
-  <!-- Section 1 -->
   <div class="section" id="s1">
-    <img class="section-img" src="https://images.pexels.com/photos/1105379/pexels-photo-1105379.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Circuit board — AI chip smuggling">
-    <div class="section-num">01</div>
-    <h2 class="ko">Super Micro 창업자, 25억 달러 AI 칩 밀수로 체포</h2>
-    <h2 class="en">Super Micro Co-Founder Arrested for $2.5B AI Chip Smuggling</h2>
+    <img class="section-img" src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="OpenAI office growth">
+    <div class="section-num">1</div>
+    <h2 class="ko">OpenAI, 연말까지 직원 8,000명으로 확대</h2>
+    <h2 class="en">OpenAI to Double Headcount to 8,000 by Year-End</h2>
     <div class="tag-row">
-      <span class="tag">Super Micro</span>
-      <span class="tag">NVIDIA</span>
-      <span class="tag ko">수출 규제</span>
-      <span class="tag en">Export Controls</span>
+      <span class="tag ko">OpenAI</span><span class="tag en">OpenAI</span>
+      <span class="tag ko">기업가치</span><span class="tag en">Valuation</span>
+      <span class="tag ko">인력 확대</span><span class="tag en">Hiring</span>
     </div>
-    <p class="ko">서버 제조사 Super Micro Computer의 공동창업자 Wally Liaw를 포함한 3명이 NVIDIA AI 칩이 탑재된 서버 25억 달러(약 3.5조 원) 상당을 중국으로 불법 밀수한 혐의로 미국 검찰에 기소되었습니다. 이들은 동남아시아 소재 기업을 경유해 5억 1천만 달러 규모의 수출 금지 칩 탑재 서버를 중국에 전달한 것으로 알려졌습니다.</p>
-    <p class="en">Three individuals including Super Micro Computer co-founder Wally Liaw have been charged by US prosecutors with illegally smuggling $2.5 billion worth of NVIDIA AI chip-equipped servers to China. They allegedly funneled $510 million in export-banned servers through a Southeast Asian intermediary company.</p>
-    <p class="ko">특히 이들은 헤어 드라이어로 정품 라벨과 시리얼 넘버를 제거한 뒤 더미 장비에 부착하는 등 조직적 은폐 행위를 벌인 것으로 밝혀졌습니다. 유죄 판결 시 최대 20년의 징역형에 처해질 수 있으며, Super Micro 주가는 사건 직후 33% 급락했습니다.</p>
-    <p class="en">The defendants reportedly used hair dryers to remove labels and serial numbers from genuine machines, placing them on dummy units — an elaborate concealment scheme. They face up to 20 years in prison if convicted, and Super Micro shares plunged 33% following the news.</p>
+    <p class="ko">OpenAI가 2026년 말까지 직원 수를 현재 약 4,500명에서 8,000명으로 거의 두 배로 늘릴 계획입니다. 이는 AI 연구, 엔지니어링, 안전성 팀을 중심으로 대규모 채용이 진행될 예정이며, AI 에이전트와 엔터프라이즈 제품 수요의 급증을 반영합니다.</p>
+    <p class="en">OpenAI plans to nearly double its workforce from roughly 4,500 to 8,000 by end of 2026. The hiring push will focus on AI research, engineering, and safety teams, reflecting surging demand for AI agents and enterprise products.</p>
+    <p class="ko">회사의 기업가치는 최근 $110B 투자 라운드를 통해 약 $840B에 달하며, 연간 매출 $25B를 넘어섰 기업공개(IPO)를 위한 초기 단계에 진입했습니다. 이는 AI 산업 전체의 성장 속도를 보여주는 지표입니다.</p>
+    <p class="en">The company's valuation has reached approximately $840B following a $110B funding round, with annualized revenue surpassing $25B. OpenAI is reportedly taking early steps toward a public listing, potentially as soon as late 2026.</p>
     <div class="highlight-box">
-      <p class="ko"><strong>핵심 요약:</strong> 미·중 AI 기술 패권 경쟁이 형사 사건으로 비화되었습니다. AI 칩 수출 규제가 강화될수록 밀수 유인도 커지고 있으며, 이는 글로벌 AI 공급망 전체에 리스크를 확산시킵니다.</p>
-      <p class="en"><strong>Key takeaway:</strong> The US-China AI technology rivalry has now escalated into criminal cases. As chip export controls tighten, smuggling incentives grow — spreading risk across the entire global AI supply chain.</p>
+      <p class="ko"><strong>핵심 요약:</strong> OpenAI의 공격적 확장은 AI 산업이 여전히 가속 성장 단계에 있음을 보여줍니다. IPO 가능성은 AI 기업들의 새로운 자금 조달 시대를 예고합니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> OpenAI's aggressive expansion signals that the AI industry remains in an accelerating growth phase. The potential IPO heralds a new era of capital access for AI companies.</p>
     </div>
   </div>
-
-  <!-- Section 2 -->
   <div class="section" id="s2">
-    <img class="section-img" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Robot — humanoid tennis">
-    <div class="section-num">02</div>
-    <h2 class="ko">휴머노이드 로봇이 사람과 테니스를 친다 — 96% 정확도</h2>
-    <h2 class="en">Humanoid Robot Plays Tennis with Humans — 96% Accuracy</h2>
+    <img class="section-img" src="https://images.pexels.com/photos/159220/circuit-board-circuit-computer-board-159220.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI semiconductor chip">
+    <div class="section-num">2</div>
+    <h2 class="ko">AI 칩 중국 밀수 혁의로 3명 기소</h2>
+    <h2 class="en">Three Charged with Smuggling AI Chips to China</h2>
     <div class="tag-row">
-      <span class="tag">Galbot</span>
-      <span class="tag">Unitree G1</span>
-      <span class="tag ko">로보틱스</span>
-      <span class="tag en">Robotics</span>
-      <span class="tag">LATENT</span>
+      <span class="tag ko">반도체</span><span class="tag en">Semiconductors</span>
+      <span class="tag ko">미·중 경쟁</span><span class="tag en">US-China</span>
+      <span class="tag ko">수출 규제</span><span class="tag en">Export Controls</span>
     </div>
-    <p class="ko">중국 Galbot Robotics가 Unitree G1 휴머노이드 로봇이 사람과 실시간으로 테니스 랠리를 주고받는 영상을 공개해 전 세계의 주목을 받았습니다. 칭화대·베이징대 연구진과 공동 개발한 LATENT 시스템을 기반으로, 이 로봇은 시뮬레이션 환경에서 포핸드 샷 96%의 성공률을 기록했으며, 실제 코트에서도 지속적인 랠리가 가능했습니다.</p>
-    <p class="en">China's Galbot Robotics released a video of a Unitree G1 humanoid robot rallying tennis shots with a human player in real time, drawing global attention. Built on the LATENT system co-developed with Tsinghua and Peking University, the robot achieved 96% forehand success in simulation and maintained sustained rallies on a real court.</p>
-    <p class="ko">놀라운 점은 학습 데이터입니다. 표준 테니스 코트의 1/17 크기인 3×5미터 공간에서, 5명의 플레이어가 5시간 동안 녹화한 불완전한 동작 데이터만으로 학습했습니다. 완벽한 데이터셋 없이도 복잡한 운동 기술을 로봇에 전이할 수 있음을 증명한 사례입니다.</p>
-    <p class="en">What's remarkable is the training data. The robot learned from just 5 hours of fragmented motion data recorded by 5 players in a 3×5m space — 1/17th the size of a standard tennis court. It proves that complex athletic skills can be transferred to robots without perfect datasets.</p>
+    <p class="ko">미국 법무부가 3명을 최체단 미국산 AI 칩을 중국으로 불법 우회한 혁의로 기소했습니다. 이들은 수출 통제 대상인 고성능 AI 반도체를 제3국을 경유해 중국으로 밀반출한 혁의를 받고 있습니다.</p>
+    <p class="en">The US Department of Justice charged three individuals with conspiring to unlawfully divert cutting-edge American AI chips to China. The defendants allegedly routed export-controlled high-performance AI semiconductors through third countries to circumvent restrictions.</p>
+    <p class="ko">이번 기소는 미국 정부가 AI 기술 유출 방지에 얼마나 진지한지를 보여주는 사례입니다. 특히 NVIDIA의 최체단 GPU와 같은 AI 훈련용 반도체는 국가 안보 자산으로 분류되어 엄격한 수출 통제를 받고 있습니다.</p>
+    <p class="en">The case demonstrates how seriously the US government takes preventing AI technology leakage. Advanced AI training semiconductors, particularly NVIDIA's cutting-edge GPUs, are classified as national security assets subject to strict export controls.</p>
     <div class="highlight-box">
-      <p class="ko"><strong>핵심 요약:</strong> '소량의 불완전한 데이터로 복잡한 신체 기술을 학습'하는 패러다임이 로보틱스의 새로운 방향을 제시합니다. 피지컬 AI가 실험실을 벗어나 실전 수준에 도달하고 있습니다.</p>
-      <p class="en"><strong>Key takeaway:</strong> The paradigm of "learning complex physical skills from small, imperfect data" sets a new direction for robotics. Physical AI is leaving the lab and reaching real-world performance levels.</p>
+      <p class="ko"><strong>핵심 요약:</strong> AI 칩 밀수 기소는 미·중 AI 기술 전쟁이 법적 영역으로 확대되고 있음을 보여줍니다. 반도체 공급망의 지정학적 리스크가 심화되고 있습니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> The chip smuggling charges show the US-China AI technology war expanding into the legal arena. Geopolitical risks in the semiconductor supply chain are intensifying.</p>
     </div>
   </div>
-
-  <!-- Section 3 -->
   <div class="section" id="s3">
-    <img class="section-img" src="https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Business meeting — Atlassian layoffs">
-    <div class="section-num">03</div>
-    <h2 class="ko">AI가 삼키는 일자리 — Atlassian 1,600명 해고</h2>
-    <h2 class="en">AI Is Eating Jobs — Atlassian Cuts 1,600</h2>
+    <img class="section-img" src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Google smartphone AI">
+    <div class="section-num">3</div>
+    <h2 class="ko">Google 개인 지능, 미국 전체 사용자에게 확대</h2>
+    <h2 class="en">Google Personal Intelligence Expands to All US Users</h2>
     <div class="tag-row">
-      <span class="tag">Atlassian</span>
-      <span class="tag ko">구조조정</span>
-      <span class="tag en">Layoffs</span>
-      <span class="tag ko">AI 투자</span>
-      <span class="tag en">AI Investment</span>
+      <span class="tag ko">Google</span><span class="tag en">Google</span>
+      <span class="tag ko">Gemini</span><span class="tag en">Gemini</span>
+      <span class="tag ko">개인화</span><span class="tag en">Personalization</span>
     </div>
-    <p class="ko">호주 소프트웨어 기업 Atlassian이 전체 인력의 10%인 약 1,600명을 해고한다고 발표했습니다. 공동창업자 Mike Cannon-Brookes는 AI와 엔터프라이즈 영업에 대한 투자를 '자체 재원'으로 충당하기 위한 결정이라고 설명했습니다. 해고 인원 중 900명 이상이 소프트웨어 R&D 부문이며, 북미 40%, 호주 30%, 인도 16% 비율입니다.</p>
-    <p class="en">Australian software company Atlassian announced it will lay off approximately 1,600 employees — 10% of its global workforce. Co-founder Mike Cannon-Brookes described it as a decision to "self-fund" investment in AI and enterprise sales. Over 900 of those affected are in software R&D, with cuts distributed across North America (40%), Australia (30%), and India (16%).</p>
-    <p class="ko">이는 올해만 38,000명 이상의 기술 직종 인력이 감축된 흐름의 일부입니다. Block(구 Square)은 4,000명을, Meta는 최대 15,000명 해고를 검토 중이며, 모두 AI 투자를 주된 사유로 내세우고 있습니다. 'AI 워싱(AI Washing)' — AI를 핑계로 한 비용 절감이라는 비판도 커지고 있습니다.</p>
-    <p class="en">This is part of a broader 2026 trend where over 38,000 tech workers have been cut. Block laid off 4,000 and Meta is reportedly considering cutting up to 15,000 — all citing AI investment. Criticism of "AI Washing" — using AI as a pretext for cost-cutting — is growing louder.</p>
+    <p class="ko">Google이 '개인 지능(Personal Intelligence)' 기능을 미국 전체 사용자에게 확대합니다. 이 기능은 Gemini가 Gmail, Photos, YouTube 등 연결된 앱의 데이터를 활용해 더 맥락에 맞는 응답을 제공하는 것입니다.</p>
+    <p class="en">Google is rolling out its Personal Intelligence feature to all US users. The feature allows Gemini to draw on data from connected apps like Gmail, Photos, and YouTube to deliver more context-aware, personalized responses.</p>
+    <p class="ko">기존에는 유료 사용자에게만 제공되던 이 기능이 무료 사용자까지 확대되면서, AI 개인화 경쟁이 본격화됩니다. 사용자의 이메일, 사진, 시청 기록 등을 통합적으로 분석해 "어제 받은 영수증 찾아줘"나 "지난달 찍은 사진 중 최고 샷 골라줘" 같은 요청에 자연스럽게 응답할 수 있습니다.</p>
+    <p class="en">Previously available only to paid subscribers, this expansion to free users intensifies the AI personalization race. By integrating email, photos, and viewing history, Gemini can naturally respond to requests like "find yesterday's receipt" or "pick the best shot from last month's photos."</p>
     <div class="highlight-box">
-      <p class="ko"><strong>핵심 요약:</strong> 'AI 투자'가 대규모 구조조정의 보편적 명분이 되고 있습니다. AI가 일자리를 직접 대체하는 것인지, 기업이 AI를 핑계로 효율화를 추진하는 것인지 — 그 경계가 점점 모호해지고 있습니다.</p>
-      <p class="en"><strong>Key takeaway:</strong> "AI investment" has become a universal justification for mass restructuring. Whether AI is directly replacing jobs or companies are using it as cover for efficiency drives — the line is increasingly blurred.</p>
+      <p class="ko"><strong>핵심 요약:</strong> Google의 개인 지능 확대는 AI 업체들이 '개인화'를 핵심 전장으로 삼고 있음을 보여줍니다. 편리함과 프라이버시 사이의 균형이 중요한 이슈로 떠오르고 있습니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> Google's Personal Intelligence expansion shows AI companies making personalization a key battleground. The balance between convenience and privacy is emerging as a critical issue.</p>
     </div>
   </div>
-
-  <!-- Section 4 -->
   <div class="section" id="s4">
-    <img class="section-img" src="https://images.pexels.com/photos/3520679/pexels-photo-3520679.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Hardware — Perplexity Personal Computer">
-    <div class="section-num">04</div>
-    <h2 class="ko">Perplexity, 24시간 AI 비서 전용 컴퓨터 공개</h2>
-    <h2 class="en">Perplexity Unveils Always-On AI Personal Computer</h2>
+    <img class="section-img" src="https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI robot technology">
+    <div class="section-num">4</div>
+    <h2 class="ko">OpenClaw의 ChatGPT 모먼트 — AI 모델 상품화 우려</h2>
+    <h2 class="en">OpenClaw's ChatGPT Moment — AI Model Commoditization Fears</h2>
     <div class="tag-row">
-      <span class="tag">Perplexity</span>
-      <span class="tag">Mac mini</span>
-      <span class="tag ko">AI 에이전트</span>
-      <span class="tag en">AI Agent</span>
+      <span class="tag ko">OpenClaw</span><span class="tag en">OpenClaw</span>
+      <span class="tag ko">상품화</span><span class="tag en">Commoditization</span>
+      <span class="tag ko">오픈소스</span><span class="tag en">Open Source</span>
     </div>
-    <p class="ko">Perplexity AI가 첫 개발자 컨퍼런스에서 'Personal Computer'를 공개했습니다. M4 Mac mini 위에서 24시간 실행되는 AI 에이전트 시스템으로, 로컬 파일, 앱, 세션에 상시 접근하면서 Perplexity의 클라우드 서비스와 연동됩니다. 사용자의 도구와 디바이스를 넘나들며 작업을 처리하는 '개인 비서' 개념입니다.</p>
-    <p class="en">Perplexity AI unveiled "Personal Computer" at its first developer conference. It's an AI agent system running 24/7 on an M4 Mac mini, with always-on access to local files, apps, and sessions while connected to Perplexity's cloud services. It's essentially a "personal assistant" that works across your tools and devices.</p>
-    <p class="ko">민감한 작업은 사전 승인이 필요하며, 모든 세션에 완전한 감사 로그(audit trail)와 킬 스위치가 포함됩니다. 현재 최상위 구독 티어인 Perplexity Max 사용자에게 우선 접근이 제공되며, Mac 전용으로 웨이트리스트를 통해 배포 중입니다.</p>
-    <p class="en">Sensitive actions require pre-approval, and every session includes a full audit trail with a kill switch for immediate control. Currently available to Perplexity Max subscribers with priority access, Mac-only, distributed through a waitlist.</p>
+    <p class="ko">OpenClaw가 상용 수준의 AI 모델을 공개하며 '채팅GPT 모먼트'를 만들었습니다. 이는 소규모 기업이나 오픈소스 프로젝트가 대형 AI 기업과 경쟁할 수 있는 시대가 도래했음을 의미하며, AI 모델이 '상품(commodity)'이 될 수 있다는 우려를 불러일으켰습니다.</p>
+    <p class="en">OpenClaw released a commercial-grade AI model, creating its own "ChatGPT moment." This signals an era where smaller firms and open-source projects can compete with major AI companies, sparking concerns that AI models may become commodities.</p>
+    <p class="ko">DeepSeek의 R1 모델에 이어 OpenClaw의 등장은 AI 모델의 차별화가 점점 어려워지고 있음을 보여줍니다. 대형 AI 기업들은 모델 성능만으로는 경쟁 우위를 유지하기 어려워지며, 애플리케이션 생태계와 사용자 경험이 새로운 차별화 포인트가 되고 있습니다.</p>
+    <p class="en">Following DeepSeek's R1 model, OpenClaw's emergence shows that differentiating AI models is becoming increasingly difficult. Major AI companies find it harder to maintain competitive advantage on model performance alone, with application ecosystems and user experience becoming new points of differentiation.</p>
     <div class="highlight-box">
-      <p class="ko"><strong>핵심 요약:</strong> AI 에이전트가 클라우드 챗봇을 넘어 로컬 하드웨어와 결합하는 새로운 폼팩터가 등장했습니다. '항상 켜져 있는 AI 비서'라는 개념은 개인 컴퓨팅의 패러다임을 근본적으로 바꿀 수 있습니다.</p>
-      <p class="en"><strong>Key takeaway:</strong> A new form factor has emerged where AI agents merge with local hardware beyond cloud chatbots. The concept of an "always-on AI assistant" could fundamentally change the paradigm of personal computing.</p>
+      <p class="ko"><strong>핵심 요약:</strong> AI 모델의 상품화는 기술 민주화의 신호이지만, 동시에 기존 AI 기업들의 수익 모델에 도전이 됩니다. 시장의 관심이 '모델'에서 '애플리케이션'으로 이동하고 있습니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> AI model commoditization signals technology democratization, but also challenges existing AI companies' revenue models. Market focus is shifting from "models" to "applications."</p>
     </div>
   </div>
-
-  <!-- Section 5 -->
   <div class="section" id="s5">
-    <img class="section-img" src="https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg?auto=compress&cs=tinysrgb&w=1400&fit=crop&h=560" alt="Justice scales — AI regulation">
-    <div class="section-num">05</div>
-    <h2 class="ko">미국 AI 책임법 통과 — 편향 감사 의무화</h2>
-    <h2 class="en">US Passes AI Accountability Act — Mandatory Bias Audits</h2>
+    <img class="section-img" src="https://images.pexels.com/photos/5668481/pexels-photo-5668481.jpeg?auto=compress&cs=tinysrgb&w=800" alt="AI automation workplace">
+    <div class="section-num">5</div>
+    <h2 class="ko">McKinsey: AI가 일자리 12% 자동화, 고용 영향은 혼재</h2>
+    <h2 class="en">McKinsey: AI Automated 12% of Job Tasks, Employment Impact Mixed</h2>
     <div class="tag-row">
-      <span class="tag ko">AI 규제</span>
-      <span class="tag en">AI Regulation</span>
-      <span class="tag">AI Accountability Act</span>
-      <span class="tag ko">편향 감사</span>
-      <span class="tag en">Bias Audit</span>
+      <span class="tag ko">McKinsey</span><span class="tag en">McKinsey</span>
+      <span class="tag ko">노동시장</span><span class="tag en">Labor Market</span>
+      <span class="tag ko">자동화</span><span class="tag en">Automation</span>
+      <span class="tag ko">고용</span><span class="tag en">Employment</span>
     </div>
-    <p class="ko">미국이 AI 책임법(AI Accountability Act)을 통과시켰습니다. 이 법안은 채용, 대출, 의료, 형사 사법 등 '중대한 의사결정'에 AI를 배치하는 기업에게 정기적인 편향 감사(bias audit)를 실시하고 결과를 공개하도록 의무화합니다. EU의 AI Act에 이어 미국이 본격적인 AI 규제 프레임워크를 가동한 것입니다.</p>
-    <p class="en">The United States has passed the AI Accountability Act. The legislation requires companies deploying AI in "consequential decisions" — hiring, lending, healthcare, criminal justice — to conduct and publish regular bias audits. Following the EU AI Act, the US has now activated its own formal AI regulatory framework.</p>
-    <p class="ko">업계에서는 규제 준수 비용 증가를 우려하면서도, 이것이 AI에 대한 사회적 신뢰를 구축하는 데 필수적이라는 시각도 있습니다. 특히 스타트업보다는 대기업에 유리한 규제라는 비판도 나오고 있어, 향후 세부 시행령이 어떻게 설계되느냐가 관건입니다.</p>
-    <p class="en">While the industry is concerned about rising compliance costs, there's also a view that this is essential for building societal trust in AI. Critics note the regulation may favor large corporations over startups, making the design of detailed implementation rules a critical factor going forward.</p>
+    <p class="ko">McKinsey 글로벌 연구소의 2026년 3월 보고서에 따르면, AI가 지난 2년간 경제 전반의 업무 12%를 자동화했습니다. 그러나 AI에 노출된 부문의 순고용은 거의 변화가 없으며, 직업과 소득 수준에 따라 큰 차이를 보였습니다.</p>
+    <p class="en">According to McKinsey Global Institute's March 2026 report, AI has automated 12% of current job tasks across the economy over the past two years. However, net employment in AI-exposed sectors is approximately flat, with significant variation by occupation and income level.</p>
+    <p class="ko">이 보고서는 'AI가 일자리를 매우 빠르게 대체한다'는 우려와 'AI는 일자리에 영향이 없다'는 낙관론 모두에 도전합니다. 실제로는 업무의 재편성이 일어나고 있으며, 저소득 직종에서의 영향이 불균형적으로 크게 나타나고 있습니다.</p>
+    <p class="en">The report challenges both the fear that AI is rapidly replacing jobs and the optimism that AI has no employment impact. In reality, job tasks are being restructured, with disproportionately larger effects on lower-income occupations.</p>
     <div class="highlight-box">
-      <p class="ko"><strong>핵심 요약:</strong> AI 규제가 '논의' 단계를 넘어 '법제화'로 본격 진입했습니다. AI를 활용하는 모든 기업은 편향 감사와 투명성 공개를 비즈니스 프로세스에 내재화해야 하는 시대가 도래했습니다.</p>
-      <p class="en"><strong>Key takeaway:</strong> AI regulation has moved beyond "discussion" into actual "legislation." Every company using AI must now internalize bias auditing and transparency disclosure into their business processes.</p>
+      <p class="ko"><strong>핵심 요약:</strong> AI의 고용 영향은 '0 또는 1'이 아닌 복잡한 양상입니다. 정책 입안자들은 재훈련 프로그램과 소득 불평등 해소에 더 집중해야 합니다.</p>
+      <p class="en"><strong>Key takeaway:</strong> AI's employment impact is a complex spectrum, not a binary outcome. Policymakers need to focus more on retraining programs and addressing income inequality.</p>
     </div>
   </div>
-
-  <!-- Takeaway -->
-  <div class="takeaway" id="s6">
-    <div class="section-num">06</div>
+  <div class="section" id="s6">
     <h2 class="ko">오늘의 핵심 시사점</h2>
     <h2 class="en">Today's Key Takeaways</h2>
-    <div class="takeaway-grid">
-      <div class="takeaway-card">
-        <div class="card-num">01</div>
-        <h3 class="ko">AI 지정학이 형사 사건으로 비화</h3>
-        <h3 class="en">AI Geopolitics Escalates to Criminal Cases</h3>
-        <p class="ko">Super Micro 밀수 사건은 미·중 AI 패권 경쟁이 기업 경영진의 체포로까지 이어지는 새로운 국면을 보여줍니다. AI 칩 수출 규제는 앞으로 더 강화될 전망입니다.</p>
-        <p class="en">The Super Micro smuggling case shows the US-China AI rivalry has escalated to executive arrests. AI chip export controls will likely intensify further.</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="card-num">02</div>
-        <h3 class="ko">피지컬 AI, 실전 수준 도달</h3>
-        <h3 class="en">Physical AI Reaches Real-World Performance</h3>
-        <p class="ko">Galbot의 테니스 로봇은 소량 데이터로 복잡한 운동 능력을 학습할 수 있음을 증명했습니다. 로보틱스 상용화 속도가 예상보다 빠르게 가속되고 있습니다.</p>
-        <p class="en">Galbot's tennis robot proves complex athletic skills can be learned from minimal data. Robotics commercialization is accelerating faster than expected.</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="card-num">03</div>
-        <h3 class="ko">'AI 투자' 명목의 구조조정 가속</h3>
-        <h3 class="en">AI-Justified Restructuring Accelerates</h3>
-        <p class="ko">Atlassian·Block·Meta로 이어지는 대규모 감원 행렬에서 AI는 공통 명분입니다. 올해만 38,000명 이상이 감축되었으며, 'AI 워싱' 논란이 확산되고 있습니다.</p>
-        <p class="en">AI is the common justification across Atlassian, Block, and Meta's mass layoffs. Over 38,000 cuts this year alone, with "AI Washing" criticism growing.</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="card-num">04</div>
-        <h3 class="ko">AI 규제 법제화 시대 개막</h3>
-        <h3 class="en">The Era of AI Legislation Begins</h3>
-        <p class="ko">미국 AI 책임법 통과로 편향 감사가 법적 의무가 되었습니다. AI를 활용하는 모든 기업이 투명성과 책임성을 비즈니스에 내재화해야 하는 시대입니다.</p>
-        <p class="en">The US AI Accountability Act makes bias audits a legal obligation. Every company leveraging AI must now build transparency and accountability into their operations.</p>
+    <div class="takeaway">
+      <div class="takeaway-grid">
+        <div class="takeaway-card">
+          <div class="card-num">1</div>
+          <h3 class="ko">OpenAI의 공격적 성장, IPO 시대 예고</h3>
+          <h3 class="en">OpenAI's Aggressive Growth Signals IPO Era</h3>
+          <p class="ko">직원 8,000명 확대와 $840B 기업가치는 AI 업계의 성장 속도를 상징적으로 보여줍니다. AI 기업의 IPO 러시가 다가오고 있습니다.</p>
+          <p class="en">The expansion to 8,000 employees and $840B valuation symbolize the AI industry's growth velocity. An IPO rush for AI companies is approaching.</p>
+        </div>
+        <div class="takeaway-card">
+          <div class="card-num">2</div>
+          <h3 class="ko">AI 칩 전쟁, 법적 영역으로 확대</h3>
+          <h3 class="en">AI Chip War Expands to Legal Arena</h3>
+          <p class="ko">밀수 기소는 미·중 기술 경쟁이 단순한 무역 제재를 넘어 형사 처벌 수준으로 심화되고 있음을 보여줍니다.</p>
+          <p class="en">The smuggling charges show US-China tech competition escalating beyond trade sanctions to criminal prosecution.</p>
+        </div>
+        <div class="takeaway-card">
+          <div class="card-num">3</div>
+          <h3 class="ko">AI 개인화가 핵심 전장으로</h3>
+          <h3 class="en">Personalization Becomes the Key Battleground</h3>
+          <p class="ko">Google이 개인 지능을 무료 사용자에게 확대하면서, AI 기업들의 경쟁 초점이 '모델 성능'에서 '개인화 경험'으로 이동하고 있습니다.</p>
+          <p class="en">With Google expanding Personal Intelligence to free users, AI companies' competitive focus is shifting from "model performance" to "personalized experience."</p>
+        </div>
+        <div class="takeaway-card">
+          <div class="card-num">4</div>
+          <h3 class="ko">AI 일자리 영향, 단순하지 않다</h3>
+          <h3 class="en">AI's Job Impact Is Not Simple</h3>
+          <p class="ko">McKinsey 보고서는 AI가 일자리를 없애는 것이 아니라 재편성하고 있음을 보여주며, 저소득층에 불균형적 영향이 있음을 경고합니다.</p>
+          <p class="en">McKinsey's report shows AI is restructuring jobs rather than eliminating them, warning of disproportionate impact on lower-income workers.</p>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- Issue Navigation -->
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-top:1px solid var(--border);">
-    <a href="2026_03_21_AI_Daily.html" style="font-size:14px;color:var(--accent);text-decoration:none;display:flex;align-items:center;gap:6px;transition:opacity 0.2s;">&larr; <span class="ko">이전호</span><span class="en">Previous</span></a>
-    <a href="AI_Daily_Archive.html" style="font-size:14px;color:var(--accent);text-decoration:none;transition:opacity 0.2s;"><span class="ko">전체 목록</span><span class="en">All Issues</span></a>
-    <span style="font-size:14px;color:var(--text-tertiary);opacity:0.4;"><span class="ko">다음호</span><span class="en">Next</span> &rarr;</span>
+  <div class="nav-issues">
+    <a class="nav-link" href="2026_03_21_AI_Daily.html"><span class="ko">이전호</span><span class="en">Previous</span></a>
+    <a class="nav-link" href="AI_Daily_Archive.html"><span class="ko">전체 목록</span><span class="en">All Issues</span></a>
+    <a class="nav-link disabled" href="#"><span class="ko">다음호</span><span class="en">Next</span></a>
   </div>
-
-  <!-- Footer -->
-  <footer>
+<footer>
     <p>
       <span class="ko">이 아티클은 <a href="https://opendesignlab.com">Open Design Lab</a>의 AI Daily 시리즈입니다.<br>
       매일 최신 AI 뉴스를 빠르게 정리합니다.</span>
@@ -379,78 +345,12 @@
       <span style="display: inline-block; color: #aaa;">&copy; 2026 Open Design Lab. All rights reserved.</span>
     </p>
   </footer>
-
-</div>
-
 <script>
-// Language Toggle
-function setLang(lang) {
-  var body = document.body;
-  var btnKo = document.getElementById('btn-ko');
-  var btnEn = document.getElementById('btn-en');
-  if (lang === 'en') {
-    body.classList.add('lang-en');
-    document.documentElement.lang = 'en';
-    btnEn.classList.add('active');
-    btnKo.classList.remove('active');
-  } else {
-    body.classList.remove('lang-en');
-    document.documentElement.lang = 'ko';
-    btnKo.classList.add('active');
-    btnEn.classList.remove('active');
-  }
-}
-
-// Topbar scroll shadow
-(function() {
-  var topbar = document.getElementById('topbar');
-  var ticking = false;
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        topbar.classList.toggle('scrolled', window.scrollY > 10);
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-})();
-
-// Font Size Toggle
-function setFontSize(size) {
-  var html = document.documentElement;
-  html.classList.remove('fs-small', 'fs-medium', 'fs-large');
-  html.classList.add('fs-' + size);
-  var btns = { small: 'fs-s', medium: 'fs-m', large: 'fs-l' };
-  Object.keys(btns).forEach(function(k) {
-    var el = document.getElementById(btns[k]);
-    if (el) el.classList.toggle('active', k === size);
-  });
-  localStorage.setItem('odl-fontsize', size);
-}
-(function() {
-  var saved = localStorage.getItem('odl-fontsize');
-  if (saved && saved !== 'medium') setFontSize(saved);
-})();
-
-// Theme Toggle
-function getPreferredTheme() {
-  var saved = localStorage.getItem('odl-theme');
-  if (saved) return saved;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-function setTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('odl-theme', theme);
-}
-function toggleTheme() {
-  setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-}
-setTheme(getPreferredTheme());
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-  if (!localStorage.getItem('odl-theme')) setTheme(e.matches ? 'dark' : 'light');
-});
-</script>
-
+    (function(){
+      var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</div>
 </body>
 </html>
