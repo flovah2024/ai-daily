@@ -57,13 +57,13 @@
     .header-left { display: flex; align-items: center; gap: 12px; }
 
     /* Language visibility */
-    .en { display: none !important; } .ko { display: inline; }
-    p.en, div.en, h1.en, h2.en, h3.en, li.en, span.en { display: none !important; }
+    .en { display: none; } .ko { display: inline; }
+    p.en, div.en, h1.en, h2.en, h3.en, li.en, span.en { display: none; }
     p.ko, div.ko, h1.ko, h2.ko, h3.ko, li.ko, span.ko { display: block; }
     span.ko { display: inline; } h1.ko, h2.ko, h3.ko { display: block; }
-    body.lang-en .en { display: inline; } body.lang-en .ko { display: none !important; }
-    body.lang-en p.en, body.lang-en div.en, body.lang-en h1.en, body.lang-en h2.en, body.lang-en h3.en { display: block; }
-    body.lang-en li.en { display: flex; } body.lang-en span.en { display: inline; }
+    body.lang-en .en { display: inline !important; } body.lang-en .ko { display: none !important; }
+    body.lang-en p.en, body.lang-en div.en, body.lang-en h1.en, body.lang-en h2.en, body.lang-en h3.en { display: block !important; }
+    body.lang-en li.en { display: flex !important; } body.lang-en span.en { display: inline !important; }
     body.lang-en p.ko, body.lang-en div.ko, body.lang-en h1.ko, body.lang-en h2.ko, body.lang-en h3.ko, body.lang-en li.ko, body.lang-en span.ko { display: none !important; }
 
     /* Header */
@@ -353,34 +353,45 @@
   </script>
 </div>
 <script>
-function setFontSize(size) {
-  var article = document.querySelector("article") || document.querySelector("main") || document.body;
-  var sizes = { small: "0.9rem", medium: "1rem", large: "1.15rem" };
-  article.style.fontSize = sizes[size] || "1rem";
-  document.querySelectorAll(".font-btn").forEach(function(b) { b.classList.remove("active"); });
-  var map = { small: "font-btn-s", medium: "font-btn-m", large: "font-btn-l" };
-  var active = document.querySelector("." + map[size]);
-  if (active) active.classList.add("active");
-}
-function toggleTheme() {
-  var root = document.documentElement;
-  var current = root.getAttribute("data-theme");
-  var next = (current === "light") ? "dark" : "light";
-  root.setAttribute("data-theme", next);
-  var btn = document.querySelector(".theme-btn");
-  if (btn) {
-    btn.innerHTML = next === "light"
-      ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>'
-      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
-  }
-}
-function setLang(lang) {
-  document.body.classList.remove("lang-ko", "lang-en");
-  if (lang === "en") document.body.classList.add("lang-en");
-  document.querySelectorAll(".lang-btn").forEach(function(b) { b.classList.remove("active"); });
-  var activeBtn = document.getElementById("btn-" + lang);
-  if (activeBtn) activeBtn.classList.add("active");
-}
-</script>
+    function setLang(lang) {
+      var body = document.body;
+      var btnKo = document.getElementById("btn-ko");
+      var btnEn = document.getElementById("btn-en");
+      if (lang === "en") {
+        body.classList.add("lang-en");
+        document.documentElement.lang = "en";
+        btnEn.classList.add("active");
+        btnKo.classList.remove("active");
+      } else {
+        body.classList.remove("lang-en");
+        document.documentElement.lang = "ko";
+        btnKo.classList.add("active");
+        btnEn.classList.remove("active");
+      }
+    }
+    function setFontSize(size) {
+      var html = document.documentElement;
+      html.classList.remove("fs-small", "fs-medium", "fs-large");
+      html.classList.add("fs-" + size);
+      var btns = {small: "fs-s", medium: "fs-m", large: "fs-l"};
+      Object.keys(btns).forEach(function(k) {
+        var el = document.getElementById(btns[k]);
+        if (el) el.classList.toggle("active", k === size);
+      });
+      localStorage.setItem("odl-fontsize", size);
+    }
+    function getPreferredTheme() {
+      var saved = localStorage.getItem("odl-theme");
+      if (saved) return saved;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("odl-theme", theme);
+    }
+    function toggleTheme() {
+      setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    }
+  </script>
 </body>
 </html>
