@@ -354,32 +354,32 @@
 </div>
 <script>
 function setFontSize(size) {
-  var article = document.querySelector('.article-body, article, .content, main');
-  if (!article) article = document.body;
-  var sizes = { small: '0.9rem', medium: '1rem', large: '1.15rem' };
-  article.style.fontSize = sizes[size] || '1rem';
-  document.querySelectorAll('.font-btn').forEach(function(b) { b.classList.remove('active'); });
-  var map = { small: 'font-btn-s', medium: 'font-btn-m', large: 'font-btn-l' };
-  var active = document.querySelector('.' + map[size]);
-  if (active) active.classList.add('active');
+  var article = document.querySelector("article") || document.querySelector("main") || document.body;
+  var sizes = { small: "0.9rem", medium: "1rem", large: "1.15rem" };
+  article.style.fontSize = sizes[size] || "1rem";
+  document.querySelectorAll(".font-btn").forEach(function(b) { b.classList.remove("active"); });
+  var map = { small: "font-btn-s", medium: "font-btn-m", large: "font-btn-l" };
+  var active = document.querySelector("." + map[size]);
+  if (active) active.classList.add("active");
 }
 function toggleTheme() {
-  var body = document.body;
-  var isDark = body.classList.toggle('light-theme');
-  var btn = document.querySelector('.theme-btn');
+  var root = document.documentElement;
+  var current = root.getAttribute("data-theme");
+  var next = (current === "light") ? "dark" : "light";
+  root.setAttribute("data-theme", next);
+  var btn = document.querySelector(".theme-btn");
   if (btn) {
-    var svg = isDark
+    btn.innerHTML = next === "light"
       ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>'
       : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
-    btn.innerHTML = svg;
   }
 }
 function setLang(lang) {
-  document.body.classList.remove('lang-ko', 'lang-en');
-  if (lang === 'en') document.body.classList.add('lang-en');
-  document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
-  var activeBtn = document.getElementById('btn-' + lang);
-  if (activeBtn) activeBtn.classList.add('active');
+  document.body.classList.remove("lang-ko", "lang-en");
+  if (lang === "en") document.body.classList.add("lang-en");
+  document.querySelectorAll(".lang-btn").forEach(function(b) { b.classList.remove("active"); });
+  var activeBtn = document.getElementById("btn-" + lang);
+  if (activeBtn) activeBtn.classList.add("active");
 }
 </script>
 </body>
