@@ -1,583 +1,387 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta property="og:title" content="AI Daily | 2026.03.23">
-  <meta property="og:description" content="GPT-5.4 공식 출시, NVIDIA Nemotron 3 Super, Atlassian 감원, OpenAI 연매출 $250억, DeepSeek V4">
-  <meta property="og:image" content="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg">
-  <title>AI Daily | 2026.03.23</title>
-  <style>
-    :root {
-      --bg: #f8f9fa;
-      --surface: #ffffff;
-      --surface2: #f1f3f5;
-      --text: #1a1a2e;
-      --text2: #4a4a6a;
-      --accent: #6c63ff;
-      --accent2: #ff6584;
-      --border: #e2e8f0;
-      --card-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      --topbar-bg: #1a1a2e;
-      --topbar-text: #e8e8f0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Daily — 2026년 3월 23일 | Open Design Lab</title>
+<meta property="og:title" content="AI Daily — 2026년 3월 23일">
+<meta property="og:description" content="GPT-5.4 공식 출시, NVIDIA Nemotron 3 Super, Atlassian 감원, OpenAI 연매출 $250억, DeepSeek V4">
+<meta property="og:image" content="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg">
+<link rel="icon" href="odl_logo.png" type="image/png">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root, [data-theme="light"] {
+        --bg: #f8f9fa;
+        --surface: #ffffff;
+        --surface2: #f1f3f5;
+        --text: #1a1a2e;
+        --text2: #4a5568;
+        --text3: #718096;
+        --accent: #6c63ff;
+        --border: #e2e8f0;
+        --topbar-bg: #1a1a2e;
+        --topbar-text: #e8eaf6;
+        --radius: 12px;
+        --shadow: 0 2px 12px rgba(0,0,0,0.07);
+        --tag-bg: #eef2ff;
+        --tag-text: #5b52cc;
     }
-    html.dark {
-      --bg: #0f0f1a;
-      --surface: #1a1a2e;
-      --surface2: #252538;
-      --text: #e8e8f0;
-      --text2: #a0a0c0;
-      --border: #2e2e4e;
-      --card-shadow: 0 2px 12px rgba(0,0,0,0.3);
-      --topbar-bg: #0a0a14;
-      --topbar-text: #c8c8e0;
+    [data-theme="dark"] {
+        --bg: #0f0f1a;
+        --surface: #1a1a2e;
+        --surface2: #252540;
+        --text: #e8eaf6;
+        --text2: #a0aec0;
+        --text3: #718096;
+        --accent: #9d96ff;
+        --border: #2d2d4e;
+        --topbar-bg: #0a0a14;
+        --topbar-text: #c5cae9;
+        --tag-bg: #2d2d4e;
+        --tag-text: #9d96ff;
+        --shadow: 0 2px 12px rgba(0,0,0,0.3);
     }
+    .en { display: none; }
+    .ko { display: inline; }
+    body.lang-en .ko { display: none; }
+    body.lang-en .en { display: inline; }
+    .ko.block { display: block; }
+    body.lang-en .ko.block { display: none; }
+    body.lang-en .en.block { display: block; }
+    body[data-font-size="sm"] { font-size: 14px; }
+    body[data-font-size="lg"] { font-size: 18px; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      transition: background 0.3s, color 0.3s;
+        font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        font-size: 16px;
+        line-height: 1.75;
+        transition: background 0.3s, color 0.3s;
     }
-    body.font-s { font-size: 14px; }
-    body.font-l { font-size: 18px; }
-    body:not(.font-s):not(.font-l) { font-size: 16px; }
-    body.en .ko { display: none; }
-    body:not(.en) .en { display: none; }
-    .topbar {
-      background: var(--topbar-bg);
-      color: var(--topbar-text);
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .topbar-brand {
-      font-weight: 700;
-      font-size: 1.1em;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .topbar-brand span.ko { color: #a0a0ff; }
-    .topbar-controls {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .ctrl-btn {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--topbar-text);
-      padding: 4px 10px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.8em;
-      transition: background 0.2s;
-    }
-    .ctrl-btn:hover, .ctrl-btn.active { background: rgba(108,99,255,0.5); }
-    .lang-btn { font-weight: 700; }
-    .container {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-    }
-    .issue-meta {
-      text-align: center;
-      margin-bottom: 12px;
-    }
-    .issue-meta .date-badge {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 0.82em;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-    .hero {
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 28px;
-      position: relative;
-      box-shadow: var(--card-shadow);
-    }
-    .hero img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      display: block;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
-      display: flex;
-      align-items: flex-end;
-      padding: 28px;
-    }
-    .hero-text h1 {
-      font-size: 1.8em;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-    .hero-text p {
-      color: rgba(255,255,255,0.82);
-      font-size: 0.92em;
-    }
-    .section {
-      background: var(--surface);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 24px;
-      box-shadow: var(--card-shadow);
-      border: 1px solid var(--border);
-    }
-    .section-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
-    .section-body {
-      padding: 24px;
-    }
-    .section-num {
-      font-size: 0.75em;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .section-body h2 {
-      font-size: 1.22em;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--text);
-      line-height: 1.4;
-    }
-    .section-body p {
-      color: var(--text2);
-      margin-bottom: 14px;
-      font-size: 0.96em;
-    }
-    .highlight-box {
-      background: var(--surface2);
-      border-left: 4px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-      padding: 14px 18px;
-      margin: 14px 0;
-    }
-    .highlight-box .label {
-      font-size: 0.75em;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-      display: block;
-    }
-    .highlight-box p {
-      margin: 0;
-      font-size: 0.93em;
-      color: var(--text);
-    }
-    .takeaway-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .takeaway-item {
-      background: var(--surface2);
-      border-radius: 10px;
-      padding: 12px 14px;
-      text-align: center;
-    }
-    .takeaway-item .tk-val {
-      font-size: 1.3em;
-      font-weight: 800;
-      color: var(--accent);
-      display: block;
-    }
-    .takeaway-item .tk-lbl {
-      font-size: 0.78em;
-      color: var(--text2);
-      margin-top: 2px;
-    }
-    .tag {
-      display: inline-block;
-      background: rgba(108,99,255,0.12);
-      color: var(--accent);
-      border-radius: 6px;
-      padding: 2px 9px;
-      font-size: 0.78em;
-      font-weight: 600;
-      margin-right: 5px;
-      margin-bottom: 8px;
-    }
-    .nav-issues {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 32px;
-      padding: 18px 0;
-      border-top: 1px solid var(--border);
-    }
-    .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9em;
-      padding: 8px 16px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: background 0.2s;
-    }
-    .nav-link:hover { background: var(--surface2); }
-    .nav-link.disabled {
-      color: var(--text2);
-      pointer-events: none;
-      opacity: 0.45;
-    }
-    .nav-center {
-      font-size: 0.82em;
-      color: var(--text2);
-      font-weight: 600;
-    }
-    footer {
-      text-align: center;
-      padding: 24px 16px 40px;
-      font-size: 0.82em;
-      color: var(--text2);
-      border-top: 1px solid var(--border);
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    footer a { color: var(--accent); text-decoration: none; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* TOPBAR */
+    .topbar { background: var(--topbar-bg); color: var(--topbar-text); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .topbar-inner { max-width: 720px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .header-left a { display: flex; align-items: center; gap: 8px; color: var(--topbar-text); font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; }
+    .header-left img { width: 28px; height: 28px; border-radius: 6px; }
+    .header-controls { display: flex; align-items: center; gap: 6px; }
+    .ctrl-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: var(--topbar-text); border-radius: 6px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; transition: background 0.2s; font-family: inherit; font-weight: 500; }
+    .ctrl-btn:hover, .ctrl-btn.active { background: rgba(255,255,255,0.18); }
+    .ctrl-btn.icon-btn { padding: 4px 8px; display: flex; align-items: center; }
+    .ctrl-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.14); margin: 0 2px; }
+    .theme-icon-sun, .theme-icon-moon { display: none; }
+    [data-theme="light"] .theme-icon-moon { display: block; }
+    [data-theme="dark"] .theme-icon-sun { display: block; }
+
+    /* PAGE */
+    .page-wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 64px; }
+
+    /* BANNER */
+    .banner { padding: 40px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+    .banner-meta { font-size: 0.8rem; color: var(--text3); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    .banner-meta .dot { opacity: 0.4; }
+    .banner h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 20px; }
+    .banner-hero { width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius); margin-bottom: 20px; display: block; }
+    .lead { font-size: 1rem; color: var(--text2); line-height: 1.8; }
+
+    /* TOC */
+    .toc { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 48px; }
+    .toc-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 12px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: 0.9rem; }
+    .toc a { color: var(--text2); transition: color 0.2s; }
+    .toc a:hover { color: var(--accent); text-decoration: none; }
+
+    /* STORY */
+    .story { margin-bottom: 56px; padding-bottom: 56px; border-bottom: 1px solid var(--border); }
+    .story:last-of-type { border-bottom: none; }
+    .story-img { width: 100%; height: 240px; object-fit: cover; border-radius: var(--radius); margin-bottom: 24px; display: block; }
+    .story h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; line-height: 1.35; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .tag { background: var(--tag-bg); color: var(--tag-text); font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.01em; }
+    .story p { color: var(--text2); margin-bottom: 16px; font-size: 0.95rem; }
+    .story p strong { color: var(--text); }
+
+    /* TAKEAWAY */
+    .takeaway { margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--accent); }
+    .takeaway > h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .takeaway-grid { display: grid; gap: 16px; }
+    .takeaway-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow); }
+    .card-num { font-size: 1.5rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 8px; font-family: 'Inter', sans-serif; }
+    .takeaway-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+    .takeaway-card p { font-size: 0.875rem; color: var(--text2); line-height: 1.7; margin: 0; }
+
+    /* BOTTOM NAV */
+    .nav-issues { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .nav-link { color: var(--accent); font-size: 0.875rem; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+    .nav-link:hover { text-decoration: none; opacity: 0.8; }
+    .nav-link.disabled { color: var(--text3); pointer-events: none; }
+
+    /* FOOTER */
+    footer { max-width: 720px; margin: 0 auto; padding: 24px 24px 40px; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text3); line-height: 1.8; }
+    footer a { color: var(--text3); text-decoration: underline; }
+
     @media (max-width: 600px) {
-      .hero img { height: 220px; }
-      .hero-text h1 { font-size: 1.4em; }
-      .section-img { height: 160px; }
-      .topbar { padding: 8px 12px; }
+        .topbar-inner { padding: 10px 16px; }
+        .page-wrap { padding: 0 16px 48px; }
+        .banner h1 { font-size: 1.4rem; }
+        .story h2 { font-size: 1.2rem; }
+        .banner-hero { height: 200px; }
+        .story-img { height: 180px; }
     }
-  </style>
+</style>
 </head>
 <body>
 
 <div class="topbar">
-  <a class="topbar-brand" href="index.html">
-    <span class="ko">AI 데일리</span>
-    <span class="en">AI Daily</span>
-  </a>
-  <div class="topbar-controls">
-    <button class="ctrl-btn font-btn font-btn-s" onclick="setFont('s')">S</button>
-    <button class="ctrl-btn font-btn font-btn-m active" onclick="setFont('m')">M</button>
-    <button class="ctrl-btn font-btn font-btn-l" onclick="setFont('l')">L</button>
-    <button class="ctrl-btn" onclick="toggleTheme()">&#127769;</button>
-    <button class="ctrl-btn lang-btn active" onclick="setLang('ko')">&#54620;</button>
-    <button class="ctrl-btn lang-btn" onclick="setLang('en')">EN</button>
+  <div class="topbar-inner">
+    <div class="header-left">
+      <a href="AI_Daily_Archive.html">
+        <img src="odl_logo.png" alt="Open Design Lab">
+        AI Daily
+      </a>
+    </div>
+    <div class="header-controls">
+      <button class="ctrl-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
+      <button class="ctrl-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      <div class="ctrl-sep"></div>
+      <button class="ctrl-btn" id="btn-sm" onclick="setFont('sm')">A</button>
+      <button class="ctrl-btn active" id="btn-md" onclick="setFont('md')">A</button>
+      <button class="ctrl-btn" id="btn-lg" onclick="setFont('lg')">A</button>
+      <div class="ctrl-sep"></div>
+      <button class="ctrl-btn icon-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg class="theme-icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path></svg>
+        <svg class="theme-icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </div>
   </div>
 </div>
 
-<div class="container">
+<div class="page-wrap">
 
-  <div class="issue-meta">
-    <span class="date-badge">2026.03.23 &nbsp;&middot;&nbsp; <span class="ko">제 12호</span><span class="en">Issue #12</span></span>
-  </div>
-
-  <div class="hero">
-    <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg" alt="AI Daily 2026-03-23 Hero">
-    <div class="hero-overlay">
-      <div class="hero-text">
-        <h1>
-          <span class="ko">GPT-5.4부터 DeepSeek V4까지 &#8212; AI 모델 대격변의 한 주</span>
-          <span class="en">GPT-5.4 to DeepSeek V4 &#8212; The Week AI Models Went Supernova</span>
-        </h1>
-        <p>
-          <span class="ko">2026년 3월 셋째 주, 업계를 재편할 5가지 핵심 AI 뉴스</span>
-          <span class="en">Five major AI developments reshaping the industry in week three of March 2026</span>
-        </p>
-      </div>
+  <header class="banner">
+    <div class="banner-meta">
+      <span class="ko">2026년 3월 23일</span><span class="en">March 23, 2026</span>
+      <span class="dot">·</span>
+      <span class="ko">읽는 시간 약 8분</span><span class="en">8 min read</span>
+      <span class="dot">·</span>
+      <span>Open Design Lab AI</span>
     </div>
-  </div>
+    <h1 class="ko">GPT-5.4 공식 출시, NVIDIA Nemotron 3 Super, Atlassian 감원 — 오늘의 AI</h1>
+    <h1 class="en">GPT-5.4 Launches, NVIDIA Nemotron 3 Super, Atlassian Layoffs — Today in AI</h1>
+    <img class="banner-hero" src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg" alt="AI technology">
+    <p class="lead ko">OpenAI가 GPT-5.4를 공식 출시하며 105만 토큰 컨텍스트를 선보이고, NVIDIA는 GTC 2026에서 Nemotron 3 Super를 공개했습니다. Atlassian은 AI 투자 재원을 위해 1,600명을 감원했으며, OpenAI 연매출은 $250억을 돌파했습니다. DeepSeek V4가 1조 파라미터로 등장했습니다.</p>
+    <p class="lead en">OpenAI officially launched GPT-5.4 with a 1.05M-token context window. NVIDIA unveiled Nemotron 3 Super at GTC 2026. Atlassian cut 1,600 jobs to fund its AI pivot, while OpenAI crossed $25B ARR. DeepSeek V4 arrived with 1 trillion total parameters.</p>
+  </header>
 
-  <!-- SECTION 1: GPT-5.4 -->
-  <section class="section" id="s1">
-    <img class="section-img" src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg" alt="GPT-5.4 launch">
-    <div class="section-body">
-      <div class="section-num">Story 01</div>
-      <span class="tag">OpenAI</span><span class="tag">LLM</span>
-      <h2>
-        <span class="ko">OpenAI, GPT-5.4 공식 출시 &#8212; 전문직 업무 83% 능가</span>
-        <span class="en">OpenAI Launches GPT-5.4 &#8212; Beats Knowledge Workers 83% of the Time</span>
-      </h2>
-      <p class="ko">OpenAI가 3월 5일 GPT-5.4를 공식 출시했다. Standard, Thinking, Pro 세 가지 버전으로 나뉘며, 최대 105만 토큰의 컨텍스트 윈도우를 지원한다. 오픈 벤치마크 OSWorld-V에서 75%를 기록했고, 전문직 사무 작업 평가에서 인간 전문가를 83% 확률로 능가하는 것으로 나타났다. 허위 정보 생성 비율도 이전 버전 대비 33% 감소했다. GPT-5.4 mini는 ChatGPT 무료 및 Go 플랜 사용자에게 우선 배포된다.</p>
-      <p class="en">OpenAI officially launched GPT-5.4 on March 5, splitting it into three variants &#8212; Standard, Thinking, and Pro &#8212; with context windows stretching to 1.05 million tokens. The model scored 75% on the OSWorld-V open benchmark and outperformed human knowledge workers 83% of the time on professional task evaluations. False claim generation dropped 33% compared to previous versions. GPT-5.4 mini rolls out first to Free and Go plan ChatGPT users.</p>
-      <div class="highlight-box">
-        <span class="label ko">핵심 포인트</span>
-        <span class="label en">Key Point</span>
-        <p class="ko">컨텍스트 105만 토큰은 약 785,000 단어에 해당하며 장편 소설 약 3권 분량이다. 이 수준의 맥락 이해력은 법률 계약서 전체 검토, 수백 쪽 분량의 연구 문서 분석 등 실무 업무에 직접 적용 가능하다.</p>
-        <p class="en">A 1.05M token context equals roughly 785,000 words &#8212; about three full-length novels. This level of context comprehension applies directly to real-world tasks like reviewing entire legal contracts or analyzing hundreds of pages of research in a single pass.</p>
-      </div>
-      <div class="takeaway-grid">
-        <div class="takeaway-item">
-          <span class="tk-val">105&#47839;</span>
-          <div class="tk-lbl ko">최대 토큰 컨텍스트</div>
-          <div class="tk-lbl en">Max context tokens</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">75%</span>
-          <div class="tk-lbl ko">OSWorld-V &#51216;&#49688;</div>
-          <div class="tk-lbl en">OSWorld-V score</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">83%</span>
-          <div class="tk-lbl ko">전문직 업무 능가율</div>
-          <div class="tk-lbl en">Pro task win rate</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">-33%</span>
-          <div class="tk-lbl ko">허위 정보 생성 감소</div>
-          <div class="tk-lbl en">False claim reduction</div>
-        </div>
-      </div>
+  <nav class="toc">
+    <div class="toc-label ko">오늘의 주요 뉴스</div>
+    <div class="toc-label en">TODAY'S TOP STORIES</div>
+    <ol>
+      <li><a href="#s1" class="ko">OpenAI, GPT-5.4 공식 출시 — 105만 토큰 컨텍스트 지원</a><a href="#s1" class="en">OpenAI Launches GPT-5.4 with 1.05M-Token Context Window</a></li>
+      <li><a href="#s2" class="ko">NVIDIA, GTC 2026에서 Nemotron 3 Super 공개</a><a href="#s2" class="en">NVIDIA Unveils Nemotron 3 Super at GTC 2026</a></li>
+      <li><a href="#s3" class="ko">Atlassian, AI 전환 위해 1,600명 감원 발표</a><a href="#s3" class="en">Atlassian Cuts 1,600 Jobs to Fund AI Pivot</a></li>
+      <li><a href="#s4" class="ko">OpenAI 연매출 $250억 돌파 — IPO 신호탄</a><a href="#s4" class="en">OpenAI Crosses $25B ARR — IPO Signals Grow Louder</a></li>
+      <li><a href="#s5" class="ko">DeepSeek V4 출시 — 1조 파라미터, 활성화는 320억</a><a href="#s5" class="en">DeepSeek V4 Arrives — 1 Trillion Params, Only 32B Active</a></li>
+      <li><a href="#s6" class="ko">오늘의 핵심 시사점</a><a href="#s6" class="en">Today's Key Takeaways</a></li>
+    </ol>
+  </nav>
+
+  <!-- S1: GPT-5.4 -->
+  <article class="story" id="s1">
+    <img class="story-img" src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg" alt="GPT-5.4 launch">
+    <h2 class="ko">OpenAI, GPT-5.4 공식 출시 — 105만 토큰 컨텍스트 지원</h2>
+    <h2 class="en">OpenAI Launches GPT-5.4 with 1.05M-Token Context Window</h2>
+    <div class="tag-row">
+      <span class="tag ko">OpenAI</span><span class="tag en">OpenAI</span>
+      <span class="tag ko">LLM</span><span class="tag en">LLM</span>
+      <span class="tag ko">컨텍스트 윈도우</span><span class="tag en">Context Window</span>
+      <span class="tag ko">AI 에이전트</span><span class="tag en">Agentic AI</span>
     </div>
-  </section>
+    <p class="ko">OpenAI가 3월 5일 GPT-5.4를 공식 출시했습니다. Standard, Thinking, Pro 세 가지 버전으로 제공되며, 최적화되며 105만 토큰의 컨텍스트 윈도우를 지원합니다. 약 785,000 단어 분량으로 장편 소설 약 3권에 해당합니다. OSWorld-V 벤치마크에서 75%, 전문직 업무에서 83%를 기록하며 전작 대비 큰 향상을 보였습니다.</p>
+    <p class="en">OpenAI officially launched GPT-5.4 on March 5, offering three variants — Standard, Thinking, and Pro. It supports up to 1.05 million tokens of context, equivalent to roughly 785,000 words or three full-length novels. It scored 75% on OSWorld-V and outperformed professional knowledge workers 83% of the time.</p>
+    <p class="ko">GPT-5.4는 고급 코딩과 추론, 대용량 문서·코드베이스 처리에서 두드러진 향상을 보입니다. API 활용에 최적화되었으며 ChatGPT Plus에서# 사용 가능합니다. OpenAI는 연말까지 AI 에이전트·엔터프라이즈·안전성 분야를 중심으로 8,000명 체제로의 대규모 채용을 예고했습니다.</p>
+    <p class="en">GPT-5.4 shows notable improvements in advanced coding, reasoning, and handling large documents and codebases. Optimized for enterprise API use, it is also available in ChatGPT Plus. OpenAI announced major hiring focused on AI agents, enterprise, and safety teams — targeting 8,000 employees by year-end.</p>
+    <p class="ko"><strong>핵심 요약:</strong> 105만 토큰 컨텍스트는 법률 계약서 전체 검토, 수백 쪽 연구 문서 분석 등 실무에 즉각 적용 가능합니다. AI 에이전트 시대의 실질적인 문이 열렸습니다.</p>
+    <p class="en"><strong>Key takeaway:</strong> A 1.05M-token context makes GPT-5.4 practical for reviewing entire legal contracts and analyzing lengthy research documents in one pass — a true unlock for enterprise agentic AI.</p>
+  </article>
 
-  <!-- SECTION 2: NVIDIA Nemotron 3 Super -->
-  <section class="section" id="s2">
-    <img class="section-img" src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg" alt="NVIDIA Nemotron 3 Super">
-    <div class="section-body">
-      <div class="section-num">Story 02</div>
-      <span class="tag">NVIDIA</span><span class="tag">GTC 2026</span><span class="tag">MoE</span>
-      <h2>
-        <span class="ko">NVIDIA, Nemotron 3 Super 공개 &#8212; 멀티에이전트 시대를 겨냥한 설계</span>
-        <span class="en">NVIDIA Unveils Nemotron 3 Super &#8212; Engineered for the Multi-Agent Era</span>
-      </h2>
-      <p class="ko">NVIDIA가 GTC 2026(3월 11일)에서 Nemotron 3 Super를 발표했다. 총 파라미터 1,200억 개를 갖추고 있지만, 추론 시 활성화되는 파라미터는 120억 개에 불과한 하이브리드 혼합 전문가(MoE) 아키텍처를 채택했다. 이 설계는 복잡한 멀티에이전트 작업에서 비용 대비 효율성을 크게 높인다. 엔터프라이즈 AI 에이전트 오케스트레이션 플랫폼인 NIM Agent Blueprint와 함께 출시됐다.</p>
-      <p class="en">At GTC 2026 on March 11, NVIDIA revealed Nemotron 3 Super &#8212; a hybrid Mixture-of-Experts model packing 120 billion total parameters but activating only 12 billion per forward pass. The design dramatically improves cost-efficiency for complex multi-agent workloads. It ships alongside NIM Agent Blueprint, NVIDIA's enterprise AI agent orchestration platform.</p>
-      <div class="highlight-box">
-        <span class="label ko">왜 중요한가</span>
-        <span class="label en">Why It Matters</span>
-        <p class="ko">활성 파라미터 120억 개는 추론 비용을 대형 밀집 모델 대비 최대 10분의 1로 줄일 수 있다. 동시에 1,200억 개 파라미터 수준의 지식을 보유한다. 기업 AI 에이전트의 대규모 배포를 경제적으로 실현 가능하게 하는 핵심 설계다.</p>
-        <p class="en">With only 12B active parameters, inference costs can drop up to 10x versus dense models of equivalent total scale, while retaining knowledge from all 120B parameters. This makes large-scale enterprise agent deployment economically viable for the first time.</p>
-      </div>
-      <div class="takeaway-grid">
-        <div class="takeaway-item">
-          <span class="tk-val">1,200&#50629;</span>
-          <div class="tk-lbl ko">총 파라미터</div>
-          <div class="tk-lbl en">Total parameters</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">120&#50629;</span>
-          <div class="tk-lbl ko">추론 시 활성</div>
-          <div class="tk-lbl en">Active per pass</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">MoE</span>
-          <div class="tk-lbl ko">하이브리드 아키텍처</div>
-          <div class="tk-lbl en">Hybrid architecture</div>
-        </div>
-      </div>
+  <!-- S2: NVIDIA Nemotron -->
+  <article class="story" id="s2">
+    <img class="story-img" src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg" alt="NVIDIA Nemotron 3 Super">
+    <h2 class="ko">NVIDIA, GTC 2026에서 Nemotron 3 Super 공개</h2>
+    <h2 class="en">NVIDIA Unveils Nemotron 3 Super at GTC 2026</h2>
+    <div class="tag-row">
+      <span class="tag ko">NVIDIA</span><span class="tag en">NVIDIA</span>
+      <span class="tag ko">GTC 2026</span><span class="tag en">GTC 2026</span>
+      <span class="tag ko">MoE 아키텍처</span><span class="tag en">MoE Architecture</span>
+      <span class="tag ko">멀티에이전트</span><span class="tag en">Multi-Agent</span>
     </div>
-  </section>
+    <p class="ko">NVIDIA가 3월 11일 GTC 2026 기조연설에서 Nemotron 3 Super를 발표했습니다. 하이브리드 MoE 아키텍처로 총 1,200억 개 파라미터를 보유하지만, 추론 시 활성화되는 파라미터는 120억 개에 불과합니다. 이를 통해 유사한 규모의 밀집 모델 대비 추론 비용을 최대 10분의 1로 줄일 수 있습니다.</p>
+    <p class="en">NVIDIA announced Nemotron 3 Super at the GTC 2026 keynote on March 11. The hybrid MoE model packs 120 billion total parameters, yet only 12 billion activate per inference pass — reducing compute costs by up to 10x versus dense models of equivalent knowledge capacity.</p>
+    <p class="ko">Nemotron 3 Super는 멀티에이전트 워크플로우와 대규모 엔터프라이즈 배포를 목표로 설계됐습니다. NVIDIA의 NIM 플랫폼과 통합되어 기업이 자체 인프라에서 즉시 활용할 수 있으며, Apache 2.0 라이선스로 공개되어 연구자와 기업 모두 자유롭게 사용할 수 있습니다.</p>
+    <p class="en">Nemotron 3 Super is designed for multi-agent workflows and large-scale enterprise deployments. It integrates with NVIDIA's NIM platform for easy deployment on enterprise infrastructure, and is released under the Apache 2.0 license for free use by researchers and businesses.</p>
+    <p class="ko"><strong>핵심 요약:</strong> 추론 비용 10분의 1 수준은 기업 AI 에이전트의 대규모 상용화를 가속합니다. NVIDIA가 GPU 판매를 넘어 AI 모델 생태계 주도권을 본격 겨냥하고 있습니다.</p>
+    <p class="en"><strong>Key takeaway:</strong> A 10x inference cost reduction accelerates enterprise AI agent adoption at scale. NVIDIA is moving beyond GPU sales to compete for AI model ecosystem leadership.</p>
+  </article>
 
-  <!-- SECTION 3: Atlassian layoffs -->
-  <section class="section" id="s3">
-    <img class="section-img" src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg" alt="Atlassian layoffs AI pivot">
-    <div class="section-body">
-      <div class="section-num">Story 03</div>
-      <span class="tag">Atlassian</span><span class="tag">구조조정</span><span class="tag">AI 투자</span>
-      <h2>
-        <span class="ko">Atlassian, 1,600명 감원 &#8212; AI 전환 재원 마련 목적</span>
-        <span class="en">Atlassian Cuts 1,600 Jobs to Bankroll AI Pivot</span>
-      </h2>
-      <p class="ko">Jira&#183;Confluence를 만든 Atlassian이 3월 11일 전체 인력의 약 10%에 해당하는 1,600명을 감원한다고 밝혔다. 회사 측은 절감된 비용을 AI 제품 및 인프라에 재투자하겠다고 명시했다. 이미 Atlassian의 AI 어시스턴트 Rovo는 월간 활성 사용자 500만 명을 돌파했으며, 이번 구조조정 이후 Rovo 개발 가속화에 집중한다는 방침이다.</p>
-      <p class="en">Atlassian, maker of Jira and Confluence, announced on March 11 that it would cut approximately 1,600 employees &#8212; about 10% of its workforce. The company explicitly stated the savings would be reinvested into AI products and infrastructure. Rovo, Atlassian's AI assistant, has already surpassed 5 million monthly active users, and the company plans to accelerate Rovo development post-restructuring.</p>
-      <div class="highlight-box">
-        <span class="label ko">더 넓은 맥락</span>
-        <span class="label en">Broader Context</span>
-        <p class="ko">Atlassian은 기업 소프트웨어 대기업들이 AI 전환 비용을 마련하기 위해 인력의 줄이는 흐름의 최신 사례다. 2026년 들어 AI 재원 마련을 명목으로 감원을 단행한 테크 기업은 Atlassian만이 아니다.</p>
-        <p class="en">Atlassian is the latest in a growing wave of enterprise software companies reducing headcount to fund AI transitions. It is far from alone &#8212; multiple major tech firms cited AI investment as the explicit reason for layoffs in early 2026.</p>
-      </div>
-      <div class="takeaway-grid">
-        <div class="takeaway-item">
-          <span class="tk-val">1,600&#47749;</span>
-          <div class="tk-lbl ko">감원 규모</div>
-          <div class="tk-lbl en">Jobs eliminated</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">~10%</span>
-          <div class="tk-lbl ko">전체 인력 대비</div>
-          <div class="tk-lbl en">Of total workforce</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">500&#47564;</span>
-          <div class="tk-lbl ko">Rovo MAU</div>
-          <div class="tk-lbl en">Rovo monthly users</div>
-        </div>
-      </div>
+  <!-- S3: Atlassian -->
+  <article class="story" id="s3">
+    <img class="story-img" src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg" alt="Atlassian layoffs AI pivot">
+    <h2 class="ko">Atlassian, AI 전환 위해 1,600명 감원 발표</h2>
+    <h2 class="en">Atlassian Cuts 1,600 Jobs to Fund AI Pivot</h2>
+    <div class="tag-row">
+      <span class="tag ko">Atlassian</span><span class="tag en">Atlassian</span>
+      <span class="tag ko">구조조정</span><span class="tag en">Layoffs</span>
+      <span class="tag ko">AI 투자</span><span class="tag en">AI Investment</span>
+      <span class="tag ko">기업 소프트웨어</span><span class="tag en">Enterprise Software</span>
     </div>
-  </section>
+    <p class="ko">Jira와 Confluence를 만든 Atlassian이 3월 11일 전체 인력의 약 10%에 해당하는 1,600명을 감원한다고 발표했습니다. 회사 측은 절감된 비용을 AI 제품 및 인프라에 집중 투자하겠다고 밝혔습니다. GTC 2026과 같은 날 발표되어 업계의 AI 중심 재편을 상징적으로 보여줬습니다.</p>
+    <p class="en">Atlassian, maker of Jira and Confluence, announced on March 11 that it would cut approximately 1,600 employees — roughly 10% of its total workforce. Savings will be reinvested directly into AI products and infrastructure. The announcement fell on the same day as GTC 2026, symbolically illustrating the industry's AI-centric restructuring.</p>
+    <p class="ko">Atlassian의 AI 협업 도구 'Rovo'는 월간 활성 사용자 500만 명을 넘어섰습니다. 2026년 들어 AI 재투자를 명목으로 단행된 테크 업계 누적 감원 규모는 5만 명에 달합니다. '인력 효율화 → AI 재투자' 공식이 기업 소프트웨어 전반으로 확산되고 있습니다.</p>
+    <p class="en">Atlassian's AI collaboration tool 'Rovo' has surpassed 5 million monthly active users. Tech-industry layoffs justified by AI reinvestment in 2026 have now reached approximately 50,000. The "workforce efficiency → AI reinvestment" formula is spreading across enterprise software.</p>
+    <p class="ko"><strong>핵심 요약:</strong> AI 전환 비용을 기존 인력으로 충당하는 흐름이 기업 소프트웨어 전반으로 확산되고 있습니다. AI가 생산성을 높이는 동시에 고용 구조를 근본적으로 변화시키고 있습니다.</p>
+    <p class="en"><strong>Key takeaway:</strong> Funding AI pivots by reducing headcount is spreading across enterprise software. AI is simultaneously raising productivity and fundamentally restructuring employment.</p>
+  </article>
 
-  <!-- SECTION 4: OpenAI $25B revenue / IPO -->
-  <section class="section" id="s4">
-    <img class="section-img" src="https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg" alt="OpenAI revenue IPO">
-    <div class="section-body">
-      <div class="section-num">Story 04</div>
-      <span class="tag">OpenAI</span><span class="tag">IPO</span><span class="tag">재무</span>
-      <h2>
-        <span class="ko">OpenAI 연매출 $250억 돌파 &#8212; IPO 준비 신호탄</span>
-        <span class="en">OpenAI Crosses $25B Annual Revenue &#8212; IPO Signals Grow Louder</span>
-      </h2>
-      <p class="ko">OpenAI가 연간 반복 매출(ARR) $250억을 돌파했다. 2025년 말 $140억에서 불과 수 개월 만에 거의 두 배로 성장한 수치다. 기업 가치는 최근 내부 평가에서 $3,000억을 넘어선 것으로 알려졌다. 복수의 소식통에 따르면 OpenAI는 2026년 말 또는 2027년 초 IPO를 향해 준비 작업을 진행 중이며, SoftBank 등 기존 투자자들도 공개 시장 진출을 촉구하고 있다.</p>
-      <p class="en">OpenAI has crossed $25 billion in annualized recurring revenue, nearly doubling from approximately $14B at the end of 2025 in just a few months. The company's internal valuation reportedly exceeded $300 billion in the most recent round. According to multiple sources, OpenAI is actively preparing for an IPO targeting late 2026 or early 2027, with existing investors including SoftBank pressing for a public market debut.</p>
-      <div class="highlight-box">
-        <span class="label ko">핵심 포인트</span>
-        <span class="label en">Key Point</span>
-        <p class="ko">ARR $250억은 2025년 상반기 대비 약 179% 성장한 수치다. 이 성장세가 유지된다면 OpenAI는 역사상 가장 빠르게 $1,000억 ARR에 도달하는 소프트웨어 기업이 될 수 있다.</p>
-        <p class="en">At $25B ARR, OpenAI is growing roughly 179% year-over-year from mid-2025. If the trajectory holds, it could become the fastest software company in history to reach $100B in annual recurring revenue.</p>
+  <!-- S4: OpenAI $25B ARR -->
+  <article class="story" id="s4">
+    <img class="story-img" src="https://images.pexels.com/photos/534216/pexels-photo-534216.jpeg" alt="OpenAI revenue IPO">
+    <h2 class="ko">OpenAI 연매출 $250억 돌파 — IPO 가능성 높아져</h2>
+    <h2 class="en">OpenAI Crosses $25B ARR — IPO Signals Grow Louder</h2>
+    <div class="tag-row">
+      <span class="tag ko">OpenAI</span><span class="tag en">OpenAI</span>
+      <span class="tag ko">연매출</span><span class="tag en">ARR</span>
+      <span class="tag ko">IPO</span><span class="tag en">IPO</span>
+      <span class="tag ko">기업가치</span><span class="tag en">Valuation</span>
+    </div>
+    <p class="ko">OpenAI가 연간 반복 매출(ARR) $250억을 돌파했습니다. 2025년 말 $140억에서 불과 수 개월 만 거의 두 배로 성장한 수치로, 전년 동기 대비 약 179% 성장입니다. 기업가치는 최근 내부 평가에서 $3,000억 이상으로 추정됩니다. 역사상 가장 빠르게 성장하는 소프트웨어 기업 중 하나임을 입증하고 있습니다.</p>
+    <p class="en">OpenAI has crossed $25 billion in annualized recurring revenue, nearly doubling from approximately $14 billion at end-2025 in just a few months — roughly 179% year-over-year growth. Its internal valuation is now estimated at over $300 billion, confirming it as one of the fastest-growing software companies in history.</p>
+    <p class="ko">이 성장세가 유지된다면 OpenAI는 역사상 가장 빠르게 $1,000억 ARR에 도달하는 소프트웨어 기업이 될 수 있습니다. IPO 준비 단계 진입 신호가 포착되고 있으며, 기업 고객 비율이 전체 매출의 40%를 넘어서며 수익 구조도 안정화되고 있습니다.</p>
+    <p class="en">If the trajectory holds, OpenAI could become the fastest software company to reach $100B ARR. IPO preparation signals are emerging, with investment banks beginning valuation modeling. Enterprise customers now represent over 40% of revenue, significantly stabilizing its income structure.</p>
+    <p class="ko"><strong>핵심 요약:</strong> ARR $250억은 AI 산업이 성장 단계를 넘어 수익화 단계에 진입했음을 증명합니다. OpenAI의 IPO는 AI 투자 생태계 전체를 재편할 역사적 이벤트가 될 것입니다.</p>
+    <p class="en"><strong>Key takeaway:</strong> $25B ARR proves the AI industry has moved from growth into monetization. An OpenAI IPO would be a watershed event reshaping the entire AI investment ecosystem.</p>
+  </article>
+
+  <!-- S5: DeepSeek V4 -->
+  <article class="story" id="s5">
+    <img class="story-img" src="https://images.pexels.com/photos/9253545/pexels-photo-9253545.jpeg" alt="DeepSeek V4">
+    <h2 class="ko">DeepSeek V4 출시 — 1조 파라미터, 활성화는 320억</h2>
+    <h2 class="en">DeepSeek V4 Arrives — 1 Trillion Parameters, Only 32B Active</h2>
+    <div class="tag-row">
+      <span class="tag ko">DeepSeek</span><span class="tag en">DeepSeek</span>
+      <span class="tag ko">오픈소스</span><span class="tag en">Open Source</span>
+      <span class="tag ko">MoE</span><span class="tag en">MoE</span>
+      <span class="tag ko">중국 AI</span><span class="tag en">China AI</span>
+    </div>
+    <p class="ko">중국 AI 스타트업 DeepSeek이 3월 초 V4를 출시했습니다. 총 파라미터 수 1조 개로 현존 공개 AI 모델 중 최대 규모입니다. MoE 아키텍처 덕분에 실제 추론 시 활성화되는 파라미터는 320억 개에 불과합니다. 오픈 웨이트로 공개되어 연구자와 기업 모두 자유롭게 활용할 수 있습니다.</p>
+    <p class="en">Chinese AI startup DeepSeek released V4 in early March — a model with 1 trillion total parameters, the largest publicly available AI model by raw parameter count. Thanks to its MoE architecture, only 32 billion parameters activate per inference pass. It is released as open weights, freely accessible to researchers and enterprises alike.</p>
+    <p class="ko">DeepSeek은 서방 선두 모델들과 경쟁하면서도 훨씬 적은 컴퓨팅 자원을 사용한다는 명성을 쌓아왔습니다. V4가 이 효율성 격차를 더욱 좁힌다면 AI 인프라 비용 구조 전체에 파급 효과가 예상됩니다. 미국의 반도체 수출 규제 속에서도 경쟁력을 유지하는 DeepSeek의 행보는 AI 지정학의 핵심 변수입니다.</p>
+    <p class="en">DeepSeek has built a reputation for competing with Western frontier models using significantly fewer compute resources. If V4 further closes the efficiency gap, ripple effects across the entire AI infrastructure cost structure are expected. DeepSeek's ability to remain competitive despite US semiconductor export controls makes it a critical variable in AI geopolitics.</p>
+    <p class="ko"><strong>핵심 요약:</strong> 1조 파라미터이면서 추론 비용은 소형 모델 수준인 DeepSeek V4는 '파라미터 경쟁'에서 '효율성 경쟁'으로 AI 개발 패러다임이 전환되고 있음을 상징합니다.</p>
+    <p class="en"><strong>Key takeaway:</strong> DeepSeek V4 — 1 trillion parameters at the inference cost of a small model — symbolizes a paradigm shift from the "parameter race" to an "efficiency race" in frontier AI development.</p>
+  </article>
+
+  <!-- TAKEAWAYS -->
+  <section class="takeaway" id="s6">
+    <h2 class="ko">오늘의 핵심 시사점</h2>
+    <h2 class="en">Today's Key Takeaways</h2>
+    <div class="takeaway-grid">
+      <div class="takeaway-card">
+        <div class="card-num">1</div>
+        <h3 class="ko">컨텍스트 전쟁이 본격화됐다</h3>
+        <h3 class="en">The Context Window War Has Begun</h3>
+        <p class="ko">GPT-5.4의 105만 토큰은 한 번의 프롬프트로 회사 전체 문서를 처리할 수 있는 능력입니다. 엔터프라이즈 AI의 판도를 바꾸는 실질적 전환점입니다.</p>
+        <p class="en">GPT-5.4's 1.05M tokens means processing an entire company's documents in a single prompt. This is a genuine inflection point for enterprise AI capabilities.</p>
       </div>
-      <div class="takeaway-grid">
-        <div class="takeaway-item">
-          <span class="tk-val">$250&#50613;</span>
-          <div class="tk-lbl ko">연간 반복 매출</div>
-          <div class="tk-lbl en">Annualized revenue</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">$3,000&#50613;+</span>
-          <div class="tk-lbl ko">추정 기업 가치</div>
-          <div class="tk-lbl en">Est. valuation</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">+179%</span>
-          <div class="tk-lbl ko">전년 대비 성장</div>
-          <div class="tk-lbl en">YoY growth</div>
-        </div>
+      <div class="takeaway-card">
+        <div class="card-num">2</div>
+        <h3 class="ko">효율성이 성능을 이긴다</h3>
+        <h3 class="en">Efficiency Is Beating Raw Performance</h3>
+        <p class="ko">Nemotron 3 Super와 DeepSeek V4 모두 MoE로 추론 비용을 혁신적으로 낮췄습니다. AI 경쟁의 핵심이 '가장 강한 모델'에서 '가장 효율적인 모델'로 이동하고 있습니다.</p>
+        <p class="en">Both Nemotron 3 Super and DeepSeek V4 slashed inference costs via MoE. The AI competition is shifting decisively from "most powerful" to "most efficient."</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="card-num">3</div>
+        <h3 class="ko">AI 전환 비용은 기존 인력이 치른다</h3>
+        <h3 class="en">AI Transition Costs Are Paid by Existing Workers</h3>
+        <p class="ko">Atlassian의 1,600명 감원은 AI 재투자를 위한 인력 감축 공식을 다시 확인합니다. AI가 생산성을 높이는 동시에 고용 구조를 근본적으로 변화시키고 있습니다.</p>
+        <p class="en">Atlassian's 1,600 layoffs reconfirm the formula: fund AI reinvestment by reducing headcount. AI simultaneously raises productivity and fundamentally reshapes employment structures.</p>
+      </div>
+      <div class="takeaway-card">
+        <div class="card-num">4</div>
+        <h3 class="ko">AI 수익화 시대가 열렸다</h3>
+        <h3 class="en">The AI Monetization Era Has Arrived</h3>
+        <p class="ko">OpenAI ARR $250억은 AI 산업이 성장 단계를 넘어 수익화 단계에 진입했음을 증명합니다. AI IPO 러시가 가시화되며 투자 생태계가 재편될 것입니다.</p>
+        <p class="en">OpenAI's $25B ARR proves the AI industry has moved into monetization. An imminent AI IPO rush will reshape the entire investment ecosystem.</p>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 5: DeepSeek V4 -->
-  <section class="section" id="s5">
-    <img class="section-img" src="https://images.pexels.com/photos/9253545/pexels-photo-9253545.jpeg" alt="DeepSeek V4">
-    <div class="section-body">
-      <div class="section-num">Story 05</div>
-      <span class="tag">DeepSeek</span><span class="tag">오픈소스</span><span class="tag">MoE</span>
-      <h2>
-        <span class="ko">DeepSeek V4 출시 &#8212; 1조 파라미터, 활성화는 320억</span>
-        <span class="en">DeepSeek V4 Arrives &#8212; 1 Trillion Parameters, Only 32B Active</span>
-      </h2>
-      <p class="ko">중국 AI 스타트업 DeepSeek이 3월 초 V4를 출시했다. 총 파라미터 수는 1조 개로 현존 공개 AI 모델 중 최대 규모지만, 실제 추론 시 활성화되는 파라미터는 320억 개에 불과하다. MoE 아키텍처를 통해 막대한 지식을 유지하면서도 추론 비용을 극적으로 절감했다. 오픈 웨이트로 공개돼 연구자 및 기업 모두 자유롭게 활용 가능하다.</p>
-      <p class="en">Chinese AI startup DeepSeek released V4 in early March &#8212; a model with 1 trillion total parameters, making it the largest publicly available AI model by raw parameter count. Yet only 32 billion parameters activate per inference thanks to its Mixture-of-Experts architecture, keeping compute costs far below what the headline number implies. It launches as open weights, accessible to researchers and enterprises alike.</p>
-      <div class="highlight-box">
-        <span class="label ko">왜 업계가 주목하는가</span>
-        <span class="label en">Why the Industry Is Watching</span>
-        <p class="ko">DeepSeek은 서방 선두 모델들과 경쟁하면서도 훨씬 적은 컴퓨팅 자원을 사용한다는 명성을 쌓아왔다. V4가 이 효율성 격차를 더욱 좁힌다면, AI 인프라 비용 구조 전체에 파급 효과를 줄 수 있다.</p>
-        <p class="en">DeepSeek has built a reputation for competing with Western frontier models using significantly fewer compute resources. If V4 further closes the efficiency gap, the ripple effects could pressure cost structures across the entire AI infrastructure ecosystem.</p>
-      </div>
-      <div class="takeaway-grid">
-        <div class="takeaway-item">
-          <span class="tk-val">1&#51312;</span>
-          <div class="tk-lbl ko">총 파라미터</div>
-          <div class="tk-lbl en">Total parameters</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">320&#50629;</span>
-          <div class="tk-lbl ko">추론 시 활성</div>
-          <div class="tk-lbl en">Active per inference</div>
-        </div>
-        <div class="takeaway-item">
-          <span class="tk-val">&#50724;&#54508;</span>
-          <div class="tk-lbl ko">공개 웨이트</div>
-          <div class="tk-lbl en">Open weights</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- NAVIGATION -->
-  <div class="nav-issues">
-    <a class="nav-link" href="2026_03_22_AI_Daily.html">
-      &#8592; <span class="ko">이전호</span><span class="en">Prev</span>
-    </a>
-    <span class="nav-center">2026.03.23</span>
-    <a class="nav-link disabled" href="#">
-      <span class="ko">다음호</span><span class="en">Next</span> &#8594;
-    </a>
-  </div>
+  <nav class="nav-issues">
+    <a class="nav-link" href="2026_03_22_AI_Daily.html">← <span class="ko">이전호</span><span class="en">Previous</span></a>
+    <a class="nav-link" href="AI_Daily_Archive.html" style="color:var(--text3)"><span class="ko">전체 목록</span><span class="en">All Issues</span></a>
+    <span class="nav-link disabled"><span class="ko">다음호</span><span class="en">Next</span> →</span>
+  </nav>
 
 </div>
 
 <footer>
-  <p>
-    <span class="ko">본 뉴스레터는 <a href="https://opendesignlab.com">Open Design Lab</a>의 AI Daily 시리즈입니다.<br>
-    매일 중요한 AI 소식을 선별해 전달합니다.</span>
-    <span class="en">This article is part of <a href="https://opendesignlab.com">Open Design Lab</a>'s AI Daily series.<br>
-    Curating the most important AI news, every day.</span>
-  </p>
+  <p class="ko">이 아티클은 <a href="https://opendesignlab.com">Open Design Lab</a>의 AI Daily 시리즈입니다. 매일 최신 AI 뉴스를 빠르게 정리합니다.</p>
+  <p class="en">This article is part of <a href="https://opendesignlab.com">Open Design Lab</a>'s AI Daily series. Your daily roundup of the most important AI developments.</p>
+  <p>Images: <a href="https://www.pexels.com">Pexels</a> (Free License)</p>
+  <p>© 2026 Open Design Lab. All rights reserved.</p>
 </footer>
 
 <script>
 function setLang(lang) {
-  if (lang === 'en') {
-    document.body.classList.add('en');
-  } else {
-    document.body.classList.remove('en');
-  }
-  document.querySelectorAll('.lang-btn').forEach(function(btn) {
-    btn.classList.remove('active');
-  });
-  var btns = document.querySelectorAll('.lang-btn');
-  if (lang === 'ko' && btns[0]) btns[0].classList.add('active');
-  if (lang === 'en' && btns[1]) btns[1].classList.add('active');
-  try { localStorage.setItem('ai-daily-lang', lang); } catch(e) {}
+    var body = document.body;
+    var btnKo = document.getElementById('btn-ko');
+    var btnEn = document.getElementById('btn-en');
+    if (lang === 'en') {
+        body.classList.add('lang-en');
+        document.documentElement.lang = 'en';
+        btnEn.classList.add('active');
+        btnKo.classList.remove('active');
+    } else {
+        body.classList.remove('lang-en');
+        document.documentElement.lang = 'ko';
+        btnKo.classList.add('active');
+        btnEn.classList.remove('active');
+    }
+    try { localStorage.setItem('ai-daily-lang', lang); } catch(e) {}
 }
 function setFont(size) {
-  document.body.classList.remove('font-s', 'font-l');
-  if (size !== 'm') document.body.classList.add('font-' + size);
-  document.querySelectorAll('.font-btn').forEach(function(btn) {
-    btn.classList.remove('active');
-  });
-  var target = document.querySelector('.font-btn-' + size);
-  if (target) target.classList.add('active');
-  try { localStorage.setItem('ai-daily-font', size); } catch(e) {}
+    var body = document.body;
+    body.removeAttribute('data-font-size');
+    if (size !== 'md') body.setAttribute('data-font-size', size);
+    ['sm','md','lg'].forEach(function(s) {
+        document.getElementById('btn-'+s).classList.remove('active');
+    });
+    document.getElementById('btn-'+size).classList.add('active');
+    try { localStorage.setItem('ai-daily-font', size); } catch(e) {}
 }
 function toggleTheme() {
-  document.documentElement.classList.toggle('dark');
-  document.body.classList.toggle('dark');
-  var isDark = document.body.classList.contains('dark');
-  try { localStorage.setItem('ai-daily-theme', isDark ? 'dark' : 'light'); } catch(e) {}
+    var html = document.documentElement;
+    var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('ai-daily-theme', next); } catch(e) {}
 }
 (function() {
-  try {
-    var savedTheme = localStorage.getItem('ai-daily-theme');
-    if (savedTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-    }
-    var savedFont = localStorage.getItem('ai-daily-font');
-    if (savedFont) setFont(savedFont);
-    var savedLang = localStorage.getItem('ai-daily-lang');
-    if (savedLang) setLang(savedLang);
-  } catch(e) {}
+    try {
+        var t = localStorage.getItem('ai-daily-theme');
+        if (t) document.documentElement.setAttribute('data-theme', t);
+        var f = localStorage.getItem('ai-daily-font');
+        if (f) setFont(f);
+        var l = localStorage.getItem('ai-daily-lang');
+        if (l) setLang(l);
+    } catch(e) {}
 })();
 </script>
-
 </body>
 </html>
