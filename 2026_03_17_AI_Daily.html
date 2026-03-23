@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>데이터 전쟁이 판을 바꾼다 — IBM·삼성·라쿠텐, AI 인프라 선점 경쟁 본격화 | 2026.3.17</title>
+  <script>
+    (function(){
+      var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root, [data-theme="light"] {
+      --bg: #fafafa; --surface: #ffffff; --text-primary: #1a1a1a; --text-secondary: #555555;
+      --text-tertiary: #888888; --accent: #3b82f6; --accent-light: #eff6ff; --border: #e5e7eb;
+      --tag-bg: #f3f4f6; --radius: 12px; --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.06); --img-brightness: 1;
+    }
+    [data-theme="dark"] {
+      --bg: #111113; --surface: #1c1c1f; --text-primary: #e4e4e7; --text-secondary: #a1a1aa;
+      --text-tertiary: #71717a; --accent: #60a5fa; --accent-light: rgba(96,165,250,0.1);
+      --border: #27272a; --tag-bg: #27272a; --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.3); --img-brightness: 0.85;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans KR','Inter',-apple-system,BlinkMacSystemFont,sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.8; -webkit-font-smoothing: antialiased; transition: background 0.3s, color 0.3s; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    .lang-toggle { display: flex; background: var(--tag-bg); border-radius: 8px; padding: 3px; gap: 2px; transition: background 0.3s; }
+    .lang-btn { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 600; padding: 5px 14px; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-tertiary); transition: all 0.2s; letter-spacing: 0.02em; }
+    .lang-btn.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+    .lang-btn:hover:not(.active) { color: var(--text-primary); }
+
+    .theme-btn { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+    .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+    .theme-btn svg { width: 16px; height: 16px; }
+    .theme-icon-moon, .theme-icon-sun { display: none; }
+    [data-theme="light"] .theme-icon-moon { display: block; }
+    [data-theme="dark"] .theme-icon-sun { display: block; }
+
+    .font-toggle { display: flex; background: var(--tag-bg); border-radius: 8px; padding: 3px; gap: 2px; transition: background 0.3s; }
+    .font-btn { font-family: 'Inter',sans-serif; font-weight: 600; padding: 4px 8px; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-tertiary); transition: all 0.2s; line-height: 1; }
+    .font-btn.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+    .font-btn:hover:not(.active) { color: var(--text-primary); }
+    .font-btn-s { font-size: 11px; } .font-btn-m { font-size: 13px; } .font-btn-l { font-size: 16px; }
+    html { font-size: 16px; } html.fs-small { font-size: 14px; } html.fs-medium { font-size: 16px; } html.fs-large { font-size: 18px; }
+
+    .header-controls { display: flex; align-items: center; gap: 8px; }
+
+    .topbar { position: sticky; top: 0; z-index: 1000; background: var(--bg); border-bottom: 1px solid transparent; transition: background 0.3s, border-color 0.25s, box-shadow 0.25s; }
+    .topbar.scrolled { border-bottom-color: var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
+    [data-theme="dark"] .topbar.scrolled { box-shadow: 0 1px 8px rgba(0,0,0,0.25); }
+    .topbar-inner { max-width: 720px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+
+    .en { display: none; } .ko { display: inline; }
+    p.en, div.en, h1.en, h2.en, h3.en, li.en, span.en { display: none; }
+    p.ko, div.ko, h1.ko, h2.ko, h3.ko, li.ko, span.ko { display: block; }
+    span.ko { display: inline; } h1.ko, h2.ko, h3.ko { display: block; }
+    body.lang-en .en { display: inline; } body.lang-en .ko { display: none !important; }
+    body.lang-en p.en, body.lang-en div.en, body.lang-en h1.en, body.lang-en h2.en, body.lang-en h3.en { display: block; }
+    body.lang-en li.en { display: flex; } body.lang-en span.en { display: inline; }
+    body.lang-en p.ko, body.lang-en div.ko, body.lang-en h1.ko, body.lang-en h2.ko, body.lang-en h3.ko, body.lang-en li.ko, body.lang-en span.ko { display: none !important; }
+
+    header { border-bottom: 1px solid var(--border); padding: 32px 0 24px; }
+    .header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 22px; width: auto; transition: filter 0.3s; }
+    [data-theme="light"] .logo img { filter: brightness(0) saturate(100%); }
+    [data-theme="dark"] .logo img { filter: none; }
+.header-title { font-size: 2rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.03em; margin-bottom: 12px; }
+    .header-meta { font-size: 14px; color: var(--text-tertiary); display: flex; align-items: center; gap: 12px; }
+    .header-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--text-tertiary); }
+
+    .lead { padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .lead p { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.9; }
+    .toc { padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .toc-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin-bottom: 16px; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .toc-list li { display: flex; align-items: baseline; gap: 12px; }
+    .toc-num { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 600; color: var(--accent); min-width: 20px; }
+    .toc-list a { font-size: 0.9375rem; color: var(--text-primary); text-decoration: none; transition: color 0.15s; }
+    .toc-list a:hover { color: var(--accent); }
+    .section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    .section-num { font-family: 'Inter',sans-serif; font-size: 13px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+    .section h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; line-height: 1.4; }
+    .section p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.85; }
+    .section p:last-child { margin-bottom: 0; }
+    .highlight-box { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 0 var(--radius) var(--radius) 0; margin: 20px 0; transition: background 0.3s; }
+    .highlight-box p { color: var(--text-primary); font-size: 0.9375rem; margin-bottom: 0; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tag { font-size: 12px; font-weight: 500; color: var(--text-secondary); background: var(--tag-bg); padding: 4px 10px; border-radius: 6px; }
+    .takeaway { padding: 48px 0 40px; }
+    .takeaway h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .takeaway-grid { display: grid; gap: 16px; }
+    .takeaway-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-sm); transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; }
+    .takeaway-card .card-num { font-family: 'Inter',sans-serif; font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .takeaway-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .takeaway-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.75; }
+    footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--text-tertiary); line-height: 1.7; }
+    footer a { color: var(--accent); text-decoration: none; }
+    .nav-issues { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-top: 1px solid var(--border); margin-top: 0; }
+    .nav-link { font-size: 14px; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+    .nav-link:hover { opacity: 0.7; }
+    .nav-link.disabled { color: var(--text-tertiary); pointer-events: none; opacity: 0.4; }
+    .section-img { width: 100%; height: 280px; object-fit: cover; border-radius: var(--radius); margin-bottom: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
+    .hero-img { width: 100%; height: 360px; object-fit: cover; border-radius: var(--radius); margin-top: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .header-title { font-size: 1.5rem; }
+      .section h2 { font-size: 1.1875rem; }
+      .header-meta { flex-wrap: wrap; gap: 8px; }
+      .header-meta .dot { display: none; }
+      .section-img { height: 200px; }
+      .hero-img { height: 240px; }
+      .header-left { gap: 8px; }
+      .topbar-inner { padding: 10px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="header-left">
+      <a href="AI_Daily_Archive.html" class="logo"><img src="https://opendesignlab.com/images/logo-gnb-white.svg" alt="Open Design Lab"></a>
+      </div>
+    <div class="header-controls">
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <div class="font-toggle">
+        <button class="font-btn font-btn-s" id="fs-s" onclick="setFontSize('small')">A</button>
+        <button class="font-btn font-btn-m active" id="fs-m" onclick="setFontSize('medium')">A</button>
+        <button class="font-btn font-btn-l" id="fs-l" onclick="setFontSize('large')">A</button>
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <header>
+      <div class="container">
+        <h1>
+          <span class="header-title ko">데이터 전쟁이 판을 바꾼다 — IBM·삼성·라쿠텐, AI 인프라 선점 경쟁 본격화</span>
+          <span class="header-title en">The Data War Reshapes the Board — IBM, Samsung & Rakuten Escalate AI Infra Race</span>
+        </h1>
+        <div class="header-meta">
+          <span class="ko">2026년 3월 17일 월요일</span>
+          <span class="en">Monday, March 17, 2026</span>
+          <span class="dot">·</span>
+          <span class="ko">AI 뉴스 데일리 브리핑</span>
+          <span class="en">AI News Daily Briefing</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <img class="hero-img" src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Hero">
+
+        <div class="lead">
+          <p>
+            <span class="ko">2026년 3월 17일, AI 산업의 판도가 데이터 인프라를 중심으로 급변하고 있습니다. IBM은 110억 달러에 Confluent를 인수하며 실시간 데이터 스트리밍 역량을 확보했고, 라쿠텐은 7000억 파라미터 MoE 모델 AI 3.0을 공개했습니다. 삼성은 AI 디바이스 8억 대 확장을 선언하고, Gartner는 2028년까지 사이버보안 사고 50%가 AI 관련일 것이라 경고했습니다.</span>
+            <span class="en">On March 17, 2026, the AI landscape is shifting around data infrastructure. IBM acquired Confluent for $11B for real-time data streaming, Rakuten unveiled its 700B-parameter MoE model AI 3.0, Samsung expanded AI device reach to 800M units, and Gartner warns 50% of cybersecurity incidents will be AI-related by 2028.</span>
+          </p>
+        </div>
+
+        <div class="toc">
+          <div class="toc-title ko">목차</div>
+          <div class="toc-title en">Contents</div>
+          <nav>
+            <div class="ko">
+              <a href="#s1"><span class="toc-num">01</span>IBM, Confluent 110억 달러 인수 — 실시간 데이터로 에이전틱 AI 기반 구축</a>
+              <a href="#s2"><span class="toc-num">02</span>라쿠텐, 7000억 파라미터 AI 3.0 공개 — 일본발 초거대 MoE 모델의 도전</a>
+              <a href="#s3"><span class="toc-num">03</span>Gartner 경고: 2028년 사이버보안 사고 50%, AI가 원인</a>
+              <a href="#s4"><span class="toc-num">04</span>Accenture-Databricks 전략적 파트너십 확대 — 엔터프라이즈 AI 데이터 플랫폼 통합 가속</a>
+              <a href="#s5"><span class="toc-num">05</span>삼성, AI 디바이스 8억 대 확장 선언 — 온디바이스 AI 시대 본격화</a>
+            </div>
+            <div class="en">
+              <a href="#s1"><span class="toc-num">01</span>IBM Acquires Confluent for $11B — Building Agentic AI on Real-Time Data</a>
+              <a href="#s2"><span class="toc-num">02</span>Rakuten Unveils 700B-Parameter AI 3.0 — Japan's Bold MoE Model Challenge</a>
+              <a href="#s3"><span class="toc-num">03</span>Gartner Warns: 50% of Cybersecurity Incidents Will Be AI-Driven by 2028</a>
+              <a href="#s4"><span class="toc-num">04</span>Accenture-Databricks Expand Strategic Partnership — Accelerating Enterprise AI Data Platforms</a>
+              <a href="#s5"><span class="toc-num">05</span>Samsung Declares 800M AI Device Expansion — On-Device AI Era Begins</a>
+            </div>
+          </nav>
+        </div>
+
+
+        <div class="section" id="s1">
+          <img class="section-img" src="https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Section 1">
+          <div class="section-num">01</div>
+          <div class="tag-row">
+            <span class="tag ko">인수합병</span>
+            <span class="tag en">M&A</span>
+          </div>
+          <h2>
+            <span class="ko">IBM, Confluent 110억 달러 인수 — 실시간 데이터로 에이전틱 AI 기반 구축</span>
+            <span class="en">IBM Acquires Confluent for $11B — Building Agentic AI on Real-Time Data</span>
+          </h2>
+          <p>
+            <span class="ko">IBM이 실시간 데이터 스트리밍 플랫폼 기업 Confluent를 110억 달러에 인수한다고 발표했습니다. 이번 인수는 IBM의 에이전틱 AI 전략의 핵심 요소로, Apache Kafka 기반의 실시간 데이터 파이프라인을 watsonx 플랫폼에 통합하여 AI 에이전트가 실시간으로 데이터에 접근하고 행동할 수 있는 기반을 마련합니다. Confluent CEO Jay Kreps는 이번 결합이 "데이터 스트리밍과 엔터프라이즈 AI의 새로운 시대"를 열 것이라 밝혔습니다.</span>
+            <span class="en">IBM announced the acquisition of real-time data streaming platform Confluent for $11 billion. The deal is central to IBM's agentic AI strategy, integrating Apache Kafka-based real-time data pipelines into the watsonx platform so AI agents can access and act on data in real time. Confluent CEO Jay Kreps said the combination will open "a new era of data streaming and enterprise AI."</span>
+          </p>
+        </div>
+
+
+        <div class="section" id="s2">
+          <img class="section-img" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Section 2">
+          <div class="section-num">02</div>
+          <div class="tag-row">
+            <span class="tag ko">AI 모델</span>
+            <span class="tag en">AI Models</span>
+          </div>
+          <h2>
+            <span class="ko">라쿠텐, 7000억 파라미터 AI 3.0 공개 — 일본발 초거대 MoE 모델의 도전</span>
+            <span class="en">Rakuten Unveils 700B-Parameter AI 3.0 — Japan's Bold MoE Model Challenge</span>
+          </h2>
+          <p>
+            <span class="ko">라쿠텐이 7000억 파라미터 규모의 Mixture of Experts(MoE) 모델 'AI 3.0'을 공개했습니다. 일본어와 영어에 최적화된 이 모델은 라쿠텐 모바일, 전자상거래, 금융 서비스 전반에 통합될 예정입니다. 특히 DeepSeek의 MoE 기술과의 유사성이 지적되며 기술 독자성 논란이 일고 있으나, 라쿠텐은 독자 개발을 강조하며 아시아 시장 공략을 다지고 있습니다.</span>
+            <span class="en">Rakuten unveiled its 700 billion parameter Mixture of Experts (MoE) model 'AI 3.0'. Optimized for Japanese and English, the model will be integrated across Rakuten Mobile, e-commerce, and financial services. While similarities with DeepSeek's MoE technology have sparked originality debates, Rakuten emphasizes independent development and eyes Asia-Pacific market dominance.</span>
+          </p>
+        </div>
+
+
+        <div class="section" id="s3">
+          <img class="section-img" src="https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Section 3">
+          <div class="section-num">03</div>
+          <div class="tag-row">
+            <span class="tag ko">사이버보안</span>
+            <span class="tag en">Cybersecurity</span>
+          </div>
+          <h2>
+            <span class="ko">Gartner 경고: 2028년 사이버보안 사고 50%, AI가 원인</span>
+            <span class="en">Gartner Warns: 50% of Cybersecurity Incidents Will Be AI-Driven by 2028</span>
+          </h2>
+          <p>
+            <span class="ko">Gartner가 2028년까지 전체 사이버보안 사고의 50%가 AI 애플리케이션과 직접 관련될 것이라는 전망을 발표했습니다. AI 모델의 취약점을 악용한 프롬프트 인젝션 공격, 데이터 포이즌닝, 모델 탈취 등이 급증하고 있으며, 기업들은 AI 보안 전담 조직을 신설하고 있습니다. Gartner는 기업들에게 AI 보안 프레임워크 도입과 전문 인력 확보를 긴급 권고했습니다.</span>
+            <span class="en">Gartner predicts that 50% of all cybersecurity incidents will be directly related to AI applications by 2028. Prompt injection attacks, data poisoning, and model theft are surging, prompting companies to establish dedicated AI security teams. Gartner urgently recommends adopting AI security frameworks and securing specialized talent.</span>
+          </p>
+        </div>
+
+
+        <div class="section" id="s4">
+          <img class="section-img" src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Section 4">
+          <div class="section-num">04</div>
+          <div class="tag-row">
+            <span class="tag ko">파트너십</span>
+            <span class="tag en">Partnership</span>
+          </div>
+          <h2>
+            <span class="ko">Accenture-Databricks 전략적 파트너십 확대 — 엔터프라이즈 AI 데이터 플랫폼 통합 가속</span>
+            <span class="en">Accenture-Databricks Expand Strategic Partnership — Accelerating Enterprise AI Data Platforms</span>
+          </h2>
+          <p>
+            <span class="ko">Accenture와 Databricks가 전략적 파트너십을 확대하여 글로벌 기업들의 AI 데이터 플랫폼 통합을 가속화합니다. 양사는 Databricks의 레이크하우스 아키텍처와 Accenture의 컨설팅 역량을 결합하여 기업의 데이터 사일로를 해소하고, 에이전틱 AI 워크플로를 구축하는 것을 목표로 합니다. 특히 금융, 헬스케어, 제조업 분야에서 대규모 도입이 예상됩니다.</span>
+            <span class="en">Accenture and Databricks expanded their strategic partnership to accelerate enterprise AI data platform integration globally. The duo combines Databricks' lakehouse architecture with Accenture's consulting capabilities to break down data silos and build agentic AI workflows, with large-scale deployments expected in finance, healthcare, and manufacturing.</span>
+          </p>
+        </div>
+
+
+        <div class="section" id="s5">
+          <img class="section-img" src="https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Section 5">
+          <div class="section-num">05</div>
+          <div class="tag-row">
+            <span class="tag ko">AI 디바이스</span>
+            <span class="tag en">AI Devices</span>
+          </div>
+          <h2>
+            <span class="ko">삼성, AI 디바이스 8억 대 확장 선언 — 온디바이스 AI 시대 본격화</span>
+            <span class="en">Samsung Declares 800M AI Device Expansion — On-Device AI Era Begins</span>
+          </h2>
+          <p>
+            <span class="ko">삼성전자가 AI 기능 탑재 디바이스를 8억 대로 확대하겠다고 발표했습니다. 스마트폰, TV, 가전, IoT 기기 전반에 온디바이스 AI를 통합하여 클라우드 의존도를 줄이고 사용자 경험을 개인화하는 전략입니다. Galaxy AI의 성공에 힘입어 가전과 IoT 영역으로 AI 생태계를 확장하며, 애플·구글과의 온디바이스 AI 경쟁에서 선두를 유지하려는 행보입니다.</span>
+            <span class="en">Samsung Electronics announced plans to expand AI-enabled devices to 800 million units. By integrating on-device AI across smartphones, TVs, appliances, and IoT devices, Samsung aims to reduce cloud dependency and personalize user experiences. Building on Galaxy AI's success, the company extends its AI ecosystem to home appliances and IoT, maintaining its lead in the on-device AI race against Apple and Google.</span>
+          </p>
+        </div>
+
+
+        <div class="highlight-box">
+          <p>
+            <span class="ko">오늘의 AI 산업은 데이터 인프라 확보 전쟁으로 요약됩니다. IBM의 Confluent 인수부터 삼성의 온디바이스 AI 확장까지, 데이터를 잡는 자가 AI 시대를 지배합니다.</span>
+            <span class="en">Today's AI industry is defined by the battle for data infrastructure. From IBM's Confluent acquisition to Samsung's on-device AI expansion, whoever controls the data pipeline will dominate the AI era.</span>
+          </p>
+        </div>
+
+        <div class="takeaway">
+          <h2>
+            <span class="ko">핵심 포인트</span>
+            <span class="en">Key Takeaways</span>
+          </h2>
+          <div class="takeaway-grid">
+
+            <div class="takeaway-card">
+              <div class="card-num">01</div>
+              <p>
+                <span class="ko">IBM, 실시간 데이터로 에이전틱 AI 기반 구축</span>
+                <span class="en">IBM builds agentic AI foundation on real-time data</span>
+              </p>
+            </div>
+
+            <div class="takeaway-card">
+              <div class="card-num">02</div>
+              <p>
+                <span class="ko">라쿠텐, 아시아 초거대 AI 모델 경쟁 합류</span>
+                <span class="en">Rakuten joins Asia's mega AI model race</span>
+              </p>
+            </div>
+
+            <div class="takeaway-card">
+              <div class="card-num">03</div>
+              <p>
+                <span class="ko">AI 보안 위협 급증, 전문 프레임워크 시급</span>
+                <span class="en">AI security threats surge, frameworks urgently needed</span>
+              </p>
+            </div>
+
+            <div class="takeaway-card">
+              <div class="card-num">04</div>
+              <p>
+                <span class="ko">데이터 플랫폼 통합 파트너십 확대</span>
+                <span class="en">Data platform partnerships accelerate integration</span>
+              </p>
+            </div>
+
+            <div class="takeaway-card">
+              <div class="card-num">05</div>
+              <p>
+                <span class="ko">온디바이스 AI 시대, 삼성 8억 대 목표</span>
+                <span class="en">On-device AI era, Samsung targets 800M devices</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-issues">
+          <span class="nav-link disabled">← <span class="ko">이전 호</span><span class="en">Previous</span></span>
+          <a href="2026_03_18_AI_Daily.html" class="nav-link"><span class="ko">다음 호</span><span class="en">Next</span> →</a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+    (function(){
+      var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  </body>
+</html>
