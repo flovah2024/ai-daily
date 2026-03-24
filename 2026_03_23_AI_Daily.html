@@ -381,6 +381,9 @@ function setTheme(theme) {
 function toggleTheme() {
   setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
 }
+
+setTheme(getPreferredTheme());
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(e) { setTheme(getPreferredTheme()); });
 </script>
 </body>
 </html>
