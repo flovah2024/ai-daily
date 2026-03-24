@@ -372,10 +372,69 @@ header { border-bottom: 1px solid var(--border); padding: 32px 0 24px; }
     </main>
 
     <script>
-    (function(){
-      var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
+function setLang(lang) {
+  var body = document.body;
+  var btnKo = document.getElementById('btn-ko');
+  var btnEn = document.getElementById('btn-en');
+  if (lang === 'en') {
+    body.classList.add('lang-en');
+    document.documentElement.lang = 'en';
+    btnEn.classList.add('active');
+    btnKo.classList.remove('active');
+  } else {
+    body.classList.remove('lang-en');
+    document.documentElement.lang = 'ko';
+    btnKo.classList.add('active');
+    btnEn.classList.remove('active');
+  }
+}
+
+(function() {
+  var topbar = document.getElementById('topbar');
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        topbar.classList.toggle('scrolled', window.scrollY > 10);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+function setFontSize(size) {
+  var html = document.documentElement;
+  html.classList.remove('fs-small', 'fs-medium', 'fs-large');
+  html.classList.add('fs-' + size);
+  var btns = { small: 'fs-s', medium: 'fs-m', large: 'fs-l' };
+  Object.keys(btns).forEach(function(k) {
+    var el = document.getElementById(btns[k]);
+    if (el) el.classList.toggle('active', k === size);
+  });
+  localStorage.setItem('odl-fontsize', size);
+}
+(function() {
+  var saved = localStorage.getItem('odl-fontsize');
+  if (saved && saved !== 'medium') setFontSize(saved);
+})();
+
+function getPreferredTheme() {
+  var saved = localStorage.getItem('odl-theme');
+  if (saved) return saved;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('odl-theme', theme);
+}
+function toggleTheme() {
+  setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+}
+setTheme(getPreferredTheme());
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+  if (!localStorage.getItem('odl-theme')) setTheme(e.matches ? 'dark' : 'light');
+});
+</script>
   </body>
 </html>
