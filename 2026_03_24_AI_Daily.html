@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>테라팹에서 알파이볼브까지 — AI 반도체·국방·수학의 새 지평 | 2026.3.24</title>
+<title>빅테크 동맹의 시대 — OpenAI·NVIDIA 100조 파트너십과 오픈소스 에이전트 혁명 | 2026.3.24</title>
 <link rel="icon" href="odl_logo.png" type="image/png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
@@ -37,8 +37,7 @@ body { font-family: 'Noto Sans KR','Inter',-apple-system,BlinkMacSystemFont,sans
 .font-btn.active { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
 .font-btn:hover:not(.active) { color: var(--text-primary); }
 .font-btn-s { font-size: 11px; } .font-btn-m { font-size: 13px; } .font-btn-l { font-size: 16px; }
-html { font-size: 16px; }
-html.fs-small { font-size: 14px; } html.fs-medium { font-size: 16px; } html.fs-large { font-size: 18px; }
+html { font-size: 16px; } html.fs-small { font-size: 14px; } html.fs-medium { font-size: 16px; } html.fs-large { font-size: 18px; }
 .header-controls { display: flex; align-items: center; gap: 8px; }
 .topbar { position: sticky; top: 0; z-index: 1000; background: var(--bg); border-bottom: 1px solid transparent; transition: background 0.3s, border-color 0.25s, box-shadow 0.25s; }
 .topbar.scrolled { border-bottom-color: var(--border); box-shadow: 0 1px 8px rgba(0,0,0,0.06); }
@@ -49,11 +48,9 @@ html.fs-small { font-size: 14px; } html.fs-medium { font-size: 16px; } html.fs-l
 p.en, div.en, h1.en, h2.en, h3.en, li.en, span.en { display: none; }
 p.ko, div.ko, h1.ko, h2.ko, h3.ko, li.ko, span.ko { display: block; }
 span.ko { display: inline; } h1.ko, h2.ko, h3.ko { display: block; }
-body.lang-en .en { display: inline !important; }
-body.lang-en .ko { display: none !important; }
+body.lang-en .en { display: inline !important; } body.lang-en .ko { display: none !important; }
 body.lang-en p.en, body.lang-en div.en, body.lang-en h1.en, body.lang-en h2.en, body.lang-en h3.en { display: block !important; }
-body.lang-en li.en { display: flex !important; }
-body.lang-en span.en { display: inline !important; }
+body.lang-en li.en { display: flex !important; } body.lang-en span.en { display: inline !important; }
 body.lang-en p.ko, body.lang-en div.ko, body.lang-en h1.ko, body.lang-en h2.ko, body.lang-en h3.ko, body.lang-en li.ko, body.lang-en span.ko { display: none !important; }
 header { border-bottom: 1px solid var(--border); padding: 32px 0 24px; }
 .header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
@@ -100,15 +97,9 @@ footer a { color: var(--accent); text-decoration: none; }
 .section-img { width: 100%; height: 280px; object-fit: cover; border-radius: var(--radius); margin-bottom: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
 .hero-img { width: 100%; height: 360px; object-fit: cover; border-radius: var(--radius); margin-top: 24px; display: block; background: var(--tag-bg); filter: brightness(var(--img-brightness)); transition: filter 0.3s; }
 @media (max-width: 640px) {
-  .container { padding: 0 16px; }
-  .header-title { font-size: 1.5rem; }
-  .section h2 { font-size: 1.1875rem; }
-  .header-meta { flex-wrap: wrap; gap: 8px; }
-  .header-meta .dot { display: none; }
-  .section-img { height: 200px; }
-  .hero-img { height: 240px; }
-  .header-left { gap: 8px; }
-  .topbar-inner { padding: 10px 16px; }
+  .container { padding: 0 16px; } .header-title { font-size: 1.5rem; } .section h2 { font-size: 1.1875rem; }
+  .header-meta { flex-wrap: wrap; gap: 8px; } .header-meta .dot { display: none; }
+  .section-img { height: 200px; } .hero-img { height: 240px; } .header-left { gap: 8px; } .topbar-inner { padding: 10px 16px; }
 }
 </style>
 </head>
@@ -118,7 +109,7 @@ footer a { color: var(--accent); text-decoration: none; }
 <div class="topbar-inner">
   <div class="header-left">
     <a href="AI_Daily_Archive.html" class="logo"><img src="https://opendesignlab.com/images/logo-gnb-white.svg" alt="Open Design Lab"></a>
-  </div>
+    </div>
   <div class="header-controls">
     <div class="lang-toggle">
       <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">KO</button>
@@ -138,179 +129,185 @@ footer a { color: var(--accent); text-decoration: none; }
 </div>
 
 <div class="container">
-<header>
-  <h1 class="header-title ko">테라팹에서 알파이볼브까지 — AI 반도체·국방·수학의 새 지평</h1>
-  <h1 class="header-title en">From Terafab to AlphaEvolve — AI Reshapes Chips, Defense, and Mathematics</h1>
+
+  <!-- Header Meta -->
   <div class="header-meta">
-    <span class="ko">2026년 3월 24일</span>
-    <span class="en">March 24, 2026</span>
-    <span class="dot"></span>
-    <span class="ko">읽는 시간 약 7분</span>
-    <span class="en">7 min read</span>
-    <span class="dot"></span>
-    <span>Open Design Lab AI</span>
+    <img class="hero-img" src="images/mar24_hero.jpg" alt="빅테크 AI 파트너십 시대">
+    <h1 class="ko">빅테크 동맹의 시대 — OpenAI·NVIDIA 100조 파트너십과 오픈소스 에이전트 혁명</h1>
+    <h1 class="en">The Age of Big Tech Alliances — OpenAI·NVIDIA $100B Partnership & Open-Source Agent Revolution</h1>
+    <p class="date">
+      <span class="ko">2026년 3월 24일</span>
+      <span class="en">March 24, 2026</span>
+      &middot;
+      <span class="ko">읽는 시간 약 7분</span>
+      <span class="en">7 min read</span>
+      &middot;
+      Open Design Lab AI
+    </p>
   </div>
-  <img class="hero-img" src="images/2026_03_24_s1.webp" alt="AI technology landscape">
-</header>
 
-<p class="lead ko">머스크의 $25B 테라팹 반도체 공장이 오스틴에서 출범하며 AI 칩 자급 시대를 선언합니다. OpenAI GPT-5.4는 100만 토큰 컨텍스트로 자율 워크플로를 실현하고, Anthropic-국방부 갈등은 워런 상원의원의 '보복' 발어으로 격화됩니다. Google DeepMind의 AlphaEvolve는 수학 난제를 풀며, Mistral Small 4는 오픈소스 AI의 새 기준을 제시합니다.</p>
-<p class="lead en">Musk's $25B Terafab chip factory launches in Austin, declaring a new era of AI chip self-sufficiency. OpenAI's GPT-5.4 achieves autonomous workflows with a 1M-token context window. The Anthropic-Pentagon conflict intensifies as Senator Warren calls it 'retaliation.' Google DeepMind's AlphaEvolve solves open math problems, and Mistral Small 4 sets a new open-source benchmark.</p>
+  <!-- Lead -->
+  <p class="ko">OpenAI와 NVIDIA가 최소 10기가와트 규모의 AI 인프라 구축을 위한 100조 원대 전략적 파트너십을 체결하며 빅테크 간 초대형 동맹 시대를 열었습니다. 오픈소스 AI 에이전트 OpenClaw는 GitHub 역사상 가장 빠른 성장 기록을 세우며 오픈소스 커뮤니티의 저력을 증명했습니다. Apple은 Google Gemini 기반 Siri 2.0 출시를 앞두고 있으며, Atlassian은 AI 전환을 위해 전 직원의 10%를 감축하는 대규모 구조조정에 나섰습니다. 한편 미국에서는 AI 투명성 의무화 법안이 속도를 내고 있습니다.</p>
+  <p class="en">OpenAI and NVIDIA have signed a landmark strategic partnership to deploy at least 10 gigawatts of AI infrastructure, valued at up to $100 billion, ushering in an era of mega-alliances between Big Tech companies. Open-source AI agent OpenClaw set the fastest growth record in GitHub history, while Apple prepares to launch its Gemini-powered Siri 2.0. Atlassian has cut 10% of its workforce to pivot toward AI, and the US is accelerating AI transparency legislation.</p>
 
-<nav class="toc">
-  <div class="toc-title ko">오늘의 주요 뉴스</div>
-  <div class="toc-title en">TODAY'S TOP STORIES</div>
-  <ol class="toc-list">
-    <li><span class="toc-num">1</span><a class="ko" href="#s1">머스크, $25B '테라팹' 반도체 공장 오스틴 출범</a><a class="en" href="#s1">Musk Launches $25B 'Terafab' Chip Factory in Austin</a></li>
-    <li><span class="toc-num">2</span><a class="ko" href="#s2">OpenAI GPT-5.4: 100만 토큰 시대 개막</a><a class="en" href="#s2">OpenAI GPT-5.4: The Million-Token Era Begins</a></li>
-    <li><span class="toc-num">3</span><a class="ko" href="#s3">워런 상원의원, Anthropic 블랙리스트를 '보복'으로 규정</a><a class="en" href="#s3">Senator Warren Calls Anthropic Blacklist 'Retaliation'</a></li>
-    <li><span class="toc-num">4</span><a class="ko" href="#s4">Google DeepMind AlphaEvolve, 수학 난제 돌파</a><a class="en" href="#s4">Google DeepMind's AlphaEvolve Breaks Mathematical Barriers</a></li>
-    <li><span class="toc-num">5</span><a class="ko" href="#s5">Mistral Small 4: 오픈소스 AI의 새 기준</a><a class="en" href="#s5">Mistral Small 4: A New Open-Source AI Benchmark</a></li>
-    <li><span class="toc-num">6</span><a class="ko" href="#s6">오늘의 핵심 시사점</a><a class="en" href="#s6">Today's Key Takeaways</a></li>
-  </ol>
-</nav>
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title ko">목차</div>
+    <div class="toc-title en">Contents</div>
+    <ol>
+      <li><span class="toc-num">1</span><a class="ko">OpenAI-NVIDIA, 100조 원 전략적 파트너십 체결</a><a class="en">OpenAI-NVIDIA Sign $100B Strategic Partnership</a></li>
+      <li><span class="toc-num">2</span><a class="ko">OpenClaw, 오픈소스 AI 에이전트의 새 역사</a><a class="en">OpenClaw Rewrites Open-Source AI Agent History</a></li>
+      <li><span class="toc-num">3</span><a class="ko">Apple, Gemini 기반 Siri 2.0 출시 초읽기</a><a class="en">Apple's Gemini-Powered Siri 2.0 Launch Imminent</a></li>
+      <li><span class="toc-num">4</span><a class="ko">Atlassian, AI 전환 위한 대규모 구조조정</a><a class="en">Atlassian Restructures for AI Transformation</a></li>
+      <li><span class="toc-num">5</span><a class="ko">미국 AI 투명성 법안, 입법 가속화</a><a class="en">US AI Transparency Bill Gains Momentum</a></li>
+      <li><span class="toc-num">6</span><a class="ko">오늘의 핵심 시사점</a><a class="en">Today's Key Takeaways</a></li>
+    </ol>
+  </nav>
 
-<!-- Section 1: Terafab -->
-<div class="section" id="s1">
-  <img class="section-img" src="images/2026_03_24_s1.webp" alt="Semiconductor fabrication facility">
-  <div class="section-num">1</div>
-  <h2 class="ko">머스크, $25B '테라팹' 반도체 공장 오스틴 출범</h2>
-  <h2 class="en">Musk Launches $25B 'Terafab' Chip Factory in Austin</h2>
-  <div class="tag-row">
-    <span class="tag ko">테라팹</span><span class="tag en">Terafab</span>
-    <span class="tag ko">반도체</span><span class="tag en">Semiconductor</span>
-    <span class="tag ko">Tesla · SpaceX · xAI</span><span class="tag en">Tesla · SpaceX · xAI</span>
+  <!-- Section 1 -->
+  <div class="section" id="s1">
+    <img class="section-img" src="images/mar24_s1.jpg" alt="데이터센터 서버룸 — AI 인프라 투자">
+    <div class="section-num">1</div>
+    <h2 class="ko">OpenAI-NVIDIA, 100조 원 전략적 파트너십 체결</h2>
+    <h2 class="en">OpenAI-NVIDIA Sign $100B Strategic Partnership</h2>
+    <div class="tag-row">
+      <span class="tag ko">빅테크</span><span class="tag en">Big Tech</span>
+      <span class="tag ko">인프라</span><span class="tag en">Infrastructure</span>
+      <span class="tag ko">파트너십</span><span class="tag en">Partnership</span>
+    </div>
+    <p class="ko">OpenAI와 NVIDIA가 차세대 AI 인프라 구축을 위한 전략적 파트너십 의향서(LOI)를 체결했습니다. 이번 합의에 따라 NVIDIA는 OpenAI에 최소 10기가와트 규모의 시스템을 공급하며, 시스템 배치에 따라 최대 1,000억 달러(약 130조 원)를 투자할 계획입니다. 첫 1기가와트 시스템은 2026년 하반기에 차세대 NVIDIA Vera Rubin 플랫폼을 기반으로 배치됩니다.</p>
+    <p class="en">OpenAI and NVIDIA have signed a letter of intent for a strategic partnership to build next-generation AI infrastructure. Under the agreement, NVIDIA will supply at least 10 gigawatts of systems to OpenAI and invest up to $100 billion as the systems are deployed. The first gigawatt of systems will be deployed in the second half of 2026 on the next-generation NVIDIA Vera Rubin platform.</p>
+    <p class="ko">이 파트너십의 규모는 역대 기술 산업 협력 중 최대 수준입니다. Jensen Huang CEO는 OpenAI에 대한 300억 달러 투자가 "마지막이 될 수 있다"고 밝히면서도 양사의 관계가 더욱 깊어지고 있음을 시사했습니다. 동시에 OpenAI는 직원 수를 약 8,000명으로 거의 두 배 늘릴 준비를 하고 있어, AI 산업의 양적 확장이 본격화되고 있습니다.</p>
+    <p class="en">The scale of this partnership is the largest in technology industry history. CEO Jensen Huang indicated that NVIDIA's $30 billion investment in OpenAI "might be the last," while signaling the deepening relationship between the two companies. Meanwhile, OpenAI is reportedly preparing to nearly double its workforce to approximately 8,000 employees, marking the quantitative expansion of the AI industry.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 포인트:</strong> 10기가와트는 대형 원자력발전소 약 10기에 해당하는 전력입니다. AI 인프라가 이제 국가급 에너지 프로젝트와 동일한 규모로 성장하고 있음을 의미합니다.</p>
+      <p class="en"><strong>Key Point:</strong> 10 gigawatts is equivalent to approximately 10 large nuclear power plants. This signals that AI infrastructure is now growing to the scale of national-level energy projects.</p>
+    </div>
   </div>
-  <p class="ko">일론 머스크가 오스틴의 기가 텍사스 노스캠퍼스에서 Tesla, SpaceX, xAI의 합작 반도체 제조 시설 '테라팹(Terafab)'을 공식 발표했습니다. 투자 규모는 250억 달러 이상으로, 머스크는 이를 "역사상 가장 대규모 칩 제조 프로젝트"라고 선언했습니다. 칩 설계부터 리소그래피, 패키징, 테스트까지 전 공정을 한 지붕 아래 통합합니다.</p>
-  <p class="en">Elon Musk officially announced 'Terafab,' a joint semiconductor fabrication facility by Tesla, SpaceX, and xAI at the Giga Texas North Campus in Austin. With investment exceeding $25 billion, Musk called it "the most epic chip manufacturing project in history." The facility integrates every stage of chip production under one roof — from design and lithography to packaging and testing.</p>
-  <p class="ko">테라팹은 2나노미터 공정 기술을 목표로 하며, Tesla 차량과 Optimus 로봇용 추론 칩(AI4/AI5)과 SpaceX 궤도 AI 위성용 D3 칩을 생산할 계획입니다. AI5 칩의 소규모 생산은 2026년 말, 양산은 2027년으로 예정되어 있습니다. 미국 내 AI 칩 자급 체계 구축이라는 전략적 의미도 큽니다.</p>
-  <p class="en">Terafab targets 2-nanometer process technology and plans to produce inference chips (AI4/AI5) for Tesla vehicles and Optimus robots, plus D3 chips for SpaceX orbital AI satellites. Small-batch AI5 production is targeted for late 2026, with volume production in 2027. The project carries significant strategic importance for building domestic AI chip self-sufficiency in the US.</p>
-  <div class="highlight-box">
-    <p class="ko"><strong>핵심 요약:</strong> 테라팹은 AI 칩 공급망을 수직 통합하려는 머스크의 야시작입니다. 미국 내 첨단 반도체 생산 역량 확보는 글로벌 AI 패권 경쟁에서 결정적 전환점이 될 수 있습니다.</p>
-    <p class="en"><strong>Key takeaway:</strong> Terafab is Musk's ambitious move to vertically integrate the AI chip supply chain. Securing advanced semiconductor manufacturing capacity in the US could be a decisive turning point in the global AI competition.</p>
-  </div>
-</div>
 
-<!-- Section 2: GPT-5.4 -->
-<div class="section" id="s2">
-  <img class="section-img" src="images/2026_03_24_s2.webp" alt="AI neural network visualization">
-  <div class="section-num">2</div>
-  <h2 class="ko">OpenAI GPT-5.4: 100만 토큰 시대 개막</h2>
-  <h2 class="en">OpenAI GPT-5.4: The Million-Token Era Begins</h2>
-  <div class="tag-row">
-    <span class="tag ko">OpenAI</span><span class="tag en">OpenAI</span>
-    <span class="tag ko">GPT-5.4</span><span class="tag en">GPT-5.4</span>
-    <span class="tag ko">에이전트 AI</span><span class="tag en">Agentic AI</span>
+  <!-- Section 2 -->
+  <div class="section" id="s2">
+    <img class="section-img" src="images/mar24_s2.jpg" alt="개발자 노트북 코딩 화면">
+    <div class="section-num">2</div>
+    <h2 class="ko">OpenClaw, 오픈소스 AI 에이전트의 새 역사</h2>
+    <h2 class="en">OpenClaw Rewrites Open-Source AI Agent History</h2>
+    <div class="tag-row">
+      <span class="tag ko">오픈소스</span><span class="tag en">Open Source</span>
+      <span class="tag ko">AI 에이전트</span><span class="tag en">AI Agent</span>
+      <span class="tag ko">커뮤니티</span><span class="tag en">Community</span>
+    </div>
+    <p class="ko">오스트리아 개발자 Peter Steinberger가 만든 오픈소스 AI 에이전트 플랫폼 OpenClaw가 GitHub 역사상 가장 빠르게 성장한 프로젝트가 되었습니다. 2025년 11월 'Clawdbot'이라는 이름으로 출발한 이 프로젝트는 2026년 3월 현재 25만 개 이상의 GitHub 스타를 기록하며, Linux 운영체제가 수년에 걸쳐 도달한 이정표를 단 4개월 만에 돌파했습니다.</p>
+    <p class="en">OpenClaw, an open-source AI agent platform created by Austrian developer Peter Steinberger, has become the fastest-growing project in GitHub history. Starting as 'Clawdbot' in November 2025, the project has surpassed 250,000 GitHub stars by March 2026, breaking a milestone that took the Linux operating system years to achieve in just four months.</p>
+    <p class="ko">OpenClaw의 성장은 빅테크만의 전유물이었던 AI 에이전트 시장에 균열을 일으키고 있습니다. Tencent는 자사 슈퍼앱 WeChat에 OpenClaw 기반 AI 제품군을 통합했고, NVIDIA는 GTC 2026에서 OpenClaw 커뮤니티를 위한 NemoClaw 스택을 발표했습니다. 다만 보안 연구자들은 4만 개 이상의 OpenClaw 인스턴스가 공개 인터넷에 노출되어 있으며, 60% 이상에서 해킹 취약점이 발견되었다고 경고하고 있습니다.</p>
+    <p class="en">OpenClaw's growth is cracking open the AI agent market that was once the exclusive domain of Big Tech. Tencent has integrated OpenClaw-based AI products into its super-app WeChat, and NVIDIA announced the NemoClaw stack for the OpenClaw community at GTC 2026. However, security researchers warn that over 40,000 OpenClaw instances are exposed on the public internet, with over 60% having exploitable vulnerabilities.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 포인트:</strong> OpenClaw는 AI 에이전트의 '민주화'를 상징하지만, 급속한 확산에 비해 보안 인프라가 따라가지 못하고 있습니다. 중국 정부는 이미 국가 기관에서의 사용을 제한했습니다.</p>
+      <p class="en"><strong>Key Point:</strong> OpenClaw symbolizes the 'democratization' of AI agents, but security infrastructure hasn't kept pace with its rapid adoption. China has already restricted its use in government agencies.</p>
+    </div>
   </div>
-  <p class="ko">OpenAI가 최신 프론티어 모델 GPT-5.4를 공개했습니다. 100만 토큰 컨텍스트 윈도우를 지원하며, 소프트웨어 환경 전반에 걸쳐 자율적으로 멀티스텝 워크플로를 실행할 수 있습니다. 실제 데스크톱 생산성 작업을 시뮬레이션하는 OSWorld-V 벤치마크에서 75%를 기록했습니다.</p>
-  <p class="en">OpenAI has unveiled GPT-5.4, its latest frontier model. It supports a 1-million-token context window and can autonomously execute multi-step workflows across software environments. It scored 75% on the OSWorld-V benchmark, which simulates real desktop productivity tasks.</p>
-  <p class="ko">GPT-5.4 '씽킹(Thinking)' 모델은 경제적으로 가치 있는 작업에 대한 GDPVal 벤치마크에서 83.0%를 기록하며 인간 전문가 수준에 도달했습니다. OpenAI는 연간 매출 $25B를 돌파했으며, 2026년 말까지 직원 수를 약 8,000명으로 두 배 가까이 늘릴 계획입니다. 엔터프라이즈 AI 에이전트 시장에서의 선점 전략이 본격화됩니다.</p>
-  <p class="en">The GPT-5.4 'Thinking' model scored 83.0% on the GDPVal benchmark for economically valuable tasks, reaching human expert level. OpenAI has surpassed $25B in annualized revenue and plans to nearly double its headcount to approximately 8,000 by end of 2026. Its strategy to dominate the enterprise AI agent market is accelerating.</p>
-  <div class="highlight-box">
-    <p class="ko"><strong>핵심 요약:</strong> 100만 토큰 컨텍스트와 자율 워크플로 실행은 AI가 단순 대화를 넘어 실질적 업무 자동화로 진화하고 있음을 보여줍니다. 에이전트 AI 경쟁이 본격 가열됩니다.</p>
-    <p class="en"><strong>Key takeaway:</strong> The million-token context and autonomous workflow execution show AI evolving beyond simple conversation into real workplace automation. The agentic AI race is heating up.</p>
-  </div>
-</div>
 
-<!-- Section 3: Anthropic Pentagon -->
-<div class="section" id="s3">
-  <img class="section-img" src="images/2026_03_24_s3.webp" alt="Government and AI policy">
-  <div class="section-num">3</div>
-  <h2 class="ko">워런 상원의원, Anthropic 블랙리스트를 '보복'으로 규정</h2>
-  <h2 class="en">Senator Warren Calls Anthropic Blacklist 'Retaliation'</h2>
-  <div class="tag-row">
-    <span class="tag ko">Anthropic</span><span class="tag en">Anthropic</span>
-    <span class="tag ko">국방부</span><span class="tag en">Pentagon</span>
-    <span class="tag ko">AI 윤리</span><span class="tag en">AI Ethics</span>
+  <!-- Section 3 -->
+  <div class="section" id="s3">
+    <img class="section-img" src="images/mar24_s3.jpg" alt="스마트폰 AI 어시스턴트 인터페이스">
+    <div class="section-num">3</div>
+    <h2 class="ko">Apple, Gemini 기반 Siri 2.0 출시 초읽기</h2>
+    <h2 class="en">Apple's Gemini-Powered Siri 2.0 Launch Imminent</h2>
+    <div class="tag-row">
+      <span class="tag ko">Apple</span><span class="tag en">Apple</span>
+      <span class="tag ko">Siri</span><span class="tag en">Siri</span>
+      <span class="tag ko">모바일 AI</span><span class="tag en">Mobile AI</span>
+    </div>
+    <p class="ko">Apple이 Google의 1.2조 파라미터 Gemini 모델을 기반으로 완전히 재설계된 Siri 2.0을 곧 공개합니다. iOS 26.5 베타에서 3월 말 첫 선을 보일 예정이며, Siri가 이메일, 메시지, 캘린더 등의 맥락을 분석해 사용자의 의도를 더 깊이 이해하는 방향으로 진화합니다. Apple의 Private Cloud Compute를 통해 프라이버시를 유지하면서 클라우드 AI의 성능을 활용하는 하이브리드 구조가 핵심입니다.</p>
+    <p class="en">Apple is about to unveil a completely redesigned Siri 2.0 powered by Google's 1.2 trillion parameter Gemini model. Set to debut in the iOS 26.5 beta by late March, the new Siri will analyze context from emails, messages, and calendar events to more deeply understand user intent. The hybrid architecture leverages cloud AI performance while maintaining privacy through Apple's Private Cloud Compute.</p>
+    <p class="ko">수차례 연기 끝에 도달한 이번 출시는 Apple에게 AI 경쟁에서의 신뢰 회복이 걸린 중요한 순간입니다. 2025년 초 Google과 체결한 다년간 전략적 제휴가 기술적 기반이 되었으나, 내부 테스트에서 일관성과 통합 관련 성능 문제가 발견되면서 일부 기능은 5월 업데이트나 9월 iOS 27까지 연기될 수 있습니다. 그럼에도 복잡한 크로스앱 작업을 처리할 수 있는 차세대 음성 AI의 기준점을 제시할 것으로 기대됩니다.</p>
+    <p class="en">After multiple delays, this launch represents a critical moment for Apple to restore confidence in the AI race. The multi-year strategic alliance with Google signed in early 2025 provides the technical foundation, but performance issues with consistency and integration discovered during internal testing may push some features to the May update or even iOS 27 in September. Nevertheless, it is expected to set the benchmark for next-generation voice AI capable of handling complex cross-app tasks.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 포인트:</strong> Apple-Google Gemini 통합은 경쟁사가 아닌 협력사로서의 새로운 관계를 보여줍니다. 프라이버시를 포기하지 않으면서 최고 수준의 AI를 제공하려는 Apple의 전략이 시험대에 오릅니다.</p>
+      <p class="en"><strong>Key Point:</strong> The Apple-Google Gemini integration showcases a new relationship as partners rather than competitors. Apple's strategy of delivering top-tier AI without compromising privacy faces its ultimate test.</p>
+    </div>
   </div>
-  <p class="ko">엘리자베스 워런 상원의원이 국방부의 Anthropic 공급망 위험 지정을 '보복'이라고 공개 비판했습니다. Anthropic은 자사 AI 모델 Claude가 자율 살상 무기나 국내 대규모 감시에 사용되는 것을 거부한 후, 트럼프 행정부에 의해 국가안보 '공급망 위험' 업체로 지정되었습니다.</p>
-  <p class="en">Senator Elizabeth Warren publicly criticized the Pentagon's supply-chain risk designation of Anthropic as 'retaliation.' Anthropic was designated a national security 'supply chain risk' by the Trump administration after refusing to allow its Claude AI model to be used for autonomous lethal weapons or mass domestic surveillance.</p>
-  <p class="ko">Anthropic CEO 다리오 아모덴이는 OpenAI의 접근을 '안전 극장'이라 비판했고, 30명 이상의 OpenAI·Google DeepMind 직원이 Anthropic을 지지하는 법정 의견서를 제출했습니다. Google 수석과학자 제픈 딘도 서명에 참여하며, 블랙리스트가 미국 AI 산업 전체를 위협한다고 경고했습니다. 임시 구제 심리가 오늘(3월 24일) 예정되어 있습니다.</p>
-  <p class="en">Anthropic CEO Dario Amodei called OpenAI's approach 'safety theater,' while over 30 OpenAI and Google DeepMind employees filed an amicus brief supporting Anthropic. Google chief scientist Jeff Dean also signed, warning that the blacklist threatens the entire US AI industry. A temporary relief hearing is scheduled for today, March 24.</p>
-  <div class="highlight-box">
-    <p class="ko"><strong>핵심 요약:</strong> Anthropic 사태는 AI 안전과 국가안보 사이의 근본적 긴장을 드러냅니다. 경쟁사 직원들까지 연대하는 상황은 이 문제가 한 기업을 넘어 AI 산업 전체의 미래에 관한 것임을 보여줍니다.</p>
-    <p class="en"><strong>Key takeaway:</strong> The Anthropic case exposes the fundamental tension between AI safety and national security. The solidarity from rival company employees shows this issue transcends one company and concerns the future of the entire AI industry.</p>
-  </div>
-</div>
 
-<!-- Section 4: AlphaEvolve -->
-<div class="section" id="s4">
-  <img class="section-img" src="images/2026_03_24_s4.webp" alt="Mathematical algorithms and AI">
-  <div class="section-num">4</div>
-  <h2 class="ko">Google DeepMind AlphaEvolve, 수학 난제 돌파</h2>
-  <h2 class="en">Google DeepMind's AlphaEvolve Breaks Mathematical Barriers</h2>
-  <div class="tag-row">
-    <span class="tag ko">DeepMind</span><span class="tag en">DeepMind</span>
-    <span class="tag ko">AlphaEvolve</span><span class="tag en">AlphaEvolve</span>
-    <span class="tag ko">알고리즘</span><span class="tag en">Algorithm</span>
+  <!-- Section 4 -->
+  <div class="section" id="s4">
+    <img class="section-img" src="images/mar24_s4.jpg" alt="현대적 기업 사무실 공간">
+    <div class="section-num">4</div>
+    <h2 class="ko">Atlassian, AI 전환 위한 대규모 구조조정</h2>
+    <h2 class="en">Atlassian Restructures for AI Transformation</h2>
+    <div class="tag-row">
+      <span class="tag ko">기업</span><span class="tag en">Enterprise</span>
+      <span class="tag ko">구조조정</span><span class="tag en">Restructuring</span>
+      <span class="tag ko">AI 전환</span><span class="tag en">AI Pivot</span>
+    </div>
+    <p class="ko">협업 소프트웨어의 대명사 Atlassian이 전 직원의 약 10%를 감축하는 대규모 구조조정을 단행했습니다. 동시에 기존 CTO를 교체하고 AI 중심의 새로운 CTO 2명을 임명하며, 회사의 기술적 방향을 AI로 전면 재편하겠다는 의지를 명확히 했습니다. Jira, Confluence 등 핵심 제품에 AI 에이전트 기능을 깊숙이 통합하는 것이 목표입니다.</p>
+    <p class="en">Atlassian, the collaboration software giant, has laid off roughly 10% of its global workforce. Simultaneously, the company replaced its CTO and appointed two new AI-focused CTOs, clearly signaling its intent to fundamentally redirect its technical direction toward AI. The goal is to deeply integrate AI agent capabilities into core products like Jira and Confluence.</p>
+    <p class="ko">Atlassian의 이번 결정은 AI가 단순한 신기능 추가가 아니라 기업의 존재 방식 자체를 바꾸는 전환점임을 보여줍니다. Dreamer AI 스타트업 팀이 통째로 Meta의 Superintelligence Labs에 합류하는 등 AI 인재 확보 전쟁도 격화되고 있습니다. 기존 소프트웨어 기업이 AI-First 기업으로 탈바꿈하려면 조직, 인력, 문화 전반의 혁신이 불가피합니다.</p>
+    <p class="en">Atlassian's decision demonstrates that AI is not merely a feature addition but a turning point that transforms how companies fundamentally operate. The AI talent war is intensifying, with the entire Dreamer AI startup team joining Meta's Superintelligence Labs. For existing software companies to transform into AI-first enterprises, comprehensive innovation across organization, talent, and culture is inevitable.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 포인트:</strong> AI 전환은 더 이상 선택이 아닙니다. Atlassian처럼 수십 년간 성공해온 기업조차 CTO를 교체하고 조직을 재편하고 있습니다. AI-First가 아니면 도태되는 시대입니다.</p>
+      <p class="en"><strong>Key Point:</strong> AI transformation is no longer optional. Even companies with decades of success like Atlassian are replacing CTOs and restructuring. It's an era where failing to be AI-first means falling behind.</p>
+    </div>
   </div>
-  <p class="ko">Google DeepMind의 AlphaEvolve가 수학과 알고리즘 분야에서 놀라운 성과를 달성하고 있습니다. Gemini 모델과 진화적 알고리즘을 결합한 이 코딩 에이전트는 50개 이상의 수학 미해결 문제에 적용되어, 약 75%에서 기존 최고 수준의 해를 재발견했고 20%에서는 이전 최고 기록을 개선했습니다.</p>
-  <p class="en">Google DeepMind's AlphaEvolve is achieving remarkable results in mathematics and algorithms. This coding agent, which combines Gemini models with evolutionary algorithms, was applied to over 50 open math problems — rediscovering state-of-the-art solutions in ~75% of cases and improving the best-known solutions in 20%.</p>
-  <p class="ko">특히 4×4 복소값 행렬 곱셈에서 48회 스칼라 곱셈으로 최적 알고리즘을 발견하며, 1969년 이후 깨지지 않던 스트라센 알고리즘의 기록을 갱신했습니다. 실용적 측면에서는 Google 데이터센터의 Borg 작업 오케스트레이터 성능을 개선하여 전 세계 컴퓨팅 자원의 0.7%를 절약하는 데 기여했습니다.</p>
-  <p class="en">Notably, it discovered an optimal algorithm for 4×4 complex matrix multiplication using just 48 scalar multiplications, breaking Strassen's record that stood since 1969. On the practical side, it improved Google's Borg task orchestrator performance, helping recover 0.7% of worldwide computing resources.</p>
-  <div class="highlight-box">
-    <p class="ko"><strong>핵심 요약:</strong> AlphaEvolve는 AI가 이론 수학에서 실질적 인프라 최적화까지 아우르는 범용 연구 도구로 진화하고 있음을 입증합니다. AI가 과학 발견의 속도를 근보적으로 바꾸고 있습니다.</p>
-    <p class="en"><strong>Key takeaway:</strong> AlphaEvolve demonstrates AI evolving into a general-purpose research tool spanning theoretical mathematics to practical infrastructure optimization. AI is fundamentally changing the pace of scientific discovery.</p>
-  </div>
-</div>
 
-<!-- Section 5: Mistral Small 4 -->
-<div class="section" id="s5">
-  <img class="section-img" src="images/2026_03_24_s5.webp" alt="Open-source AI models">
-  <div class="section-num">5</div>
-  <h2 class="ko">Mistral Small 4: 오픈소스 AI의 새 기준</h2>
-  <h2 class="en">Mistral Small 4: A New Open-Source AI Benchmark</h2>
-  <div class="tag-row">
-    <span class="tag ko">Mistral</span><span class="tag en">Mistral</span>
-    <span class="tag ko">오픈소스</span><span class="tag en">Open Source</span>
-    <span class="tag ko">MoE</span><span class="tag en">MoE</span>
+  <!-- Section 5 -->
+  <div class="section" id="s5">
+    <img class="section-img" src="images/mar24_s5.jpg" alt="의회 건물과 법률 문서">
+    <div class="section-num">5</div>
+    <h2 class="ko">미국 AI 투명성 법안, 입법 가속화</h2>
+    <h2 class="en">US AI Transparency Bill Gains Momentum</h2>
+    <div class="tag-row">
+      <span class="tag ko">규제</span><span class="tag en">Regulation</span>
+      <span class="tag ko">투명성</span><span class="tag en">Transparency</span>
+      <span class="tag ko">입법</span><span class="tag en">Legislation</span>
+    </div>
+    <p class="ko">미국 일리노이주의 HB 4988 법안이 3월 24일 하원 소비자보호위원회 청문회에 상정됩니다. 이 법안은 소비자 사기 및 기만적 영업 관행 방지법을 개정하여, 생성형 AI 운영자에게 AI 사용 사실을 명시적으로 고지하도록 의무화하는 내용을 담고 있습니다. 사용자가 AI와 상호작용하고 있다는 사실을 알 권리를 보장하는 것이 핵심입니다.</p>
+    <p class="en">Illinois HB 4988 is scheduled for hearing before the House Consumer Protection Committee on March 24. The bill amends the Consumer Fraud and Deceptive Business Practices Act to require generative AI operators to display explicit notifications of AI use. The core focus is ensuring users' right to know when they are interacting with AI.</p>
+    <p class="ko">AI 투명성 규제는 미국 전역으로 확산되는 추세입니다. 이미 백악관은 AI 규제 샌드박스 설립과 연방 데이터 공개를 포함한 국가 AI 정책 프레임워크를 발표한 바 있습니다. AI 광고 시장이 2026년 570억 달러(63% 성장)에 달할 것으로 전망되는 가운데, 소비자가 AI 생성 콘텐츠와 인간이 만든 콘텐츠를 구별할 수 있어야 한다는 요구가 커지고 있습니다. EU의 AI 딥페이크 금지법 추진과도 맥을 같이합니다.</p>
+    <p class="en">AI transparency regulations are spreading across the US. The White House has already released a national AI policy framework that includes establishing regulatory sandboxes and making federal data publicly accessible. With the AI advertising market projected to reach $57 billion in 2026 (63% growth), demands are growing for consumers to be able to distinguish between AI-generated and human-created content. This aligns with the EU's push for AI deepfake prohibition legislation.</p>
+    <div class="highlight-box">
+      <p class="ko"><strong>핵심 포인트:</strong> AI 규제가 '할 것인가'에서 '어떻게 할 것인가'로 전환되고 있습니다. 일리노이주 HB 4988은 실용적 AI 규제의 모델 케이스가 될 수 있습니다.</p>
+      <p class="en"><strong>Key Point:</strong> AI regulation is shifting from 'whether to regulate' to 'how to regulate.' Illinois HB 4988 could become a model case for practical AI regulation.</p>
+    </div>
   </div>
-  <p class="ko">프랑스 AI 기업 Mistral이 Small 4를 Apache 2.0 라이선스로 공개했습니다. 이 모델은 추론, 명령 수행, 멀티모달 기능을 단일 시스템에 통합하며, Mixture-of-Experts(MoE) 아키텍처를 채택하여 전작 대비 더 빠른 성능, 낮은 지연시간, 높은 처리량을 제공합니다.</p>
-  <p class="en">French AI company Mistral released Small 4 under the Apache 2.0 license. The model combines reasoning, instruction-following, and multimodal capabilities in a single system, using a Mixture-of-Experts (MoE) architecture to deliver faster performance, lower latency, and higher throughput than its predecessor.</p>
-  <p class="ko">같은 시기 NVIDIA도 Nemotron 3 Super를 공개하며 오픈 모델 진영이 강화되고 있습니다. Mistral Small 4는 특히 에이전트 AI 구축에 최적화되어, 기업들이 프론티어 모델에 의존하지 않고도 자체 AI 에이전트를 배포할 수 있는 길을 열었습니다. 오픈소스 AI 생태계의 경쟁력이 한 단계 더 높아졌습니다.</p>
-  <p class="en">Around the same time, NVIDIA released Nemotron 3 Super, strengthening the open model ecosystem. Mistral Small 4 is particularly optimized for building agentic AI, opening the path for enterprises to deploy their own AI agents without depending on frontier models. The competitiveness of the open-source AI ecosystem has risen another level.</p>
-  <div class="highlight-box">
-    <p class="ko"><strong>핵심 요약:</strong> Mistral Small 4와 Nemotron 3 Super의 등장은 오픈소스 AI가 프론티어 모델과의 격차를 빠르게 줄이고 있음을 보여줍니다. 기업 맞춤형 AI 에이전트 시대가 가속됩니다.</p>
-    <p class="en"><strong>Key takeaway:</strong> The arrival of Mistral Small 4 and Nemotron 3 Super shows open-source AI rapidly closing the gap with frontier models. The era of enterprise-customized AI agents is accelerating.</p>
-  </div>
-</div>
 
-<!-- Takeaways -->
-<div class="section" id="s6">
-  <h2 class="ko">오늘의 핵심 시사점</h2>
-  <h2 class="en">Today's Key Takeaways</h2>
-  <div class="takeaway">
-    <div class="takeaway-grid">
-      <div class="takeaway-card">
-        <div class="card-num">1</div>
-        <h3 class="ko">AI 칩 자급의 서막</h3>
-        <h3 class="en">The Dawn of AI Chip Self-Sufficiency</h3>
-        <p class="ko">테라팹의 출범은 AI 인프라 경쟁이 모델 개발을 넘어 하드웨어 공급망까지 확장되고 있음을 보여줍니다. 미국 내 첨단 칩 생산은 지정학적 리스크 완화에도 기여합니다.</p>
-        <p class="en">Terafab's launch shows the AI infrastructure race expanding beyond model development to hardware supply chains. Domestic advanced chip production also helps mitigate geopolitical risks.</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="card-num">2</div>
-        <h3 class="ko">AI 에이전트, 대화에서 행동으로</h3>
-        <h3 class="en">AI Agents: From Conversation to Action</h3>
-        <p class="ko">GPT-5.4의 자율 워크플로 실행과 Mistral의 에이전트 최적화 모델은 AI가 '도구'에서 '동료'로 진화하는 전환점을 보여줍니다.</p>
-        <p class="en">GPT-5.4's autonomous workflow execution and Mistral's agent-optimized model mark the transition point where AI evolves from 'tool' to 'colleague.'</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="card-num">3</div>
-        <h3 class="ko">AI 안전 vs 국가안보, 정면 충돌</h3>
-        <h3 class="en">AI Safety vs National Security: Head-On Collision</h3>
-        <p class="ko">Anthropic-국방부 분쟁은 AI 기업의 윤리적 원칙이 정부 요구와 충돌할 때 어떤 결과가 발생하는지를 보여주는 전례 없는 사례입니다.</p>
-        <p class="en">The Anthropic-Pentagon dispute is an unprecedented case showing what happens when AI companies' ethical principles collide with government demands.</p>
-      </div>
-      <div class="takeaway-card">
-        <div class="card-num">4</div>
-        <h3 class="ko">AI, 과학의 경계를 넓히다</h3>
-        <h3 class="en">AI Expands the Boundaries of Science</h3>
-        <p class="ko">AlphaEvolve의 수학적 발견은 AI가 인간 연구자의 보조를 넘어 독자적 과학 발견의 주체가 되고 있음을 시사합니다. 이론과 실용, 양쪽에서 가치를 증명합니다.</p>
-        <p class="en">AlphaEvolve's mathematical discoveries suggest AI is becoming an independent agent of scientific discovery, not just a human researcher's assistant. It proves its value in both theory and practice.</p>
+  <!-- Takeaway Section -->
+  <div class="section">
+    <div class="takeaway">
+      <h2 class="ko">오늘의 핵심 시사점</h2>
+      <h2 class="en">Today's Key Takeaways</h2>
+      <div class="takeaway-grid">
+        <div class="takeaway-card">
+          <div class="card-num">1</div>
+          <h3 class="ko">인프라 = 지배력</h3>
+          <h3 class="en">Infrastructure = Dominance</h3>
+          <p class="ko">OpenAI-NVIDIA의 100조 원 파트너십은 AI 경쟁의 본질이 모델이 아닌 인프라에 있음을 확인시켜줍니다. 컴퓨트, 자본, 플랫폼을 장악한 기업이 앞서가고 있습니다.</p>
+          <p class="en">The $100B OpenAI-NVIDIA partnership confirms that the essence of AI competition lies in infrastructure, not models. Companies controlling compute, capital, and platforms are pulling ahead.</p>
+        </div>
+        <div class="takeaway-card">
+          <div class="card-num">2</div>
+          <h3 class="ko">오픈소스의 역습</h3>
+          <h3 class="en">The Open-Source Counterattack</h3>
+          <p class="ko">OpenClaw의 폭발적 성장은 빅테크 독점에 대한 오픈소스 커뮤니티의 강력한 응답입니다. 다만 보안 문제는 확산 속도만큼 시급합니다.</p>
+          <p class="en">OpenClaw's explosive growth is the open-source community's powerful response to Big Tech monopolies. However, security issues are as urgent as the speed of adoption.</p>
+        </div>
+        <div class="takeaway-card">
+          <div class="card-num">3</div>
+          <h3 class="ko">경쟁에서 협력으로</h3>
+          <h3 class="en">From Competition to Collaboration</h3>
+          <p class="ko">Apple-Google, OpenAI-NVIDIA — 빅테크 기업들이 독자 노선 대신 전략적 동맹을 선택하고 있습니다. AI 시대의 승자는 혼자가 아닌 최고의 파트너를 찾는 기업입니다.</p>
+          <p class="en">Apple-Google, OpenAI-NVIDIA — Big Tech companies are choosing strategic alliances over going it alone. In the AI era, winners are those who find the best partners, not those who go solo.</p>
+        </div>
+        <div class="takeaway-card">
+          <div class="card-num">4</div>
+          <h3 class="ko">규제의 현실화</h3>
+          <h3 class="en">Regulation Gets Real</h3>
+          <p class="ko">AI 투명성 법안이 청문회 단계에 진입하며 실질적 규제 시대가 열리고 있습니다. 기업들은 AI 활용 고지 체계를 사전에 준비해야 합니다.</p>
+          <p class="en">With AI transparency bills reaching the hearing stage, the era of substantive regulation is opening. Companies need to prepare AI usage disclosure systems in advance.</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+</div><!-- end container -->
 
 <div class="nav-issues">
   <a class="nav-link" href="2026_03_23_AI_Daily.html"><span class="ko">이전호</span><span class="en">Previous</span></a>
@@ -322,12 +319,16 @@ footer a { color: var(--accent); text-decoration: none; }
   <p>
     <span class="ko">이 아티클은 <a href="https://opendesignlab.com">Open Design Lab</a>의 AI Daily 시리즈입니다.<br>매일 최신 AI 뉴스를 빠르게 정리합니다.</span>
     <span class="en">This article is part of <a href="https://opendesignlab.com">Open Design Lab</a>'s AI Daily series.<br>Your daily roundup of the most important AI developments.</span><br>
+    <span style="margin-top: 8px; display: inline-block; color: #aaa;">Images: <a href="https://www.pexels.com" style="color: #aaa;">Pexels</a> (Free License)</span><br>
     <span style="display: inline-block; color: #aaa;">&copy; 2026 Open Design Lab. All rights reserved.</span>
   </p>
 </footer>
 
 <script>
-(function(){ var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); document.documentElement.setAttribute('data-theme', t); })();
+(function(){
+  var t = localStorage.getItem('odl-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', t);
+})();
 </script>
 </div>
 
@@ -336,25 +337,41 @@ function setLang(lang) {
   var body = document.body;
   var btnKo = document.getElementById("btn-ko");
   var btnEn = document.getElementById("btn-en");
-  if (lang === "en") { body.classList.add("lang-en"); document.documentElement.lang = "en"; btnEn.classList.add("active"); btnKo.classList.remove("active"); }
-  else { body.classList.remove("lang-en"); document.documentElement.lang = "ko"; btnKo.classList.add("active"); btnEn.classList.remove("active"); }
+  if (lang === "en") {
+    body.classList.add("lang-en");
+    document.documentElement.lang = "en";
+    btnEn.classList.add("active");
+    btnKo.classList.remove("active");
+  } else {
+    body.classList.remove("lang-en");
+    document.documentElement.lang = "ko";
+    btnKo.classList.add("active");
+    btnEn.classList.remove("active");
+  }
 }
 function setFontSize(size) {
   var html = document.documentElement;
   html.classList.remove("fs-small", "fs-medium", "fs-large");
   html.classList.add("fs-" + size);
   var btns = {small: "fs-s", medium: "fs-m", large: "fs-l"};
-  Object.keys(btns).forEach(function(k) { var el = document.getElementById(btns[k]); if (el) el.classList.toggle("active", k === size); });
+  Object.keys(btns).forEach(function(k) {
+    var el = document.getElementById(btns[k]);
+    if (el) el.classList.toggle("active", k === size);
+  });
   localStorage.setItem("odl-fontsize", size);
 }
-function getPreferredTheme() { var saved = localStorage.getItem("odl-theme"); if (saved) return saved; return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; }
-function setTheme(theme) { document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("odl-theme", theme); }
-function toggleTheme() { setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark"); }
-
-window.addEventListener("scroll", function() {
-  var topbar = document.getElementById("topbar");
-  if (topbar) topbar.classList.toggle("scrolled", window.scrollY > 10);
-});
+function getPreferredTheme() {
+  var saved = localStorage.getItem("odl-theme");
+  if (saved) return saved;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("odl-theme", theme);
+}
+function toggleTheme() {
+  setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+}
 </script>
 </body>
 </html>
