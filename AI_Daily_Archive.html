@@ -197,10 +197,10 @@ h1.ko,h2.ko,h3.ko{display:block}
   </div>
 </div>
 <script>
-function toggleTheme(){const h=document.documentElement;const d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');localStorage.setItem('theme',d?'light':'dark')}
+function toggleTheme(){const h=document.documentElement;const d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');localStorage.setItem('odl-theme',d?'light':'dark')}
 function setLang(l){document.body.classList.remove('lang-en');if(l==='en')document.body.classList.add('lang-en');document.getElementById('btn-ko').classList.toggle('active',l==='ko');document.getElementById('btn-en').classList.toggle('active',l==='en');localStorage.setItem('lang',l)}
 function setFontSize(s){document.documentElement.className='fs-'+s;document.querySelectorAll('.font-btn').forEach(b=>b.classList.remove('active'));document.getElementById('fs-'+s[0]).classList.add('active');localStorage.setItem('fontSize',s)}
-(function(){const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);const l=localStorage.getItem('lang');if(l)setLang(l);const f=localStorage.getItem('fontSize');if(f)setFontSize(f);window.addEventListener('scroll',function(){document.getElementById('topbar').classList.toggle('scrolled',window.scrollY>2)})})();
+(function(){const t=localStorage.getItem('odl-theme')||( window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);const l=localStorage.getItem('lang');if(l)setLang(l);const f=localStorage.getItem('fontSize');if(f)setFontSize(f);window.addEventListener('scroll',function(){document.getElementById('topbar').classList.toggle('scrolled',window.scrollY>2)})})();
 </script>
 </body>
 </html>
