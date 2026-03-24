@@ -380,6 +380,9 @@ header { border-bottom: 1px solid var(--border); padding: 32px 0 24px; }
     function toggleTheme() {
       setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
     }
-  </script>
+  
+setTheme(getPreferredTheme());
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function(e) { setTheme(getPreferredTheme()); });
+</script>
 </body>
 </html>
